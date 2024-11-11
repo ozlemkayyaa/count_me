@@ -37,30 +37,17 @@ enum PaddingHelper {
   xxLarge(50);
 
   final double value;
+
   const PaddingHelper(this.value);
 
-  EdgeInsets get all => EdgeInsets.all(
-        value,
-      );
+  /// Padding All
+  EdgeInsets get all => EdgeInsets.all(value);
 
-  EdgeInsets get onlyHorizontal => EdgeInsets.symmetric(
-        horizontal: value,
-      );
+  /// Padding symmetric
+  EdgeInsets get symmetric =>
+      EdgeInsets.symmetric(horizontal: value, vertical: value);
 
-  EdgeInsets get onlyVertical => EdgeInsets.symmetric(
-        vertical: value,
-      );
-
-  EdgeInsets get onlyRight => EdgeInsets.only(
-        right: value,
-      );
-
-  EdgeInsets get onlyBottom => EdgeInsets.only(
-        bottom: value,
-      );
-
-  EdgeInsets get symetricVerticalx2 => EdgeInsets.symmetric(
-        horizontal: value,
-        vertical: value * 2,
-      );
+  /// Padding only
+  EdgeInsets get onlyPadding =>
+      EdgeInsets.only(left: value, right: value, top: value, bottom: value);
 }
