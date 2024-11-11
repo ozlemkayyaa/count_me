@@ -1,4 +1,5 @@
-import 'package:count_me/app/presentation/home/view/home_view.dart';
+import 'package:count_me/app/presentation/onboarding/view/onboarding_screen.dart';
+import 'package:count_me/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,12 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: HomeView(),
+      title: 'Count Me IN',
+      theme: AppTheme.theme,
+      home: OnboardingScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

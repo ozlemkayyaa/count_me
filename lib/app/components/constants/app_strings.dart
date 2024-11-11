@@ -2,9 +2,10 @@ final class AppStrings {
   AppStrings._();
 
   //------------------ ONBOARDING ------------------
-  static const welcome = "Welcome to";
+  static const welcome = "Welcome to ";
   static const calorieTracker = "Calorie Tracker";
-  static const onboardingText = "Track your calories and transform your body!";
+  static const onboardingText = "Track your calories and ";
+  static const onboardingTextContinue = "transform your body!";
   static const onboardingButton = "Get Started";
   static const alreadyAccount = "Already have an account?";
   static const signIn = "Sign In";

@@ -34,7 +34,12 @@ enum PaddingHelper {
   xLarge(32),
 
   ///This value is 50
-  xxLarge(50);
+  xxLarge(50),
+
+  ///This value is 80
+  xxxLarge(80),
+
+  top(160);
 
   final double value;
 
@@ -50,4 +55,17 @@ enum PaddingHelper {
   /// Padding only
   EdgeInsets get onlyPadding =>
       EdgeInsets.only(left: value, right: value, top: value, bottom: value);
+
+  EdgeInsets getPadding(
+      {bool left = false,
+      bool right = false,
+      bool top = false,
+      bool bottom = false}) {
+    return EdgeInsets.only(
+      left: left ? value : 0.0,
+      right: right ? value : 0.0,
+      top: top ? value : 0.0,
+      bottom: bottom ? value : 0.0,
+    );
+  }
 }
