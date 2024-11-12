@@ -31,15 +31,7 @@ enum PaddingHelper {
   fixed(24),
 
   ///This value is 32
-  xLarge(32),
-
-  ///This value is 50
-  xxLarge(50),
-
-  ///This value is 80
-  xxxLarge(80),
-
-  top(160);
+  xLarge(32);
 
   final double value;
 

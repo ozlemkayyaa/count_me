@@ -8,7 +8,9 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return customScaffold(
-      body: onboardingBody(context),
+      body: SingleChildScrollView(
+        child: onboardingBody(context),
+      ),
     );
   }
 }
