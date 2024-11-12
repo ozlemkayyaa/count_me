@@ -1,14 +1,12 @@
-import 'package:count_me/app/components/constants/app_colors.dart';
-import 'package:count_me/app/components/constants/app_strings.dart';
-import 'package:count_me/app/components/widgets/custom_text.dart';
-import 'package:count_me/app/components/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
+import '../../../components/constants/index.dart';
+import '../../../components/widgets/index.dart';
 
-Row onboardingAccountMessageText() => Row(
+Row onboardingAccountMessageText(BuildContext context) => Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         customText(
-          title: AppStrings.alreadyAccount,
+          title: AppStrings.dontAccount,
           color: AppColors.grey,
           fontSize: 16,
           fontWeight: FontWeight.w400,
@@ -16,7 +14,7 @@ Row onboardingAccountMessageText() => Row(
         customTextButton(
           onPressed: () {},
           child: customText(
-            title: AppStrings.signIn,
+            title: AppStrings.signUp,
             color: AppColors.mainGreen,
             fontSize: 16,
             fontWeight: FontWeight.w400,

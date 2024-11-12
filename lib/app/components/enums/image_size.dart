@@ -1,4 +1,6 @@
 enum ImageSize {
+  small(16),
+
   icon(30),
 
   meal(50),
@@ -14,7 +16,7 @@ enum ImageSize {
   high(380),
   doubleHeight(400);
 
-  final int value;
+  final double value;
 
   const ImageSize(this.value);
 }

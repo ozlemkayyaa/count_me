@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 enum ImageConstants {
   onboarding('onboarding'),
-  appIcon('app_logo'),
+  google('google'),
+  appIcon('appIcon'),
   ;
 
   final String value;

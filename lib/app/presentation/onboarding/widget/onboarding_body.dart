@@ -1,21 +1,17 @@
-import 'package:count_me/app/components/constants/app_colors.dart';
-import 'package:count_me/app/components/constants/app_strings.dart';
-import 'package:count_me/app/components/enums/image_constants.dart';
-import 'package:count_me/app/components/enums/padding_helper.dart';
-import 'package:count_me/app/components/enums/sized_box_helper.dart';
-import 'package:count_me/app/components/widgets/custom_elevated_button.dart';
-import 'package:count_me/app/components/widgets/custom_text.dart';
-import 'package:count_me/app/presentation/onboarding/widget/onboarding_account_message_text.dart';
-import 'package:count_me/app/presentation/onboarding/widget/onboarding_message_text.dart';
-import 'package:count_me/app/presentation/onboarding/widget/onboarding_welcome_text.dart';
+import 'package:count_me/app/presentation/onboarding/widget/index.dart';
 import 'package:count_me/core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
+import '../../../components/constants/index.dart';
+import '../../../components/enums/index.dart';
+import '../../../components/widgets/index.dart';
 
 Padding onboardingBody(BuildContext context) => Padding(
       padding: PaddingHelper.fixed.getPadding(left: true, right: true),
       child: Column(
         children: [
           SizedBox(height: SizedBoxHeight.top.value),
+
+          // Image
           ImageConstants.onboarding.toImage(
             height: context.screenHeight * 0.4,
           ),
@@ -32,7 +28,14 @@ Padding onboardingBody(BuildContext context) => Padding(
           // Get Started Button
           customElevatedButton(
             backgroundColor: AppColors.mainGreen,
-            onPressed: () {},
+            onPressed: () {
+              // Modal Bottom Sheet
+              showModalBottomSheet<void>(
+                isDismissible: true,
+                context: context,
+                builder: (context) => customModalBottomSheet(),
+              );
+            },
             child: customText(
                 title: AppStrings.onboardingButton,
                 color: AppColors.white,
@@ -41,8 +44,8 @@ Padding onboardingBody(BuildContext context) => Padding(
           ),
           SizedBox(height: SizedBoxHeight.small.value),
 
-          // Already Account
-          onboardingAccountMessageText(),
+          // Don't have an account? -> Register Screen
+          onboardingAccountMessageText(context),
         ],
       ),
     );

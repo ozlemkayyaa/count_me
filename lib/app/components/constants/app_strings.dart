@@ -7,8 +7,8 @@ final class AppStrings {
   static const onboardingText = "Track your calories and ";
   static const onboardingTextContinue = "transform your body!";
   static const onboardingButton = "Get Started";
-  static const alreadyAccount = "Already have an account?";
-  static const signIn = "Sign In";
+  static const dontAccount = "Don't have an account?";
+  static const signUp = "Sign Up";
   static const signGoogle = "Sign in with Google";
   static const signEmail = "Sign in with Email";
 

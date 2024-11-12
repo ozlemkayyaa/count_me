@@ -1,7 +1,6 @@
-import 'package:count_me/app/components/constants/app_colors.dart';
-import 'package:count_me/app/components/constants/app_strings.dart';
 import 'package:count_me/app/components/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import '../../../components/constants/index.dart';
 
 Column onboardingMessageText() => Column(
       children: [
