@@ -1,9 +1,14 @@
 final class AppStrings {
   AppStrings._();
 
+  //------------------ SPLASH ------------------
+  static const countMe = "COUNT ME";
+  static const countIn = " IN";
+  static const splashText = "One Step Closer Every Day";
+
   //------------------ ONBOARDING ------------------
   static const welcome = "Welcome to ";
-  static const calorieTracker = "Calorie Tracker";
+  static const calorieTracker = "Count Me In";
   static const onboardingText = "Track your calories and ";
   static const onboardingTextContinue = "transform your body!";
   static const onboardingButton = "Get Started";

@@ -1,3 +1,5 @@
+import 'package:count_me/app/components/constants/index.dart';
+import 'package:count_me/app/components/enums/border_helper.dart';
 import 'package:flutter/material.dart';
 
 TextFormField customTextFormField({
@@ -11,18 +13,35 @@ TextFormField customTextFormField({
   IconButton? suffixIcon,
   TextStyle? textStyle,
   OutlineInputBorder? outlineInputBorder,
-}) =>
-    TextFormField(
-      controller: controller,
-      validator: validator,
-      keyboardType: keyboardType,
-      obscureText: obscureText,
-      style: textStyle,
-      decoration: InputDecoration(
-        labelText: labelText,
-        hintText: hintText,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
-        border: outlineInputBorder,
+}) {
+  return TextFormField(
+    controller: controller,
+    validator: validator,
+    keyboardType: keyboardType,
+    obscureText: obscureText,
+    style: textStyle,
+    decoration: InputDecoration(
+      labelText: labelText,
+      labelStyle: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColors.grey,
       ),
-    );
+      hintText: hintText,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      prefixIconColor: AppColors.grey,
+      suffixIconColor: AppColors.grey,
+      border: outlineInputBorder,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderHelper.fix.circularRadius,
+        borderSide: BorderSide(color: AppColors.mainGreen),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderHelper.fix.circularRadius,
+        borderSide: BorderSide(color: AppColors.lightGrey),
+      ),
+      contentPadding: const EdgeInsets.only(top: 18, bottom: 18),
+    ),
+  );
+}

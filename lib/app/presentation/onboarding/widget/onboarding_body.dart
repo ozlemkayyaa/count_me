@@ -23,7 +23,7 @@ Padding onboardingBody(BuildContext context) => Padding(
 
           // Message
           onboardingMessageText(),
-          SizedBox(height: SizedBoxHeight.xxxLarge.value),
+          SizedBox(height: SizedBoxHeight.xxLarge.value),
 
           // Get Started Button
           customElevatedButton(

@@ -8,6 +8,7 @@ OutlinedButton customOutlinedButton({
 }) =>
     OutlinedButton(
       style: OutlinedButton.styleFrom(
+        minimumSize: const Size(320, 65),
         side: BorderSide(color: AppColors.lightGrey),
         shape: RoundedRectangleBorder(
           borderRadius: BorderHelper.small.circularRadius,

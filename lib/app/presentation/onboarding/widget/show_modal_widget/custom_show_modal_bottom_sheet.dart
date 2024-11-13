@@ -10,7 +10,7 @@ SizedBox customModalBottomSheet() => SizedBox(
         padding: PaddingHelper.fixed.getPadding(left: true, right: true),
         child: Column(
           children: [
-            SizedBox(height: SizedBoxHeight.xxxLarge.value),
+            SizedBox(height: SizedBoxHeight.xxLarge.value),
 
             // Sign in with Google
             customModalButton(

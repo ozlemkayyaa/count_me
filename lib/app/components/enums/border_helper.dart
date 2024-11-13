@@ -10,7 +10,7 @@ enum BorderHelper {
   small(10),
 
   ///This value is 20
-  fix(20),
+  fix(20.0),
 
   ///This value is 30
   medium(30),
@@ -27,7 +27,7 @@ enum BorderHelper {
   final double value;
   const BorderHelper(this.value);
 
-  BorderRadiusGeometry get circularRadius => BorderRadius.circular(value);
+  BorderRadius get circularRadius => BorderRadius.circular(value);
 
   BorderRadiusGeometry get onlyTop => BorderRadius.only(
         topLeft: Radius.circular(value),

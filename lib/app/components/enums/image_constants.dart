@@ -4,7 +4,7 @@ enum ImageConstants {
   onboarding('onboarding'),
   google('google'),
   appIcon('appIcon'),
-  ;
+  user('user');
 
   final String value;
   // ignore: sort_constructors_first

@@ -18,4 +18,13 @@ final class AppColors {
   static const darkGrey = Color(0xFF45444C);
 
   static const black = Color(0xFF121212);
+
+  static const LinearGradient linearGradient = LinearGradient(
+    colors: [
+      Color(0xFF04441C), // Başlangıç rengi
+      Color(0xFF88CC52), // Bitiş rengi
+    ],
+    begin: Alignment.topLeft, // Sol üst köşe
+    end: Alignment.bottomRight, // Sağ alt köşe
+  );
 }
