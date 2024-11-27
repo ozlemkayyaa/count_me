@@ -1,5 +1,5 @@
-import 'package:count_me/app/presentation/auth/register/view/register_view.dart';
-import 'package:count_me/app/theme/app_theme.dart';
+import 'view/auth/register/view/register_view.dart';
+import 'core/init/theme/app_theme_light.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Count Me IN',
-      theme: AppTheme.theme,
+      theme: AppThemeLight.instance.theme,
       home: RegisterView(),
       debugShowCheckedModeBanner: false,
     );
