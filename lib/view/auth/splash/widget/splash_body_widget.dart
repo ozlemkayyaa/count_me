@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app/index.dart';
 import '../../../../core/extension/context_extension.dart';
 import '../../../../core/constants/enums/index.dart';
-import 'count_me_in.dart';
+import 'count_me_text_widget.dart';
 
-Padding splashBody(BuildContext context) => Padding(
+class SplashBodyWidget extends StatelessWidget {
+  const SplashBodyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
       padding: PaddingHelper.fixed.getPadding(left: true, right: true),
       child: Center(
         child: Column(
@@ -13,7 +18,7 @@ Padding splashBody(BuildContext context) => Padding(
             SizedBox(height: SizedBoxHeight.top.value),
 
             // Count Me In Text
-            countMeIn(),
+            CountMeTextWidget(),
 
             // SubTitle
             customText(
@@ -32,3 +37,5 @@ Padding splashBody(BuildContext context) => Padding(
         ),
       ),
     );
+  }
+}

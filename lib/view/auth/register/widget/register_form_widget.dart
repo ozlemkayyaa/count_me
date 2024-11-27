@@ -1,8 +1,9 @@
-import 'package:count_me/core/components/index.dart';
+import 'package:flutter/material.dart';
+
+import '../../../../core/components/index.dart';
+import '../../../../core/constants/app/index.dart';
 import '../../../../core/constants/enums/index.dart';
 import '../viewModel/register_view_model.dart';
-import '../../../../core/constants/app/index.dart';
-import 'package:flutter/material.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   const RegisterFormWidget({super.key});

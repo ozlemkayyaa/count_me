@@ -1,5 +1,5 @@
-import 'package:count_me/core/components/scaffold/custom_scaffold.dart';
-import 'package:count_me/view/auth/register/widget/register_body_widget.dart';
+import '../../../../core/components/scaffold/custom_scaffold.dart';
+import '../widget/register_body_widget.dart';
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatelessWidget {
