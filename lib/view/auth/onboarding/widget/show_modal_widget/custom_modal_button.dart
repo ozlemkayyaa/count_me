@@ -1,5 +1,5 @@
-import 'package:count_me/core/components/index.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../core/constants/app/index.dart';
 import '../../../../../core/constants/enums/index.dart';
 
@@ -19,32 +19,23 @@ class CustomModalButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: CustomOutlinedButton(
+      child: OutlinedButton(
         onPressed: onPressed,
-        child: Padding(
-          padding:
-              PaddingHelper.mediumLarge.getPadding(top: true, bottom: true),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              titleIcon
-                  ? ImageEnum.google.toImage(
-                      height: ImageSize.small.value,
-                    )
-                  : Icon(
-                      Icons.email_outlined,
-                      color: AppColors.black,
-                      size: 24,
-                    ),
-              SizedBox(width: SizedBoxWidth.smallMedium.value),
-              CustomText(
-                title: title,
-                color: AppColors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-              ),
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            titleIcon
+                ? ImageEnum.google.toImage(
+                    height: ImageSize.small.value,
+                  )
+                : Icon(
+                    Icons.email_outlined,
+                    color: AppColors.black,
+                    size: 24,
+                  ),
+            SizedBox(width: SizedBoxWidth.small.value),
+            Text(title),
+          ],
         ),
       ),
     );

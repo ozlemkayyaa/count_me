@@ -16,6 +16,7 @@ final class AppColors {
   static const lightGrey = Color(0xFFE9E9E9);
   static const grey = Color(0xFF909090);
   static const darkGrey = Color(0xFF45444C);
+  static const disableButtonGrey = Color(0xFFC0C0C0);
 
   static const black = Color(0xFF121212);
 

@@ -6,8 +6,6 @@ import 'package:count_me/core/extension/context_extension.dart';
 import 'package:count_me/view/auth/register/widget/register_form_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/components/index.dart';
-
 class RegisterBodyWidget extends StatelessWidget {
   const RegisterBodyWidget({super.key});
 
@@ -33,14 +31,10 @@ class RegisterBodyWidget extends StatelessWidget {
           SizedBox(height: SizedBoxHeight.top.value),
 
           // Register Button
-          CustomElevatedButton(
-            backgroundColor: AppColors.mainGreen,
+          ElevatedButton(
             onPressed: () {},
-            child: CustomText(
-              title: AppStrings.register,
-              color: AppColors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
+            child: Text(
+              AppStrings.register,
             ),
           ),
         ],

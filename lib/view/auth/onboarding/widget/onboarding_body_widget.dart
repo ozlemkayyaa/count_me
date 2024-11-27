@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/components/index.dart';
 import '../../../../core/constants/app/index.dart';
 import '../../../../core/constants/enums/index.dart';
 import '../../../../core/extension/context_extension.dart';
@@ -34,8 +33,7 @@ class OnboardingBodyWidget extends StatelessWidget {
           SizedBox(height: SizedBoxHeight.xxLarge.value),
 
           // Get Started Button
-          CustomElevatedButton(
-            backgroundColor: AppColors.mainGreen,
+          ElevatedButton(
             onPressed: () {
               // Modal Bottom Sheet
               showModalBottomSheet<void>(
@@ -44,12 +42,11 @@ class OnboardingBodyWidget extends StatelessWidget {
                 builder: (context) => CustomShowModalBottomSheet(),
               );
             },
-            child: CustomText(
-                title: AppStrings.onboardingButton,
-                color: AppColors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w600),
+            child: Text(
+              AppStrings.onboardingButton,
+            ),
           ),
+
           SizedBox(height: SizedBoxHeight.small.value),
 
           // Don't have an account? -> Register Screen

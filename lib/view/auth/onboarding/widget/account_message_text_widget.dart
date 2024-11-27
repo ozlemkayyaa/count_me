@@ -17,15 +17,7 @@ class AccountMessageTextWidget extends StatelessWidget {
           fontSize: 16,
           fontWeight: FontWeight.w400,
         ),
-        CustomTextButton(
-          onPressed: () {},
-          child: CustomText(
-            title: AppStrings.signUp,
-            color: AppColors.mainGreen,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
+        TextButton(onPressed: () {}, child: Text(AppStrings.signUp)),
       ],
     );
   }
