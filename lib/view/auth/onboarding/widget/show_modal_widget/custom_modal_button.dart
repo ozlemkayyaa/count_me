@@ -3,12 +3,21 @@ import 'package:flutter/material.dart';
 import '../../../../../core/constants/app/index.dart';
 import '../../../../../core/constants/enums/index.dart';
 
-SizedBox customModalButton({
-  required void Function()? onPressed,
-  required String title,
-  required bool titleIcon,
-}) =>
-    SizedBox(
+class CustomModalButton extends StatelessWidget {
+  const CustomModalButton({
+    super.key,
+    required this.title,
+    required this.titleIcon,
+    this.onPressed,
+  });
+
+  final void Function()? onPressed;
+  final String title;
+  final bool titleIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
       width: double.infinity,
       child: customOutlinedButton(
         onPressed: onPressed,
@@ -39,3 +48,5 @@ SizedBox customModalButton({
         ),
       ),
     );
+  }
+}

@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app/index.dart';
 import '../../../../core/components/text/custom_text.dart';
 
-Column onboardingMessageText() => Column(
+class MessageTextWidget extends StatelessWidget {
+  const MessageTextWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
       children: [
         customText(
           title: AppStrings.onboardingText,
@@ -19,3 +24,5 @@ Column onboardingMessageText() => Column(
         ),
       ],
     );
+  }
+}

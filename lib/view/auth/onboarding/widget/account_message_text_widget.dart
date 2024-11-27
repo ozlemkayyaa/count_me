@@ -2,7 +2,12 @@ import 'package:count_me/core/components/index.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app/index.dart';
 
-Row onboardingAccountMessageText(BuildContext context) => Row(
+class AccountMessageTextWidget extends StatelessWidget {
+  const AccountMessageTextWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         customText(
@@ -22,3 +27,5 @@ Row onboardingAccountMessageText(BuildContext context) => Row(
         ),
       ],
     );
+  }
+}

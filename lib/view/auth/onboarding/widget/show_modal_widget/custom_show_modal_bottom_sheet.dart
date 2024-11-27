@@ -3,7 +3,12 @@ import 'package:count_me/view/auth/onboarding/widget/show_modal_widget/custom_mo
 import 'package:flutter/material.dart';
 import '../../../../../core/constants/enums/index.dart';
 
-SizedBox customModalBottomSheet() => SizedBox(
+class CustomShowModalBottomSheet extends StatelessWidget {
+  const CustomShowModalBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
       width: double.infinity,
       height: SizedBoxHeight.modal.value,
       child: Padding(
@@ -13,7 +18,7 @@ SizedBox customModalBottomSheet() => SizedBox(
             SizedBox(height: SizedBoxHeight.xxLarge.value),
 
             // Sign in with Google
-            customModalButton(
+            CustomModalButton(
               onPressed: () {},
               title: AppStrings.signGoogle,
               titleIcon: true,
@@ -21,7 +26,7 @@ SizedBox customModalBottomSheet() => SizedBox(
             SizedBox(height: SizedBoxHeight.medium.value),
 
             // Sign in With Email -> Login Screen
-            customModalButton(
+            CustomModalButton(
               onPressed: () {},
               title: AppStrings.signEmail,
               titleIcon: false,
@@ -30,3 +35,5 @@ SizedBox customModalBottomSheet() => SizedBox(
         ),
       ),
     );
+  }
+}

@@ -1,12 +1,19 @@
 import 'package:count_me/core/components/index.dart';
+import 'package:count_me/core/constants/enums/index.dart';
+import 'package:count_me/core/extension/context_extension.dart';
+import 'package:count_me/view/auth/onboarding/widget/index.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app/index.dart';
-import 'index.dart';
-import '../../../../core/extension/context_extension.dart';
-import 'package:flutter/material.dart';
-import '../../../../core/constants/enums/index.dart';
 
-Padding onboardingBody(BuildContext context) => Padding(
+class OnboardingBodyWidget extends StatelessWidget {
+  const OnboardingBodyWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
       padding: PaddingHelper.fixed.getPadding(left: true, right: true),
       child: Column(
         children: [
@@ -19,11 +26,11 @@ Padding onboardingBody(BuildContext context) => Padding(
           SizedBox(height: SizedBoxHeight.large.value),
 
           // Welcome Text
-          onboardingWelcomeText(),
+          WelcomeTextWidget(),
           SizedBox(height: SizedBoxHeight.small.value),
 
           // Message
-          onboardingMessageText(),
+          MessageTextWidget(),
           SizedBox(height: SizedBoxHeight.xxLarge.value),
 
           // Get Started Button
@@ -34,7 +41,7 @@ Padding onboardingBody(BuildContext context) => Padding(
               showModalBottomSheet<void>(
                 isDismissible: true,
                 context: context,
-                builder: (context) => customModalBottomSheet(),
+                builder: (context) => CustomShowModalBottomSheet(),
               );
             },
             child: customText(
@@ -46,7 +53,9 @@ Padding onboardingBody(BuildContext context) => Padding(
           SizedBox(height: SizedBoxHeight.small.value),
 
           // Don't have an account? -> Register Screen
-          onboardingAccountMessageText(context),
+          AccountMessageTextWidget(),
         ],
       ),
     );
+  }
+}
