@@ -4,7 +4,12 @@ import '../viewModel/register_view_model.dart';
 import '../../../../core/constants/app/index.dart';
 import 'package:flutter/material.dart';
 
-Form registerForm() => Form(
+class RegisterFormWidget extends StatelessWidget {
+  const RegisterFormWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
       child: Column(
         children: [
           customTextFormField(
@@ -57,3 +62,5 @@ Form registerForm() => Form(
         ],
       ),
     );
+  }
+}
