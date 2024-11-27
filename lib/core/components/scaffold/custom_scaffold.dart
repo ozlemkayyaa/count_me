@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 
-GestureDetector customScaffold({
-  PreferredSizeWidget? appBar, // Optional AppBar widget
-  Widget? body, // Optional Body widget
-  Color? backgroundColor,
-  LinearGradient? linearGradient,
-}) =>
-    GestureDetector(
+class CustomScaffold extends StatelessWidget {
+  const CustomScaffold({
+    super.key,
+    this.appBar,
+    this.body,
+    this.backgroundColor,
+    this.linearGradient,
+  });
+
+  final PreferredSizeWidget? appBar;
+  final Widget? body;
+  final Color? backgroundColor;
+  final LinearGradient? linearGradient;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
       // On tap, unfocuses any text fields to hide the keyboard.
       // Ekrana dokunulduğunda, herhangi bir metin alanının odaklanmasını kaldırır ve klavyeyi gizler.
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -24,7 +34,6 @@ GestureDetector customScaffold({
                       ? backgroundColor
                       : null, // Yoksa backgroundColor kullanılır.
                 ),
-                // Main content of the scaffold, displayed in the body area.
                 child: body,
               ),
             ),
@@ -35,3 +44,5 @@ GestureDetector customScaffold({
         resizeToAvoidBottomInset: false,
       ),
     );
+  }
+}

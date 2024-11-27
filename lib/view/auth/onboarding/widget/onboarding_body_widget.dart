@@ -1,10 +1,10 @@
-import 'package:count_me/core/components/index.dart';
-import 'package:count_me/core/constants/enums/index.dart';
-import 'package:count_me/core/extension/context_extension.dart';
-import 'package:count_me/view/auth/onboarding/widget/index.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/components/index.dart';
 import '../../../../core/constants/app/index.dart';
+import '../../../../core/constants/enums/index.dart';
+import '../../../../core/extension/context_extension.dart';
+import 'index.dart';
 
 class OnboardingBodyWidget extends StatelessWidget {
   const OnboardingBodyWidget({
@@ -34,7 +34,7 @@ class OnboardingBodyWidget extends StatelessWidget {
           SizedBox(height: SizedBoxHeight.xxLarge.value),
 
           // Get Started Button
-          customElevatedButton(
+          CustomElevatedButton(
             backgroundColor: AppColors.mainGreen,
             onPressed: () {
               // Modal Bottom Sheet
@@ -44,7 +44,7 @@ class OnboardingBodyWidget extends StatelessWidget {
                 builder: (context) => CustomShowModalBottomSheet(),
               );
             },
-            child: customText(
+            child: CustomText(
                 title: AppStrings.onboardingButton,
                 color: AppColors.white,
                 fontSize: 18,

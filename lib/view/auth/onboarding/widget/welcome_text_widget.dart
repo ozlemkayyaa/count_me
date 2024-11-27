@@ -1,6 +1,7 @@
-import '../../../../core/components/text/custom_text.dart';
-import '../../../../core/constants/app/index.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/components/index.dart';
+import '../../../../core/constants/app/index.dart';
 
 class WelcomeTextWidget extends StatelessWidget {
   const WelcomeTextWidget({super.key});
@@ -10,13 +11,13 @@ class WelcomeTextWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        customText(
+        CustomText(
           title: AppStrings.welcome,
           color: AppColors.grey,
           fontSize: 22,
           fontWeight: FontWeight.normal,
         ),
-        customText(
+        CustomText(
           title: AppStrings.calorieTracker,
           color: AppColors.grey,
           fontSize: 22,

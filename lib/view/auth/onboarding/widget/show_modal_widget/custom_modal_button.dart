@@ -8,10 +8,10 @@ class CustomModalButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.titleIcon,
-    this.onPressed,
+    required this.onPressed,
   });
 
-  final void Function()? onPressed;
+  final void Function() onPressed;
   final String title;
   final bool titleIcon;
 
@@ -19,7 +19,7 @@ class CustomModalButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: customOutlinedButton(
+      child: CustomOutlinedButton(
         onPressed: onPressed,
         child: Padding(
           padding:
@@ -37,7 +37,7 @@ class CustomModalButton extends StatelessWidget {
                       size: 24,
                     ),
               SizedBox(width: SizedBoxWidth.smallMedium.value),
-              customText(
+              CustomText(
                 title: title,
                 color: AppColors.black,
                 fontSize: 14,

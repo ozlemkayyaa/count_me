@@ -13,7 +13,7 @@ class RegisterFormWidget extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-          customTextFormField(
+          CustomTextFormField(
             keyboardType: TextInputType.name,
             controller: RegisterViewModel().nameController,
             labelText: AppStrings.name,
@@ -27,7 +27,7 @@ class RegisterFormWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: SizedBoxHeight.medium.value),
-          customTextFormField(
+          CustomTextFormField(
             keyboardType: TextInputType.emailAddress,
             controller: RegisterViewModel().nameController,
             labelText: AppStrings.email,
@@ -41,7 +41,7 @@ class RegisterFormWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: SizedBoxHeight.medium.value),
-          customTextFormField(
+          CustomTextFormField(
             keyboardType: TextInputType.text,
             controller: RegisterViewModel().nameController,
             labelText: AppStrings.password,

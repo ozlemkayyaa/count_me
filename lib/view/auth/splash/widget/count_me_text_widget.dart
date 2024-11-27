@@ -10,13 +10,13 @@ class CountMeTextWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        customText(
+        CustomText(
           title: AppStrings.countMe,
           fontSize: 36,
           fontWeight: FontWeight.bold,
           color: AppColors.white,
         ),
-        customText(
+        CustomText(
           title: AppStrings.countIn,
           fontSize: 36,
           fontWeight: FontWeight.w400,

@@ -33,10 +33,10 @@ class RegisterBodyWidget extends StatelessWidget {
           SizedBox(height: SizedBoxHeight.top.value),
 
           // Register Button
-          customElevatedButton(
+          CustomElevatedButton(
             backgroundColor: AppColors.mainGreen,
             onPressed: () {},
-            child: customText(
+            child: CustomText(
               title: AppStrings.register,
               color: AppColors.white,
               fontSize: 18,

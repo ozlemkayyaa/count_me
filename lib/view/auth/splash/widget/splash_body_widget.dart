@@ -1,8 +1,9 @@
-import '../../../../core/components/index.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/components/index.dart';
 import '../../../../core/constants/app/index.dart';
-import '../../../../core/extension/context_extension.dart';
 import '../../../../core/constants/enums/index.dart';
+import '../../../../core/extension/context_extension.dart';
 import 'count_me_text_widget.dart';
 
 class SplashBodyWidget extends StatelessWidget {
@@ -21,7 +22,7 @@ class SplashBodyWidget extends StatelessWidget {
             CountMeTextWidget(),
 
             // SubTitle
-            customText(
+            CustomText(
               title: AppStrings.splashText,
               fontSize: 22,
               fontWeight: FontWeight.w400,

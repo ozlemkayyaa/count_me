@@ -1,3 +1,5 @@
+import 'package:count_me/core/constants/app/index.dart';
+
 import 'view/auth/register/view/register_view.dart';
 import 'core/init/theme/app_theme_light.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Count Me IN',
+      title: AppConstants.APP_NAME,
       theme: AppThemeLight.instance.theme,
       home: RegisterView(),
       debugShowCheckedModeBanner: false,
