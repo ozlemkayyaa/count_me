@@ -26,7 +26,7 @@ class CustomModalButton extends StatelessWidget {
           children: [
             titleIcon
                 ? ImageEnum.google.toImage(
-                    height: ImageSize.small.value,
+                    height: ImageSize.iconImage.value,
                   )
                 : Icon(
                     Icons.email_outlined,

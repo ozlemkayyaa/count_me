@@ -1,6 +1,8 @@
 enum ImageSize {
   small(16),
 
+  iconImage(24),
+
   icon(30),
 
   meal(50),

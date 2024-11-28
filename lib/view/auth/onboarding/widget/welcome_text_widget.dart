@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/components/index.dart';
 import '../../../../core/constants/app/index.dart';
 
 class WelcomeTextWidget extends StatelessWidget {
@@ -11,17 +9,26 @@ class WelcomeTextWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomText(
-          title: AppStrings.welcome,
-          color: AppColors.grey,
-          fontSize: 22,
-          fontWeight: FontWeight.normal,
+        Text(
+          AppStrings.welcome,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall
+              ?.copyWith(color: AppColors.grey),
         ),
-        CustomText(
-          title: AppStrings.calorieTracker,
-          color: AppColors.grey,
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
+        Text(
+          AppStrings.calorieTracker1,
+          style: Theme.of(context)
+              .textTheme
+              .headlineMedium
+              ?.copyWith(color: AppColors.grey),
+        ),
+        Text(
+          AppStrings.calorieTracker2,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall
+              ?.copyWith(color: AppColors.grey, fontStyle: FontStyle.italic),
         ),
       ],
     );

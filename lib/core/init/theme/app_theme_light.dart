@@ -1,3 +1,6 @@
+import 'package:count_me/core/init/theme/custom_theme/bottom_sheet_theme.dart';
+import 'package:count_me/core/init/theme/custom_theme/text_theme.dart';
+
 import 'custom_theme/elevated_button_theme.dart';
 import 'custom_theme/outlined_button_theme.dart';
 import 'custom_theme/text_button_theme.dart';
@@ -24,10 +27,13 @@ class AppThemeLight extends AppTheme {
         ),
         fontFamily: GoogleFonts.poppins().fontFamily,
         scaffoldBackgroundColor: AppColors.whiteBackground,
+        brightness: Brightness.light,
         useMaterial3: true,
         elevatedButtonTheme: AppElevatedButtonTheme.elevatedButtonTheme,
         outlinedButtonTheme: AppOutlinedButtontheme.outlinedButtonTheme,
         textButtonTheme: AppTextButtontheme.textButtonTheme,
-        inputDecorationTheme: AppTextFieldTheme.lightInputDecorationTheme,
+        inputDecorationTheme: AppTextFieldTheme.inputDecorationTheme,
+        textTheme: AppTextTheme.textTheme,
+        bottomSheetTheme: AppBottomSheetTheme.bottomSheetTheme,
       );
 }

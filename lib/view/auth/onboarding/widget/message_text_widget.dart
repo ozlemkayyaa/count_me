@@ -1,6 +1,4 @@
-import 'package:count_me/core/components/index.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/constants/app/index.dart';
 
 class MessageTextWidget extends StatelessWidget {
@@ -10,17 +8,19 @@ class MessageTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomText(
-          title: AppStrings.onboardingText,
-          color: AppColors.mainGreen,
-          fontSize: 22,
-          fontWeight: FontWeight.normal,
+        Text(
+          AppStrings.onboardingText,
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(color: AppColors.mainGreen),
         ),
-        CustomText(
-          title: AppStrings.onboardingTextContinue,
-          color: AppColors.mainGreen,
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
+        Text(
+          AppStrings.onboardingTextContinue,
+          style: Theme.of(context)
+              .textTheme
+              .displaySmall
+              ?.copyWith(color: AppColors.mainGreen),
         ),
       ],
     );

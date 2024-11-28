@@ -8,7 +8,8 @@ final class AppStrings {
 
   //------------------ ONBOARDING ------------------
   static const welcome = "Welcome to ";
-  static const calorieTracker = "Count Me In";
+  static const calorieTracker1 = "Count Me";
+  static const calorieTracker2 = " In";
   static const onboardingText = "Track your calories and ";
   static const onboardingTextContinue = "transform your body!";
   static const onboardingButton = "Get Started";

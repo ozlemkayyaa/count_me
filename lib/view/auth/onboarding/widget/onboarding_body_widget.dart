@@ -37,7 +37,8 @@ class OnboardingBodyWidget extends StatelessWidget {
             onPressed: () {
               // Modal Bottom Sheet
               showModalBottomSheet<void>(
-                isDismissible: true,
+                scrollControlDisabledMaxHeightRatio: 0.3,
+                isDismissible: false,
                 context: context,
                 builder: (context) => CustomShowModalBottomSheet(),
               );

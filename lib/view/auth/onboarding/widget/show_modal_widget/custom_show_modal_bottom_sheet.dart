@@ -8,31 +8,27 @@ class CustomShowModalBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: SizedBoxHeight.modal.value,
-      child: Padding(
-        padding: PaddingHelper.fixed.getPadding(left: true, right: true),
-        child: Column(
-          children: [
-            SizedBox(height: SizedBoxHeight.xxLarge.value),
+    return Padding(
+      padding: PaddingHelper.fixed.getPadding(left: true, right: true),
+      child: Column(
+        children: [
+          SizedBox(height: SizedBoxHeight.mediumLarge.value),
 
-            // Sign in with Google
-            CustomModalButton(
-              onPressed: () {},
-              title: AppStrings.signGoogle,
-              titleIcon: true,
-            ),
-            SizedBox(height: SizedBoxHeight.medium.value),
+          // Sign in with Google
+          CustomModalButton(
+            onPressed: () {},
+            title: AppStrings.signGoogle,
+            titleIcon: true,
+          ),
+          SizedBox(height: SizedBoxHeight.medium.value),
 
-            // Sign in With Email -> Login Screen
-            CustomModalButton(
-              onPressed: () {},
-              title: AppStrings.signEmail,
-              titleIcon: false,
-            ),
-          ],
-        ),
+          // Sign in With Email -> Login Screen
+          CustomModalButton(
+            onPressed: () {},
+            title: AppStrings.signEmail,
+            titleIcon: false,
+          ),
+        ],
       ),
     );
   }

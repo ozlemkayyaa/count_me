@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AppTextFieldTheme {
   AppTextFieldTheme._();
 
-  static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
+  static InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
     prefixIconColor: AppColors.grey,
     suffixIconColor: AppColors.grey,

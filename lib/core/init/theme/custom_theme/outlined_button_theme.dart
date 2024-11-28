@@ -9,7 +9,7 @@ class AppOutlinedButtontheme {
     style: OutlinedButton.styleFrom(
       alignment: Alignment.center,
       elevation: 0,
-      minimumSize: const Size(320, 65),
+      //minimumSize: const Size(320, 65),
       side: BorderSide(color: AppColors.lightGrey),
       shape: RoundedRectangleBorder(
         borderRadius: BorderHelper.small.circularRadius,
@@ -20,7 +20,7 @@ class AppOutlinedButtontheme {
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),
-      padding: const EdgeInsets.symmetric(vertical: 18),
+      padding: const EdgeInsets.symmetric(vertical: 12),
     ),
   );
 }
