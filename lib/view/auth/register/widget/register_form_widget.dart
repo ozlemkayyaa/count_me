@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app/index.dart';
 import '../../../../core/constants/enums/index.dart';
-import '../viewModel/register_view_model.dart';
+import '../view/register_view_mixin.dart';
 
-class RegisterFormWidget extends StatelessWidget {
-  const RegisterFormWidget({super.key});
+class RegisterFormWidget extends StatelessWidget with RegisterViewMixin {
+  RegisterFormWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class RegisterFormWidget extends StatelessWidget {
           // Name Field
           TextFormField(
             keyboardType: TextInputType.name,
-            controller: RegisterViewModel().nameController,
+            controller: nameController,
             decoration: InputDecoration(
               labelText: AppStrings.name,
               prefixIcon: Icon(Icons.person_outline_outlined),
@@ -26,7 +26,7 @@ class RegisterFormWidget extends StatelessWidget {
           // Email Field
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            controller: RegisterViewModel().nameController,
+            controller: emailController,
             decoration: InputDecoration(
               labelText: AppStrings.email,
               prefixIcon: Icon(Icons.email_outlined),
@@ -37,7 +37,7 @@ class RegisterFormWidget extends StatelessWidget {
           // Password Field
           TextFormField(
             keyboardType: TextInputType.text,
-            controller: RegisterViewModel().nameController,
+            controller: passwordController,
             decoration: InputDecoration(
               labelText: AppStrings.password,
               prefixIcon: Icon(Icons.lock_outlined),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/components/index.dart';
 import '../../../../core/constants/app/index.dart';
 import '../../../../core/constants/enums/index.dart';
 import '../../../../core/extension/context_extension.dart';
@@ -22,12 +20,14 @@ class SplashBodyWidget extends StatelessWidget {
             CountMeTextWidget(),
 
             // SubTitle
-            CustomText(
-              title: AppStrings.splashText,
-              fontSize: 22,
-              fontWeight: FontWeight.w400,
-              color: AppColors.white,
+            Text(
+              AppStrings.splashText,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall
+                  ?.copyWith(color: AppColors.white),
             ),
+
             SizedBox(height: SizedBoxHeight.xxxLarge.value),
 
             // App Icon
