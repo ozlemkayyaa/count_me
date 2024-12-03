@@ -32,7 +32,7 @@ class SplashBodyWidget extends StatelessWidget {
 
             // App Icon
             ImageEnum.appIcon.toImage(
-              height: context.screenHeight * 0.25,
+              height: context.height * 0.25,
             )
           ],
         ),

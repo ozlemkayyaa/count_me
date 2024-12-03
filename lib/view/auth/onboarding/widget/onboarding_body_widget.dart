@@ -20,7 +20,7 @@ class OnboardingBodyWidget extends StatelessWidget {
 
           // Image
           ImageEnum.onboarding.toImage(
-            height: context.screenHeight * 0.4,
+            height: context.height * 0.4,
           ),
           SizedBox(height: SizedBoxHeight.large.value),
 

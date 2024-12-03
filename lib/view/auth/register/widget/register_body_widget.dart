@@ -22,7 +22,7 @@ class RegisterBodyWidget extends StatelessWidget {
             onTap: () {
               print('Resme tıklandı!');
             },
-            child: ImageEnum.user.toImage(height: context.screenHeight * 0.15),
+            child: ImageEnum.user.toImage(height: context.height * 0.15),
           ),
           SizedBox(height: SizedBoxHeight.xxLarge.value),
 
