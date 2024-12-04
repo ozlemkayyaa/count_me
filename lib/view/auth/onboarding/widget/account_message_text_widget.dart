@@ -1,3 +1,4 @@
+import 'package:count_me/core/extension/index.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app/index.dart';
 
@@ -11,10 +12,7 @@ class AccountMessageTextWidget extends StatelessWidget {
       children: [
         Text(
           AppStrings.dontAccount,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall
-              ?.copyWith(color: AppColors.grey),
+          style: context.textTheme.bodySmall?.copyWith(color: AppColors.grey),
         ),
         TextButton(onPressed: () {}, child: Text(AppStrings.signUp)),
       ],

@@ -9,7 +9,6 @@ import 'custom_theme/text_field_theme.dart';
 import '../../constants/app/app_colors.dart';
 import 'app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppThemeLight extends AppTheme {
   static AppThemeLight? _instance;
@@ -25,7 +24,7 @@ class AppThemeLight extends AppTheme {
         appBarTheme: const AppBarTheme(
           scrolledUnderElevation: 0,
         ),
-        fontFamily: GoogleFonts.poppins().fontFamily,
+        fontFamily: 'Poppins',
         scaffoldBackgroundColor: AppColors.whiteBackground,
         brightness: Brightness.light,
         useMaterial3: true,

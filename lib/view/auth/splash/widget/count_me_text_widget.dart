@@ -1,4 +1,5 @@
 import 'package:count_me/core/constants/app/index.dart';
+import 'package:count_me/core/extension/index.dart';
 import 'package:flutter/material.dart';
 
 class CountMeTextWidget extends StatelessWidget {
@@ -11,20 +12,20 @@ class CountMeTextWidget extends StatelessWidget {
       children: [
         Text(
           AppStrings.countMe,
-          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                color: AppColors.white,
-              ),
+          style: context.textTheme.displayLarge?.copyWith(
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            color: AppColors.white,
+          ),
         ),
         Text(
           AppStrings.countIn,
-          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                fontSize: 36,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.italic,
-                color: AppColors.white,
-              ),
+          style: context.textTheme.displayLarge?.copyWith(
+            fontSize: 36,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.italic,
+            color: AppColors.white,
+          ),
         ),
       ],
     );

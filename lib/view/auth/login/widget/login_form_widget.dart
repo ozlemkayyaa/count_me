@@ -1,34 +1,20 @@
+import 'package:count_me/core/constants/enums/index.dart';
+import 'package:count_me/core/extension/index.dart';
+import 'package:count_me/view/auth/login/view/login_view_mixin.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/constants/app/index.dart';
-import '../../../../core/constants/enums/index.dart';
-import '../../../../core/extension/index.dart';
-import '../view/register_view_mixin.dart';
 
-class RegisterFormWidget extends StatelessWidget with RegisterViewMixin {
-  RegisterFormWidget({super.key});
+import '../../../../core/constants/app/index.dart';
+
+class LoginFormWidget extends StatelessWidget with LoginViewMixin {
+  LoginFormWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         children: [
-          // Name Field
-          TextFormField(
-            keyboardType: TextInputType.name,
-            controller: nameController,
-            decoration: InputDecoration(
-              labelText: AppStrings.name,
-              prefixIcon: Padding(
-                padding: EdgeInsets.only(
-                  left: context.paddingNormal.left,
-                  right: context.paddingExtraLow.left,
-                ),
-                child: Icon(Icons.person_outline_outlined),
-              ),
-            ),
-          ),
-          SizedBox(height: SizedBoxHeight.mediumSmall.value),
-
           // Email Field
           TextFormField(
             keyboardType: TextInputType.emailAddress,
@@ -67,13 +53,15 @@ class RegisterFormWidget extends StatelessWidget with RegisterViewMixin {
             ),
           ),
           SizedBox(height: SizedBoxHeight.top.value),
-          // Register Button
+
+          // Login Button
           ElevatedButton(
             onPressed: () {},
             child: Text(
-              AppStrings.register,
+              AppStrings.login,
             ),
           ),
+          TextButton(onPressed: () {}, child: Text(AppStrings.forgotPassword))
         ],
       ),
     );

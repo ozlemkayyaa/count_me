@@ -19,12 +19,12 @@ final class AppStrings {
   static const signEmail = "Sign in with Email";
 
   // ----------------- LOGIN ------------------
-  static const hello = "Hello";
+  static const hello = "Hello!";
   static const signText = "Sign into your account";
   static const email = "Email";
   static const password = "Password";
   static const login = "Login";
-  static const forgotPassword = "Forgot Password";
+  static const forgotPassword = "Forgot password?";
 
   // ----------------- REGISTER ------------------
   static const name = "Name";

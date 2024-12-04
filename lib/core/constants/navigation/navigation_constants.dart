@@ -1,10 +1,10 @@
 // ignore_for_file: constant_identifier_names
 
 class NavigationConstants {
-  static const TEST_VIEW = '/test';
   static const DEFAULT = '/';
-  static const SETTINGS_WEB_VIEW = '/settingsWebView';
-  static const ON_BOARD = '/onBoard';
-
-  static const BUY_VIEW = '/buyView';
+  static const SPLASH = '/splash';
+  static const ONBOARDING = '/onboarding';
+  static const REGISTER = '/register';
+  static const LOGIN = '/login';
+  static const FORGOT_PASSWORD = '/forgotPassword';
 }

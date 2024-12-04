@@ -15,7 +15,6 @@ dependencies:
   easy_localization: ^3.0.7
   shared_preferences: ^2.3.3
   provider: ^6.1.2
-  google_fonts: ^6.2.1
   mobx_codegen: ^2.6.2
   build_runner: ^2.4.13
   dio: ^5.7.0
@@ -30,4 +29,27 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-   - assets/
+   - assets/images/
+   - assets/icons/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Black.ttf
+        - asset: assets/fonts/Poppins-BlackItalic.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-BoldItalic.ttf
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins-ExtraLightItalic.ttf
+        - asset: assets/fonts/Poppins-Italic.ttf
+        - asset: assets/fonts/Poppins-Light.ttf
+        - asset: assets/fonts/Poppins-LightItalic.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
+        - asset: assets/fonts/Poppins-Thin.ttf
+        - asset: assets/fonts/Poppins-ThinItalic.ttf

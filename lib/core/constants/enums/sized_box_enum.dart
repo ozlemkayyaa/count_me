@@ -1,6 +1,8 @@
 enum SizedBoxHeight {
+  xsmall(4.0),
   small(8.0),
-  medium(16.0),
+  mediumSmall(16.0),
+  medium(24.0),
   mediumLarge(30.0),
   large(40.0),
   xLarge(50.0),

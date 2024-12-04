@@ -1,3 +1,4 @@
+import 'package:count_me/core/extension/index.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app/index.dart';
 
@@ -10,16 +11,12 @@ class MessageTextWidget extends StatelessWidget {
       children: [
         Text(
           AppStrings.onboardingText,
-          style: Theme.of(context)
-              .textTheme
-              .headlineLarge
+          style: context.textTheme.headlineLarge
               ?.copyWith(color: AppColors.mainGreen),
         ),
         Text(
           AppStrings.onboardingTextContinue,
-          style: Theme.of(context)
-              .textTheme
-              .displaySmall
+          style: context.textTheme.displaySmall
               ?.copyWith(color: AppColors.mainGreen),
         ),
       ],

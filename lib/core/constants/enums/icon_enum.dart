@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-enum ImageEnum {
-  onboarding('onboarding'),
-  user('user');
+enum IconEnum {
+  googleIcon('googleIcon'),
+  appIcon('appIcon');
 
   final String value;
-  const ImageEnum(this.value);
+  const IconEnum(this.value);
 
-  String get toPng => 'assets/images/$value.png';
+  String get toPng => 'assets/icons/$value.png';
 
   Image toImage({double? width, double? height}) {
     return Image.asset(toPng, width: width, height: height);

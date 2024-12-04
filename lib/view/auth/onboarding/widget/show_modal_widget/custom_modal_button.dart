@@ -25,7 +25,7 @@ class CustomModalButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             titleIcon
-                ? ImageEnum.google.toImage(
+                ? IconEnum.googleIcon.toImage(
                     height: ImageSize.iconImage.value,
                   )
                 : Icon(

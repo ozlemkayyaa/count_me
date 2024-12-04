@@ -1,3 +1,6 @@
+import 'package:count_me/view/auth/login/view/login_view.dart';
+import 'package:count_me/view/auth/onboarding/view/onboarding_view.dart';
+import 'package:count_me/view/auth/register/view/register_view.dart';
 import 'package:flutter/material.dart';
 import '../../../view/auth/splash/view/splash_view.dart';
 import '../../components/card/not_found_navigation_widget.dart';
@@ -11,9 +14,16 @@ class NavigationRoute {
 
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
-      case NavigationConstants.TEST_VIEW:
+      case NavigationConstants.SPLASH:
+        return normalNavigate(const SplashView(), NavigationConstants.SPLASH);
+      case NavigationConstants.ONBOARDING:
         return normalNavigate(
-            const SplashView(), NavigationConstants.TEST_VIEW);
+            const OnboardingView(), NavigationConstants.ONBOARDING);
+      case NavigationConstants.REGISTER:
+        return normalNavigate(
+            const RegisterView(), NavigationConstants.REGISTER);
+      case NavigationConstants.LOGIN:
+        return normalNavigate(const LoginView(), NavigationConstants.LOGIN);
       default:
         return MaterialPageRoute(
             builder: (context) => const NotFoundNavigationWidget());

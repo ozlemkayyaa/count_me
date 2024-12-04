@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 
 // BuildContext üzerinden MediaQuery'e hızlı erişim sağlar
@@ -29,6 +28,7 @@ extension ThemeExtension on BuildContext {
 
 // Tüm kenarlar için padding değerleri sağlar
 extension PaddingExtensionAll on BuildContext {
+  EdgeInsets get paddingUltraLow => EdgeInsets.all(ultraLowValue);
   EdgeInsets get paddingExtraLow => EdgeInsets.all(extraLowValue);
   EdgeInsets get paddingLow => EdgeInsets.all(lowValue);
   EdgeInsets get paddingNormal => EdgeInsets.all(normalValue);
@@ -36,7 +36,6 @@ extension PaddingExtensionAll on BuildContext {
   EdgeInsets get paddingHigh => EdgeInsets.all(highValue);
   EdgeInsets get paddingExtraHigh => EdgeInsets.all(extraHighValue);
   EdgeInsets get paddingUltraHigh => EdgeInsets.all(ultraHighValue);
-  EdgeInsets get paddingUltraLow => EdgeInsets.all(ultraLowValue);
 }
 
 // Simetrik padding değerleri için kısayol sağlar
@@ -89,8 +88,10 @@ extension AdaptiveExtension on BuildContext {
   double dynamicHeight(double percentage) =>
       height * percentage; // Yükseklik oranı
 
-  bool get isSmallDevice => width < 360; // Küçük cihazlar
-  bool get isLargeDevice => width > 720; // Büyük cihazlar
+  bool get isSmallDevice =>
+      width < (mediaQuery.size.shortestSide * 0.6); // Küçük cihazlar
+  bool get isLargeDevice =>
+      width > (mediaQuery.size.shortestSide * 1.2); // Büyük cihazlar
 }
 
 // Simge boyutları için kısa yollar sağlar
@@ -119,6 +120,8 @@ extension BorderRadiusExtension on BuildContext {
 
 // Platform kontrolü için yardımcı araçlar sağlar
 extension PlatformExtension on BuildContext {
-  bool get isIOS => Platform.isIOS; // iOS cihaz mı?
-  bool get isAndroid => Platform.isAndroid; // Android cihaz mı?
+  bool get isIOS =>
+      Theme.of(this).platform == TargetPlatform.iOS; // iOS cihaz mı?
+  bool get isAndroid =>
+      Theme.of(this).platform == TargetPlatform.android; // Android cihaz mı?
 }

@@ -1,6 +1,4 @@
 // ignore_for_file: avoid_print
-
-import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/core/constants/enums/index.dart';
 import 'package:count_me/core/extension/context_extension.dart';
 import 'package:count_me/view/auth/register/widget/register_form_widget.dart';
@@ -28,15 +26,6 @@ class RegisterBodyWidget extends StatelessWidget {
 
           // Register TForm
           RegisterFormWidget(),
-          SizedBox(height: SizedBoxHeight.top.value),
-
-          // Register Button
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-              AppStrings.register,
-            ),
-          ),
         ],
       ),
     );

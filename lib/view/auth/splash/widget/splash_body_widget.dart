@@ -22,16 +22,14 @@ class SplashBodyWidget extends StatelessWidget {
             // SubTitle
             Text(
               AppStrings.splashText,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall
+              style: context.textTheme.headlineSmall
                   ?.copyWith(color: AppColors.white),
             ),
 
             SizedBox(height: SizedBoxHeight.xxxLarge.value),
 
             // App Icon
-            ImageEnum.appIcon.toImage(
+            IconEnum.appIcon.toImage(
               height: context.height * 0.25,
             )
           ],
