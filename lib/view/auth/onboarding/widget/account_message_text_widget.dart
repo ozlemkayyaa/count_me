@@ -1,4 +1,6 @@
+import 'package:count_me/core/constants/navigation/navigation_constants.dart';
 import 'package:count_me/core/extension/index.dart';
+import 'package:count_me/core/init/navigation/navigation_service.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app/index.dart';
 
@@ -14,7 +16,13 @@ class AccountMessageTextWidget extends StatelessWidget {
           AppStrings.dontAccount,
           style: context.textTheme.bodySmall?.copyWith(color: AppColors.grey),
         ),
-        TextButton(onPressed: () {}, child: Text(AppStrings.signUp)),
+        TextButton(
+            onPressed: () {
+              NavigationService.instance.navigateToPage(
+                path: NavigationConstants.REGISTER,
+              );
+            },
+            child: Text(AppStrings.signUp)),
       ],
     );
   }

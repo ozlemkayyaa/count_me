@@ -9,32 +9,42 @@ class SplashBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: PaddingHelper.fixed.getPadding(left: true, right: true),
-      child: Center(
-        child: Column(
-          children: [
-            SizedBox(height: SizedBoxHeight.top.value),
-
-            // Count Me In Text
-            CountMeTextWidget(),
-
-            // SubTitle
-            Text(
-              AppStrings.splashText,
-              style: context.textTheme.headlineSmall
-                  ?.copyWith(color: AppColors.white),
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(ImageEnum.splashBackground.toPng),
+              fit: BoxFit.fill,
             ),
-
-            SizedBox(height: SizedBoxHeight.xxxLarge.value),
-
-            // App Icon
-            IconEnum.appIcon.toImage(
-              height: context.height * 0.25,
-            )
-          ],
+          ),
         ),
-      ),
+        Positioned.fill(
+          child: Padding(
+            padding: PaddingHelper.fixed.getPadding(left: true, right: true),
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: SizedBoxHeight.modal.value),
+
+                  // App Icon
+                  IconEnum.appIcon.toImage(height: context.height * 0.25),
+                  SizedBox(height: SizedBoxHeight.mediumSmall.value),
+                  // Count Me In Text
+                  CountMeTextWidget(),
+                  SizedBox(height: SizedBoxHeight.top.value),
+                  // SubTitle
+                  Text(
+                    AppStrings.splashText,
+                    style: context.textTheme.headlineSmall
+                        ?.copyWith(color: AppColors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

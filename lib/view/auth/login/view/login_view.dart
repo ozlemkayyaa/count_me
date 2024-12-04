@@ -1,6 +1,7 @@
 import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/base/view/base_view.dart';
 import 'package:count_me/core/components/index.dart';
+import 'package:count_me/core/constants/app/app_colors.dart';
 import 'package:count_me/view/auth/login/viewModel/login_view_model.dart';
 import 'package:count_me/view/auth/login/widget/login_body_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,10 @@ class _LoginViewState extends BaseState<LoginView> {
       },
       onPageBuilder: (BuildContext context, LoginViewModel viewModel) =>
           CustomScaffold(
-        body: LoginBodyWidget(),
+        appBar: AppBar(backgroundColor: AppColors.whiteBackground),
+        body: SingleChildScrollView(
+          child: LoginBodyWidget(),
+        ),
       ),
     );
   }

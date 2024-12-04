@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 enum ImageEnum {
+  splashBackground('splashBackground'),
   onboarding('onboarding'),
   user('user');
 

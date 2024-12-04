@@ -13,7 +13,7 @@ class RegisterBodyWidget extends StatelessWidget {
       padding: PaddingHelper.fixed.getPadding(left: true, right: true),
       child: Column(
         children: [
-          SizedBox(height: SizedBoxHeight.top.value),
+          SizedBox(height: SizedBoxHeight.xLarge.value),
 
           // Profile Image
           GestureDetector(

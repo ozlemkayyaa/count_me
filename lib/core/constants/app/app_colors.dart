@@ -26,8 +26,8 @@ final class AppColors {
 
   static const LinearGradient linearGradient = LinearGradient(
     colors: [
-      Color(0xFF04441C), // Başlangıç rengi
-      Color(0xFF88CC52), // Bitiş rengi
+      Color(0xFF003212), // Başlangıç rengi
+      Color(0xFF428335), // Bitiş rengi
     ],
     begin: Alignment.topLeft, // Sol üst köşe
     end: Alignment.bottomRight, // Sağ alt köşe

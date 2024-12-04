@@ -4,6 +4,7 @@ import 'package:count_me/view/auth/register/viewModel/register_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/components/scaffold/custom_scaffold.dart';
+import '../../../../core/constants/app/index.dart';
 import '../widget/register_body_widget.dart';
 
 class RegisterView extends StatefulWidget {
@@ -24,7 +25,10 @@ class _RegisterViewState extends BaseState<RegisterView> {
       },
       onPageBuilder: (BuildContext context, RegisterViewModel viewModel) =>
           CustomScaffold(
-        body: RegisterBodyWidget(),
+        appBar: AppBar(backgroundColor: AppColors.whiteBackground),
+        body: SingleChildScrollView(
+          child: RegisterBodyWidget(),
+        ),
       ),
     );
   }
