@@ -24,7 +24,10 @@ class _LoginViewState extends BaseState<LoginView> {
       },
       onPageBuilder: (BuildContext context, LoginViewModel viewModel) =>
           CustomScaffold(
-        appBar: AppBar(backgroundColor: AppColors.whiteBackground),
+        appBar: AppBar(
+          backgroundColor: AppColors.whiteBackground,
+          //automaticallyImplyLeading: false,
+        ),
         body: SingleChildScrollView(
           child: LoginBodyWidget(),
         ),
