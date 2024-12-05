@@ -1,26 +1,72 @@
-import 'package:count_me/core/base/view/base_view.dart';
-import 'package:count_me/core/components/index.dart';
-import 'package:count_me/view/auth/splash/viewModel/splash_view_model.dart';
-import '../../../../core/constants/app/app_colors.dart';
-import '../widget/splash_body_widget.dart';
+// ignore_for_file: avoid_print
+import 'package:count_me/core/base/state/base_state.dart';
+import 'package:count_me/core/constants/app/index.dart';
+import 'package:count_me/core/constants/navigation/navigation_constants.dart';
+import 'package:count_me/core/init/navigation/navigation_service.dart';
+import 'package:count_me/view/auth/splash/bloc/splash_bloc.dart';
+import 'package:count_me/view/auth/splash/bloc/splash_event.dart';
+import 'package:count_me/view/auth/splash/bloc/splash_state.dart';
+import 'package:count_me/view/auth/splash/widget/splash_body_widget.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/base/view/base_view_bloc.dart';
+import '../../../../core/components/index.dart';
+import '../../../../core/extension/context_extension.dart';
 
-class SplashView extends StatelessWidget {
+class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
   @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends BaseState<SplashView> {
+  @override
   Widget build(BuildContext context) {
-    return BaseView(
-      viewModel: SplashViewModel(),
-      onModelReady: (model) {
-        model.setContext(context);
-        model.init();
+    return BaseView<SplashBloc, SplashState>(
+      bloc: SplashBloc(),
+      onPageBuilder: (context, bloc, state) {
+        // INITIAL
+        if (state is SplashInitial) {
+          bloc.add(SplashStarted());
+          return CustomScaffold(
+            backgroundColor: AppColors.black,
+            body: const Center(
+              child: CircularProgressIndicator(color: AppColors.mainGreen),
+            ),
+          );
+
+          // COMPLETED
+        } else if (state is SplashCompleted) {
+          Future.delayed(const Duration(seconds: 2), () {
+            NavigationService.instance.navigateToPageClear(
+              path: NavigationConstants.ONBOARDING,
+            );
+          });
+
+          return CustomScaffold(
+            linearGradient: AppColors.linearGradient,
+            body: SplashBodyWidget(),
+          );
+
+          // ERROR
+        } else if (state is SplashError) {
+          return Center(
+            child: Text(
+              "Error: ${state.message}",
+              style: context.textTheme.bodyLarge?.copyWith(
+                color: Colors.red,
+              ),
+            ),
+          );
+        } else {
+          return const Center(
+            child: Text("Unexpected state"),
+          );
+        }
       },
-      onPageBuilder: (BuildContext context, SplashViewModel viewModel) =>
-          CustomScaffold(
-        linearGradient: AppColors.linearGradient,
-        body: SplashBodyWidget(),
-      ),
+      onDispose: () {
+        print("SplashView disposed");
+      },
     );
   }
 }

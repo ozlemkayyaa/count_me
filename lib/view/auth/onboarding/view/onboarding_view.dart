@@ -21,8 +21,9 @@ class _OnboardingViewState extends BaseState<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return BaseView<OnboardingBloc, OnboardingState>(
-      bloc: OnboardingBloc(), // Bloc oluşturuluyor
+      bloc: OnboardingBloc(),
       onPageBuilder: (context, bloc, state) {
+        // INITIAL - STARTED
         if (state is OnboardingInitial) {
           bloc.add(OnboardingStarted());
           return CustomScaffold(
@@ -31,6 +32,8 @@ class _OnboardingViewState extends BaseState<OnboardingView> {
               child: CircularProgressIndicator(),
             ),
           );
+
+          // LOADING
         } else if (state is OnboardingLoading) {
           return CustomScaffold(
             backgroundColor: AppColors.whiteBackground,
@@ -38,12 +41,16 @@ class _OnboardingViewState extends BaseState<OnboardingView> {
               child: CircularProgressIndicator(color: AppColors.mainGreen),
             ),
           );
+
+          // LOADED
         } else if (state is OnboardingLoaded) {
           return CustomScaffold(
             body: SingleChildScrollView(
               child: const OnboardingBodyWidget(),
             ),
           );
+
+          // ERROR
         } else if (state is OnboardingError) {
           return Center(
             child: Text(
