@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../../core/base/view/base_view_bloc.dart';
 import '../../../../core/components/index.dart';
 import '../../../../core/extension/context_extension.dart';
-import '../bloc/onboarding_bloc.dart';
-import '../bloc/onboarding_event.dart';
-import '../bloc/onboarding_state.dart';
+import '../viewModel/bloc/onboarding_bloc.dart';
+import '../viewModel/bloc/onboarding_event.dart';
+import '../viewModel/bloc/onboarding_state.dart';
 import '../widget/onboarding_body_widget.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -29,7 +29,7 @@ class _OnboardingViewState extends BaseState<OnboardingView> {
           return CustomScaffold(
             backgroundColor: AppColors.whiteBackground,
             body: const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(color: AppColors.mainGreen),
             ),
           );
 
@@ -43,7 +43,7 @@ class _OnboardingViewState extends BaseState<OnboardingView> {
           );
 
           // LOADED
-        } else if (state is OnboardingLoaded) {
+        } else if (state is OnboardingCompleted) {
           return CustomScaffold(
             body: SingleChildScrollView(
               child: const OnboardingBodyWidget(),

@@ -3,9 +3,9 @@ import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/core/constants/navigation/navigation_constants.dart';
 import 'package:count_me/core/init/navigation/navigation_service.dart';
-import 'package:count_me/view/auth/splash/bloc/splash_bloc.dart';
-import 'package:count_me/view/auth/splash/bloc/splash_event.dart';
-import 'package:count_me/view/auth/splash/bloc/splash_state.dart';
+import 'package:count_me/view/auth/splash/viewModel/bloc/splash_bloc.dart';
+import 'package:count_me/view/auth/splash/viewModel/bloc/splash_event.dart';
+import 'package:count_me/view/auth/splash/viewModel/bloc/splash_state.dart';
 import 'package:count_me/view/auth/splash/widget/splash_body_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/base/view/base_view_bloc.dart';
@@ -29,7 +29,7 @@ class _SplashViewState extends BaseState<SplashView> {
         if (state is SplashInitial) {
           bloc.add(SplashStarted());
           return CustomScaffold(
-            backgroundColor: AppColors.black,
+            backgroundColor: AppColors.whiteBackground,
             body: const Center(
               child: CircularProgressIndicator(color: AppColors.mainGreen),
             ),

@@ -7,10 +7,7 @@ class OnboardingInitial extends OnboardingState {}
 class OnboardingLoading extends OnboardingState {}
 
 // Veri başarıyla yüklendi
-class OnboardingLoaded extends OnboardingState {
-  final String data; // Örneğin, bir veri varsa bu state ile paylaşılır
-  OnboardingLoaded(this.data);
-}
+class OnboardingCompleted extends OnboardingState {}
 
 // Bir hata oluştu
 class OnboardingError extends OnboardingState {

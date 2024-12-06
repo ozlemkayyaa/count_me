@@ -1,6 +1,7 @@
 abstract class SplashState {}
 
-class SplashInitial extends SplashState {} // Splash ekranı başlatıldı
+// Splash ekranı başlatıldı
+class SplashInitial extends SplashState {}
 
 class SplashError extends SplashState {
   final String message; // Hata mesajı
