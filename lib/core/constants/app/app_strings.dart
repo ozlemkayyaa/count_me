@@ -35,6 +35,7 @@ final class AppStrings {
   // Profile
   static const question1 = "What are your current goals?";
   static const loseWeight = "Lose weight";
+  static const healtier = "Get healthier";
   static const lookBetter = "Look better";
   static const reduce = "Reduce stress";
   static const sleep = "Sleep better";
@@ -48,16 +49,17 @@ final class AppStrings {
   static const women = "Women";
   static const man = "Man";
   static const disclose = "Prefer not to disclose";
-  static const birthday = "When is your birthday?";
-  static const yourHeight = "Your height";
-  static const yourCurrentWeight = "Your current weight";
+  static const question3 = "When is your birthday?";
+  static const question4 = "Your height";
+  static const question5 = "Your current weight";
+  static const question6 = "And your ideal weight?";
   static const losing = "Losing";
   static const goalKg = " kg is a challenging goal.";
   static const doIt = "You can do it!";
-  static const question3 = "What's your name?";
+  static const question7 = "What's your name?";
 
   // ACTIVITY
-  static const question4 = "What is your current activity level?";
+  static const question8 = "What is your current activity level?";
   static const activityLevel1 = "I'm not that active";
   static const activityLevelText1 = "I spend most of my days sitting";
   static const activityLevel2 = "I'm active once in while";
@@ -69,7 +71,7 @@ final class AppStrings {
   static const activityLevelText4 =
       "I spend most of my day doing physical act.";
 
-  static const question5 =
+  static const question9 =
       "How familiar are you with the topic of weight loss?";
   static const beginner = "Beginner";
   static const beginnerText = "I'm new to weight loss and need to learn";
@@ -84,7 +86,7 @@ final class AppStrings {
   static const motivation4 = "easy & effective is our job!";
 
   // HEALTH
-  static const question6 = "Any health concerns?";
+  static const question10 = "Any health concerns?";
   static const any = "I don't have any of these";
   static const hypertansion = "Hypertansion";
   static const cholesterol = "High Cholesterol";

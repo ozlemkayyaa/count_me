@@ -1,3 +1,4 @@
+import 'package:count_me/core/constants/app/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
@@ -21,7 +22,7 @@ class CustomScaffold extends StatelessWidget {
       // Ekrana dokunulduğunda, herhangi bir metin alanının odaklanmasını kaldırır ve klavyeyi gizler.
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: AppColors.whiteBackground,
         // App bar widget to display at the top, if provided.
         appBar: appBar,
         body: Stack(

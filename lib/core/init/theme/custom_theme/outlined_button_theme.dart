@@ -7,9 +7,11 @@ class AppOutlinedButtontheme {
 
   static final outlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
+      backgroundColor: AppColors.white,
+      overlayColor: Colors.transparent,
       alignment: Alignment.center,
       elevation: 0,
-      //minimumSize: const Size(320, 65),
+      minimumSize: const Size(350, 65),
       side: BorderSide(color: AppColors.lightGrey),
       shape: RoundedRectangleBorder(
         borderRadius: BorderHelper.small.circularRadius,

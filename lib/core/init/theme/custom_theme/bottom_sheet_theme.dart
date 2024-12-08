@@ -10,7 +10,7 @@ class AppBottomSheetTheme {
     dragHandleColor: AppColors.black,
     showDragHandle: true,
     backgroundColor: AppColors.bottomSheetWhite,
-    modalBackgroundColor: AppColors.bottomSheetWhite,
+    modalBackgroundColor: AppColors.white,
     modalBarrierColor: AppColors.barrierGrey,
     constraints: BoxConstraints(minWidth: double.infinity),
     shape: RoundedRectangleBorder(borderRadius: BorderHelper.xLarge.onlyTop),

@@ -8,6 +8,7 @@ final class AppColors {
   static const mainGreen = Color(0xFF67BD6E);
   static const backgroundGreen = Color(0xFFD9E3D0);
   static const whiteBackground = Color(0xFFFFFBFA);
+  static const lightGreenBackground = Color(0xFFF0F8F1);
 
   static const reddishOrange = Color(0xFFF47551);
   static const lightReddish = Color(0xFFF2CFCB);
