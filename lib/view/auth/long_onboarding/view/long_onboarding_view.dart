@@ -3,10 +3,8 @@
 import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/base/view/base_long_onboarding_view.dart';
 import 'package:count_me/core/components/index.dart';
-import 'package:count_me/core/components/outlinedButton/custom_outlined_button.dart';
 import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/core/constants/navigation/navigation_constants.dart';
-import 'package:count_me/core/extension/index.dart';
 import 'package:count_me/core/init/navigation/navigation_service.dart';
 import 'package:count_me/view/auth/long_onboarding/data/onboarding_data.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
