@@ -61,10 +61,7 @@ class _CustomOutlinedButtonState extends BaseState<CustomOutlinedButton> {
         children: [
           if (widget.leadingIcon != null) Icon(widget.leadingIcon),
           if (widget.leadingIcon == null) const SizedBox(),
-          Text(
-            widget.title,
-            style: context.textTheme.bodyLarge,
-          ),
+          Text(widget.title, style: context.textTheme.bodyLarge),
           if (widget.trailingIcon != null) Icon(widget.trailingIcon),
           if (widget.trailingIcon == null) const SizedBox(),
         ],

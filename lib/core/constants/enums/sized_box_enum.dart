@@ -8,6 +8,7 @@ enum SizedBoxHeight {
   xLarge(50.0),
   xxLarge(80.0),
   xxxLarge(90.0),
+  smallTop(120.0),
   top(160.0),
   modal(270);
 

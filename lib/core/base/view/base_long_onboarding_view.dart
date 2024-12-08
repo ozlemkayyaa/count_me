@@ -18,7 +18,7 @@ class BaseLongOnboardingView<B extends BlocBase<S>, S> extends StatefulWidget {
     this.optionsSubtitle,
   });
 
-  final B bloc; // Bloc veya Cubit instance
+  final B bloc;
   final Widget Function(BuildContext context, B bloc, S state) onPageBuilder;
   final VoidCallback? onDispose;
   final String? question;
@@ -46,7 +46,7 @@ class _BaseLongOnboardingViewState<B extends BlocBase<S>, S>
 
   @override
   void dispose() {
-    bloc.close(); // Bloc'un otomatik olarak kapanmasını sağlar
+    bloc.close();
     if (widget.onDispose != null) widget.onDispose?.call();
     super.dispose();
   }

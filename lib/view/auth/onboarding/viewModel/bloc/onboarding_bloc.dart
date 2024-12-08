@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:count_me/view/auth/onboarding/viewModel/bloc/onboarding_event.dart';
 import 'package:count_me/view/auth/onboarding/viewModel/bloc/onboarding_state.dart';
 

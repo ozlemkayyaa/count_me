@@ -20,7 +20,7 @@ class AppTextTheme {
     headlineLarge:
         baseStyle.copyWith(fontSize: 24, fontWeight: FontWeight.w400),
     headlineMedium:
-        baseStyle.copyWith(fontSize: 22, fontWeight: FontWeight.w700),
+        baseStyle.copyWith(fontSize: 22, fontWeight: FontWeight.w600),
     headlineSmall:
         baseStyle.copyWith(fontSize: 22, fontWeight: FontWeight.w400),
 

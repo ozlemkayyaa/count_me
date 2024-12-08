@@ -7,4 +7,6 @@ class NavigationConstants {
   static const REGISTER = '/register';
   static const LOGIN = '/login';
   static const FORGOT_PASSWORD = '/forgotPassword';
+  static const LONG_ONBOARDING = '/longOnboarding';
+  static const HOME = '/home';
 }

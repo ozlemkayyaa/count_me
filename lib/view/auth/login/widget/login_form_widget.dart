@@ -1,5 +1,7 @@
 import 'package:count_me/core/constants/enums/index.dart';
+import 'package:count_me/core/constants/navigation/navigation_constants.dart';
 import 'package:count_me/core/extension/index.dart';
+import 'package:count_me/core/init/navigation/navigation_service.dart';
 import 'package:count_me/view/auth/login/view/login_view_mixin.dart';
 import 'package:flutter/material.dart';
 
@@ -61,7 +63,12 @@ class LoginFormWidget extends StatelessWidget with LoginViewMixin {
               AppStrings.login,
             ),
           ),
-          TextButton(onPressed: () {}, child: Text(AppStrings.forgotPassword))
+          TextButton(
+              onPressed: () {
+                NavigationService.instance
+                    .navigateToPage(path: NavigationConstants.LONG_ONBOARDING);
+              },
+              child: Text(AppStrings.forgotPassword))
         ],
       ),
     );
