@@ -8,5 +8,9 @@ class NavigationConstants {
   static const LOGIN = '/login';
   static const FORGOT_PASSWORD = '/forgotPassword';
   static const LONG_ONBOARDING = '/longOnboarding';
+  static const PROFILE_GOAL = '/profileGoal';
+  static const MOTIVATED_FIRST = '/motivatedFirst';
+  static const SELECT_GENDER = '/selectGender';
+  static const BIRTHDAY = '/birthday';
   static const HOME = '/home';
 }

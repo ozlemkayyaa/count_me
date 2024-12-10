@@ -1,5 +1,4 @@
 import 'package:count_me/view/auth/login/view/login_view.dart';
-import 'package:count_me/view/auth/long_onboarding/view/long_onboarding_view.dart';
 import 'package:count_me/view/auth/onboarding/view/onboarding_view.dart';
 import 'package:count_me/view/auth/register/view/register_view.dart';
 import 'package:count_me/view/home/view/home_view.dart';
@@ -21,14 +20,29 @@ class NavigationRoute {
       case NavigationConstants.ONBOARDING:
         return normalNavigate(
             const OnboardingView(), NavigationConstants.ONBOARDING);
-      case NavigationConstants.LONG_ONBOARDING:
-        return normalNavigate(
-            const LongOnboardingView(), NavigationConstants.LONG_ONBOARDING);
+      // case NavigationConstants.LONG_ONBOARDING:
+      //   return normalNavigate(
+      //       const LongOnboardingView(), NavigationConstants.LONG_ONBOARDING);
+
+      // case NavigationConstants.PROFILE_GOAL:
+      //   return normalNavigate(
+      //       const ProfileGoalView(), NavigationConstants.PROFILE_GOAL);
+      // case NavigationConstants.MOTIVATED_FIRST:
+      //   return normalNavigate(
+      //       const MotivatedFirst(), NavigationConstants.MOTIVATED_FIRST);
+      // case NavigationConstants.SELECT_GENDER:
+      //   return normalNavigate(
+      //       const SelectGenderView(), NavigationConstants.SELECT_GENDER);
+      // case NavigationConstants.BIRTHDAY:
+      //   return normalNavigate(
+      //       const BirthdayView(), NavigationConstants.BIRTHDAY);
+
       case NavigationConstants.REGISTER:
         return normalNavigate(
             const RegisterView(), NavigationConstants.REGISTER);
       case NavigationConstants.LOGIN:
         return normalNavigate(const LoginView(), NavigationConstants.LOGIN);
+
       case NavigationConstants.HOME:
         return normalNavigate(const HomeView(), NavigationConstants.HOME);
       default:

@@ -7,10 +7,12 @@ import 'package:flutter/material.dart';
 class CustomOutlinedButton extends StatefulWidget {
   final String title;
   final String? subtitle;
-  final IconData? leadingIcon;
+  final Widget? leadingIcon;
   final IconData? trailingIcon;
   final bool? isSelected;
   final VoidCallback onPressed;
+  final bool
+      usePaddingForLeadingIcon; // Yeni parametre: LeadingIcon için padding kullanıp kullanmayacağımızı belirler
 
   const CustomOutlinedButton({
     super.key,
@@ -20,6 +22,7 @@ class CustomOutlinedButton extends StatefulWidget {
     this.subtitle,
     this.leadingIcon,
     this.trailingIcon,
+    this.usePaddingForLeadingIcon = false, // Varsayılan olarak false
   });
 
   @override
@@ -28,43 +31,56 @@ class CustomOutlinedButton extends StatefulWidget {
 
 class _CustomOutlinedButtonState extends BaseState<CustomOutlinedButton> {
   late bool _isSelected;
+
   @override
   void initState() {
     super.initState();
-    _isSelected = widget.isSelected ?? false; // Başlangıç değerini al
+    _isSelected = widget.isSelected ?? false;
   }
 
   void _toggleSelection() {
     setState(() {
-      _isSelected = !_isSelected; // Durumu tersine çevir
+      _isSelected = !_isSelected;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderHelper.fix.circularRadius,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 7),
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderHelper.fix.circularRadius,
+          ),
+          backgroundColor:
+              _isSelected ? AppColors.lightGreenBackground : AppColors.white,
+          side: BorderSide(
+              color: _isSelected ? AppColors.mainGreen : AppColors.lightGrey),
         ),
-        backgroundColor:
-            _isSelected ? AppColors.lightGreenBackground : AppColors.white,
-        side: BorderSide(
-            color: _isSelected ? AppColors.mainGreen : AppColors.lightGrey),
-      ),
-      onPressed: () {
-        _toggleSelection(); // Durumu değiştir
-        widget.onPressed(); // Dışarıdan gelen onPressed fonksiyonunu çağır
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          if (widget.leadingIcon != null) Icon(widget.leadingIcon),
-          if (widget.leadingIcon == null) const SizedBox(),
-          Text(widget.title, style: context.textTheme.bodyLarge),
-          if (widget.trailingIcon != null) Icon(widget.trailingIcon),
-          if (widget.trailingIcon == null) const SizedBox(),
-        ],
+        onPressed: () {
+          _toggleSelection();
+          widget.onPressed();
+        },
+        child: Row(
+          mainAxisAlignment: widget.usePaddingForLeadingIcon
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.spaceBetween,
+          children: [
+            if (widget.leadingIcon != null)
+              widget.usePaddingForLeadingIcon
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                          left: 30.0, top: 8, bottom: 8, right: 16),
+                      child: widget.leadingIcon!,
+                    )
+                  : widget.leadingIcon!,
+            if (widget.leadingIcon == null) const SizedBox(),
+            Text(widget.title, style: context.textTheme.bodyLarge),
+            if (widget.trailingIcon != null) Icon(widget.trailingIcon),
+            if (widget.trailingIcon == null) const SizedBox(),
+          ],
+        ),
       ),
     );
   }

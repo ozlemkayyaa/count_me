@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 enum ImageEnum {
   splashBackground('splashBackground'),
   onboarding('onboarding'),
-  user('user');
+  user('user'),
+  longOnboarding1('long_onboarding1');
 
   final String value;
   const ImageEnum(this.value);

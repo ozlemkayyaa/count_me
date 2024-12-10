@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 enum IconEnum {
   googleIcon('googleIcon'),
+  women('women'),
+  men('men'),
+  disclose('disclose'),
   appIcon('appIcon');
 
   final String value;
