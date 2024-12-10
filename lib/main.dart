@@ -1,6 +1,7 @@
 import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/core/init/navigation/navigation_route.dart';
 import 'package:count_me/core/init/navigation/navigation_service.dart';
+import 'package:count_me/view/auth/long_onboarding/view/long_onboarding_view.dart';
 import 'package:count_me/view/auth/onboarding/view/onboarding_view.dart';
 import 'package:count_me/view/auth/onboarding/viewModel/bloc/onboarding_bloc.dart';
 import 'package:count_me/view/auth/splash/viewModel/bloc/splash_bloc.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: NavigationService.instance.navigatorKey,
       title: AppConstants.APP_NAME,
       theme: AppThemeLight.instance.theme,
-      home: OnboardingView(),
+      home: LongOnboardingView(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -11,8 +11,7 @@ class CustomOutlinedButton extends StatefulWidget {
   final IconData? trailingIcon;
   final bool? isSelected;
   final VoidCallback onPressed;
-  final bool
-      usePaddingForLeadingIcon; // Yeni parametre: LeadingIcon için padding kullanıp kullanmayacağımızı belirler
+  final bool usePaddingForLeadingIcon;
 
   const CustomOutlinedButton({
     super.key,
@@ -22,7 +21,7 @@ class CustomOutlinedButton extends StatefulWidget {
     this.subtitle,
     this.leadingIcon,
     this.trailingIcon,
-    this.usePaddingForLeadingIcon = false, // Varsayılan olarak false
+    this.usePaddingForLeadingIcon = false,
   });
 
   @override
