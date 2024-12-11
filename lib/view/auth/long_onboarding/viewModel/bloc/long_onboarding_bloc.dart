@@ -27,8 +27,16 @@ class LongOnboardingBloc
         userOnboardingModel: currentState.userOnboardingModel.copyWith(
           name: event.profileData['name'],
           gender: event.profileData['gender'],
+          birthDate: event.profileData['birthDate'],
+          height: event.profileData['height'],
+          currentWeight: event.profileData['currentWeight'],
+          targetWeight: event.profileData['targetWeight'],
+          activityLevel: event.profileData['activityLevel'],
+          goals: event.profileData['goals'],
+          healthConcerns: event.profileData['healthConcerns'],
+          weightLossExperience: event.profileData['weightLossExperience'],
         ),
-        currentPageIndex: currentState.currentPageIndex + 1, // Sonraki sayfa
+        currentPageIndex: currentState.currentPageIndex + 1,
       ));
     }
   }
@@ -43,7 +51,7 @@ class LongOnboardingBloc
         userOnboardingModel: currentState.userOnboardingModel.copyWith(
           activityLevel: event.activityData['activityLevel'],
         ),
-        currentGroupIndex: currentState.currentGroupIndex + 1, // Sonraki grup
+        currentGroupIndex: currentState.currentGroupIndex + 1,
       ));
     }
   }

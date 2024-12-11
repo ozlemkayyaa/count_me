@@ -1,17 +1,16 @@
-import 'package:count_me/core/components/elevatedButton/next_button.dart';
 import 'package:count_me/core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingPageTemplate extends StatelessWidget {
   final String question;
   final Widget body;
-  //final VoidCallback onNext;
+  final bool? heightSizedBox;
 
   const OnboardingPageTemplate({
     required this.question,
     required this.body,
-    //required this.onNext,
     super.key,
+    this.heightSizedBox,
   });
 
   @override
@@ -20,16 +19,13 @@ class OnboardingPageTemplate extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // Question
+        SizedBox(height: 60),
         Text(question, style: context.textTheme.headlineMedium),
-        SizedBox(height: 120),
+        (heightSizedBox == null) ? SizedBox(height: 120) : SizedBox(height: 70),
 
         // Options
         Expanded(child: body),
         SizedBox(height: 60),
-
-        // // Next Button
-        // NextButton(onNext: onNext),
-        // SizedBox(height: 40),
       ],
     );
   }

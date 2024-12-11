@@ -10,7 +10,7 @@ class CustomOutlinedButton extends StatefulWidget {
   final Widget? leadingIcon;
   final IconData? trailingIcon;
   final bool? isSelected;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool usePaddingForLeadingIcon;
 
   const CustomOutlinedButton({
@@ -57,10 +57,12 @@ class _CustomOutlinedButtonState extends BaseState<CustomOutlinedButton> {
           side: BorderSide(
               color: _isSelected ? AppColors.mainGreen : AppColors.lightGrey),
         ),
-        onPressed: () {
-          _toggleSelection();
-          widget.onPressed();
-        },
+        onPressed: widget.onPressed != null
+            ? () {
+                _toggleSelection();
+                widget.onPressed!();
+              }
+            : null,
         child: Row(
           mainAxisAlignment: widget.usePaddingForLeadingIcon
               ? MainAxisAlignment.start

@@ -14,13 +14,6 @@ class GenderSelect extends StatelessWidget {
   const GenderSelect(
       {super.key, required this.pageController, required this.goToNextPage});
 
-  // bool _isPageValid(LongOnboardingState state) {
-  //   if (state is LongOnboardingInProgress) {
-  //     return state.userOnboardingModel.gender != null;
-  //   }
-  //   return false;
-  // }
-
   static const List<Map<String, dynamic>> genderOptions = [
     {
       'title': AppStrings.women,
@@ -62,21 +55,6 @@ class GenderSelect extends StatelessWidget {
                 );
               }).toList(),
             ),
-            // onNext: () {
-            //   if (_isPageValid(state)) {
-            //     pageController.nextPage(
-            //       duration: Duration(milliseconds: 300),
-            //       curve: Curves.fastOutSlowIn,
-            //     );
-            //   } else {
-            //     ScaffoldMessenger.of(context).showSnackBar(
-            //       SnackBar(
-            //         content: Text('Please select an option!'),
-            //         behavior: SnackBarBehavior.floating,
-            //       ),
-            //     );
-            //   }
-            // },
           );
         }
         return Center(child: CircularProgressIndicator());

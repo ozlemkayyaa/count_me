@@ -1,6 +1,7 @@
 import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/base/view/base_view_bloc.dart';
 import 'package:count_me/core/components/index.dart';
+import 'package:count_me/core/constants/app/app_colors.dart';
 import 'package:count_me/view/auth/long_onboarding/view/profile/profile_group.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,10 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
       bloc: LongOnboardingBloc(),
       onPageBuilder: (context, bloc, state) {
         return CustomScaffold(
+          appBar: AppBar(
+            backgroundColor: AppColors.whiteBackground,
+            automaticallyImplyLeading: true,
+          ),
           body: PageView(
             controller: _groupController,
             physics: const NeverScrollableScrollPhysics(),

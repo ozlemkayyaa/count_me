@@ -1,17 +1,17 @@
 abstract class LongOnboardingEvent {}
 
 class UpdateProfileEvent extends LongOnboardingEvent {
-  final Map<String, dynamic> profileData; // Profil bilgilerini alır
+  final Map<String, dynamic> profileData;
   UpdateProfileEvent(this.profileData);
 }
 
 class UpdateActivityEvent extends LongOnboardingEvent {
-  final Map<String, dynamic> activityData; // Aktivite bilgilerini alır
+  final Map<String, dynamic> activityData;
   UpdateActivityEvent(this.activityData);
 }
 
 class UpdateHealthEvent extends LongOnboardingEvent {
-  final Map<String, dynamic> healthData; // Sağlık bilgilerini alır
+  final Map<String, dynamic> healthData;
   UpdateHealthEvent(this.healthData);
 }
 
