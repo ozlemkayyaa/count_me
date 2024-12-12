@@ -44,10 +44,15 @@ class _ActivityGroupState extends State<ActivityGroup> {
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
             children: [
+              // CURRENT ACTIVITY LEVEL
               CurrentActivityLevel(
                   pageController: _pageController, goToNextPage: _goToNextPage),
+
+              // TOPIC WEIGHT LOSS
               TopicWeightLoss(
                   pageController: _pageController, goToNextPage: _goToNextPage),
+
+              // MOTIVATION PAGE - 3
               MotivationPageWidget(
                 image: ImageEnum.motivation3.toPng,
                 title: TextSpan(

@@ -8,11 +8,12 @@ class CustomOutlinedButton extends StatefulWidget {
   final String title;
   final String? subtitle;
   final Widget? leadingIcon;
-  final IconData? trailingIcon;
+  final Widget? trailingIcon;
   final bool? isSelected;
   final VoidCallback? onPressed;
   final bool usePaddingForLeadingIcon;
   final EdgeInsets? padding;
+  final bool useSpacer;
 
   const CustomOutlinedButton({
     super.key,
@@ -24,6 +25,7 @@ class CustomOutlinedButton extends StatefulWidget {
     this.trailingIcon,
     this.usePaddingForLeadingIcon = false,
     this.padding,
+    this.useSpacer = false,
   });
 
   @override
@@ -48,7 +50,7 @@ class _CustomOutlinedButtonState extends BaseState<CustomOutlinedButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 8),
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -100,8 +102,17 @@ class _CustomOutlinedButtonState extends BaseState<CustomOutlinedButton> {
                   ),
               ],
             ),
-            if (widget.trailingIcon != null) Icon(widget.trailingIcon),
-            if (widget.trailingIcon == null) const SizedBox(),
+            // Spacer kontrolü
+            if (widget.useSpacer) const Spacer(),
+
+            if (_isSelected && widget.trailingIcon != null)
+              Padding(
+                // Sağ kenardan 16 birim boşluk
+                padding: const EdgeInsets.only(right: 16.0),
+                child: widget.trailingIcon!,
+              ),
+            // İkon görünmese bile boşluk bırakılıyor.
+            if (widget.trailingIcon == null) SizedBox(width: 16),
           ],
         ),
       ),

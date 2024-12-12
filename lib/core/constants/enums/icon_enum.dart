@@ -5,6 +5,7 @@ enum IconEnum {
   women('women'),
   men('men'),
   disclose('disclose'),
+  check('check'),
   appIcon('appIcon');
 
   final String value;

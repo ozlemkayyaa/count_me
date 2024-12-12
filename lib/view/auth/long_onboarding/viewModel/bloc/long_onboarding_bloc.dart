@@ -12,8 +12,6 @@ class LongOnboardingBloc
           currentPageIndex: 0,
         )) {
     on<UpdateProfileEvent>(_onUpdateProfile);
-    on<UpdateActivityEvent>(_onUpdateActivity);
-    on<UpdateHealthEvent>(_onUpdateHealth);
     on<CompleteOnboardingEvent>(_onCompleteOnboarding);
   }
 
@@ -37,35 +35,6 @@ class LongOnboardingBloc
           weightLossExperience: event.profileData['weightLossExperience'],
         ),
         currentPageIndex: currentState.currentPageIndex + 1,
-      ));
-    }
-  }
-
-  void _onUpdateActivity(
-    UpdateActivityEvent event,
-    Emitter<LongOnboardingState> emit,
-  ) {
-    if (state is LongOnboardingInProgress) {
-      final currentState = state as LongOnboardingInProgress;
-      emit(currentState.copyWith(
-        userOnboardingModel: currentState.userOnboardingModel.copyWith(
-          activityLevel: event.activityData['activityLevel'],
-        ),
-        currentGroupIndex: currentState.currentGroupIndex + 1,
-      ));
-    }
-  }
-
-  void _onUpdateHealth(
-    UpdateHealthEvent event,
-    Emitter<LongOnboardingState> emit,
-  ) {
-    if (state is LongOnboardingInProgress) {
-      final currentState = state as LongOnboardingInProgress;
-      emit(currentState.copyWith(
-        userOnboardingModel: currentState.userOnboardingModel.copyWith(
-          healthConcerns: event.healthData['healthConcerns'],
-        ),
       ));
     }
   }
