@@ -6,7 +6,7 @@ import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboardin
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_event.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_state.dart';
 import 'package:count_me/view/auth/long_onboarding/widget/custom_picker.dart';
-import 'package:count_me/view/auth/long_onboarding/widget/long_onboarding_templete.dart';
+import 'package:count_me/view/auth/long_onboarding/widget/onboarding_page_template.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class IdealWeightSelect extends StatefulWidget {

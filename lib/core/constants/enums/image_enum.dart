@@ -4,7 +4,9 @@ enum ImageEnum {
   splashBackground('splashBackground'),
   onboarding('onboarding'),
   user('user'),
-  longOnboarding1('long_onboarding1');
+  motivation1('motivation1'),
+  motivation2('motivation2'),
+  motivation3('motivation3');
 
   final String value;
   const ImageEnum(this.value);

@@ -1,6 +1,5 @@
 import 'package:count_me/core/components/outlinedButton/custom_outlined_button.dart';
-import 'package:count_me/core/constants/app/index.dart';
-import 'package:count_me/core/constants/enums/icon_enum.dart';
+import 'package:count_me/core/constants/app/app_strings.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_event.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_state.dart';
@@ -8,23 +7,27 @@ import 'package:count_me/view/auth/long_onboarding/widget/onboarding_page_templa
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class GenderSelect extends StatelessWidget {
+class TopicWeightLoss extends StatelessWidget {
   final PageController pageController;
   final VoidCallback goToNextPage;
-  const GenderSelect(
+  const TopicWeightLoss(
       {super.key, required this.pageController, required this.goToNextPage});
 
-  static const List<Map<String, dynamic>> genderOptions = [
+  static const List<Map<String, dynamic>> weightLossExperienceOptions = [
     {
-      'title': AppStrings.women,
-      'value': AppStrings.women,
-      'icon': IconEnum.women
+      'title': AppStrings.beginner,
+      'value': AppStrings.beginner,
+      'subtitle': AppStrings.beginnerText
     },
-    {'title': AppStrings.man, 'value': AppStrings.man, 'icon': IconEnum.men},
     {
-      'title': AppStrings.disclose,
-      'value': AppStrings.disclose,
-      'icon': IconEnum.disclose
+      'title': AppStrings.intermediate,
+      'value': AppStrings.intermediate,
+      'subtitle': AppStrings.intermediateText
+    },
+    {
+      'title': AppStrings.master,
+      'value': AppStrings.master,
+      'subtitle': AppStrings.masterText
     },
   ];
 
@@ -33,24 +36,23 @@ class GenderSelect extends StatelessWidget {
     return BlocBuilder<LongOnboardingBloc, LongOnboardingState>(
       builder: (context, state) {
         if (state is LongOnboardingInProgress) {
-          // Seçilen cinsiyeti bir değişkende tuttuk
-          String? selectedGender = state.userOnboardingModel.gender;
+          String? selectWeightLossExperience =
+              state.userOnboardingModel.weightLossExperience;
+
           return OnboardingPageTemplate(
-            question: AppStrings.question2,
+            question: AppStrings.question9,
             body: Column(
-              children: genderOptions.map((option) {
+              children: weightLossExperienceOptions.map((options) {
                 return CustomOutlinedButton(
-                  leadingIcon:
-                      option['icon'].toImage(width: 30.0, height: 30.0),
+                  padding: const EdgeInsets.only(left: 30.0),
                   usePaddingForLeadingIcon: true,
-                  title: option['title'],
-                  isSelected: selectedGender == option['value'],
+                  isSelected: selectWeightLossExperience == options['value'],
+                  subtitle: options['subtitle'],
+                  title: options['title'],
                   onPressed: () {
-                    selectedGender =
-                        option['value']; // Seçilen cinsiyet güncellendi
-                    context
-                        .read<LongOnboardingBloc>()
-                        .add(UpdateProfileEvent({'gender': selectedGender}));
+                    selectWeightLossExperience = options['value'];
+                    context.read<LongOnboardingBloc>().add(UpdateProfileEvent(
+                        {'activityLevel': selectWeightLossExperience}));
                   },
                 );
               }).toList(),

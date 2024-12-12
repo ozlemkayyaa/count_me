@@ -1,7 +1,7 @@
 import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_state.dart';
-import 'package:count_me/view/auth/long_onboarding/widget/long_onboarding_templete.dart';
+import 'package:count_me/view/auth/long_onboarding/widget/onboarding_page_template.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

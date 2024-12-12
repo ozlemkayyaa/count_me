@@ -2,6 +2,7 @@ import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/base/view/base_view_bloc.dart';
 import 'package:count_me/core/components/index.dart';
 import 'package:count_me/core/constants/app/app_colors.dart';
+import 'package:count_me/view/auth/long_onboarding/view/activity/activity_group.dart';
 import 'package:count_me/view/auth/long_onboarding/view/profile/profile_group.dart';
 import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
             physics: const NeverScrollableScrollPhysics(),
             children: [
               ProfileGroup(onNextGroup: _goToNextGroup),
-              // ActivityGroup(onNextGroup: _goToNextGroup),
+              ActivityGroup(onNextGroup: _goToNextGroup),
               // HealthGroup(onNextGroup: _goToNextGroup),
               // const PlanGroup(),
             ],

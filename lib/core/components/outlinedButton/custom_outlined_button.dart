@@ -12,6 +12,7 @@ class CustomOutlinedButton extends StatefulWidget {
   final bool? isSelected;
   final VoidCallback? onPressed;
   final bool usePaddingForLeadingIcon;
+  final EdgeInsets? padding;
 
   const CustomOutlinedButton({
     super.key,
@@ -22,6 +23,7 @@ class CustomOutlinedButton extends StatefulWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.usePaddingForLeadingIcon = false,
+    this.padding,
   });
 
   @override
@@ -77,7 +79,27 @@ class _CustomOutlinedButtonState extends BaseState<CustomOutlinedButton> {
                     )
                   : widget.leadingIcon!,
             if (widget.leadingIcon == null) const SizedBox(),
-            Text(widget.title, style: context.textTheme.bodyLarge),
+            Stack(
+              children: [
+                Padding(
+                  padding: widget.padding ?? const EdgeInsets.only(left: 0.0),
+                  child: Text(widget.title, style: context.textTheme.bodyLarge),
+                ),
+                if (widget.subtitle != null)
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 30.0,
+                      top: 28,
+                    ),
+                    child: Text(
+                      widget.subtitle!,
+                      style: context.textTheme.labelSmall,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+              ],
+            ),
             if (widget.trailingIcon != null) Icon(widget.trailingIcon),
             if (widget.trailingIcon == null) const SizedBox(),
           ],

@@ -83,7 +83,8 @@ final class AppStrings {
 
   // Motivaiton Screen 2
   static const motivation3 = "Making weight loss";
-  static const motivation4 = "easy & effective is our job!";
+  static const motivation4 = "easy & effective";
+  static const motivation5 = " is our job!";
 
   // HEALTH
   static const question10 = "Any health concerns?";
