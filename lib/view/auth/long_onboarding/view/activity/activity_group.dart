@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:count_me/core/components/elevatedButton/next_button.dart';
 import 'package:count_me/core/constants/app/app_colors.dart';
 import 'package:count_me/core/constants/app/app_strings.dart';
@@ -32,6 +34,7 @@ class _ActivityGroupState extends State<ActivityGroup> {
       });
     } else {
       widget.onNextGroup(); // Health grubuna geçiş
+      print('Geçiş tetiklendi: HealthGroup');
     }
   }
 

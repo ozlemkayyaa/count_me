@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:count_me/view/auth/long_onboarding/view/health/health_concern.dart';
 import 'package:flutter/material.dart';
 import 'package:count_me/core/components/elevatedButton/next_button.dart';
@@ -25,6 +27,7 @@ class _HealthGroupState extends State<HealthGroup> {
       });
     } else {
       widget.onNextGroup();
+      print('Geçiş tetiklendi: PlanGroup');
     }
   }
 

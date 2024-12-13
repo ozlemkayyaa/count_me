@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:count_me/core/components/elevatedButton/next_button.dart';
 import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/core/constants/enums/image_enum.dart';
@@ -36,6 +38,7 @@ class _ProfileGroupState extends State<ProfileGroup> {
       });
     } else {
       widget.onNextGroup(); // Activity grubuna geçiş
+      print('Geçiş tetiklendi: ActivityGroup');
     }
   }
 
