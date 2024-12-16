@@ -93,6 +93,7 @@ final class AppStrings {
   static const cholesterol = "High Cholesterol";
   static const diabetes = "Diabetes";
   static const other = "Other";
+  static const health = "Health";
 
   static const healthDialogTitle = "Consult your doctor";
   static const healthDialogBody =
@@ -127,7 +128,7 @@ final class AppStrings {
 
   static const targetWeight = "Target weight";
   static const level = "Level";
-  static const activityLevel = "Activity level";
+  static const activityLevel = "Activity Level";
   static const illness = "Illness attention";
   static const letsGo = "Let's go!";
 
@@ -226,7 +227,7 @@ final class AppStrings {
   static const gender = "Gender";
   static const age = "Age";
   static const height = "Height";
-  static const activity = "Activity Level";
+  static const activity = "Activity";
   static const premiumPlan = "Premium Plan";
   static const contactUs = "Contact us";
   static const aboutApp = "About app";

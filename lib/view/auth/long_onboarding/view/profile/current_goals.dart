@@ -30,21 +30,23 @@ class CurrentGoals extends StatelessWidget {
           String? selectedGoal = state.userOnboardingModel.goals;
           return OnboardingPageTemplate(
             question: AppStrings.question1,
-            body: Column(
-              children: goalsOptions.map((option) {
-                return CustomOutlinedButton(
-                  usePaddingForLeadingIcon: false,
-                  title: option['title'],
-                  isSelected: selectedGoal == option['value'],
-                  onPressed: () {
-                    // Seçilen goal'ı güncellendi
-                    selectedGoal = option['value'];
-                    context
-                        .read<LongOnboardingBloc>()
-                        .add(UpdateProfileEvent({'goals': selectedGoal}));
-                  },
-                );
-              }).toList(),
+            body: SingleChildScrollView(
+              child: Column(
+                children: goalsOptions.map((option) {
+                  return CustomOutlinedButton(
+                    usePaddingForLeadingIcon: false,
+                    title: option['title'],
+                    isSelected: selectedGoal == option['value'],
+                    onPressed: () {
+                      // Seçilen goal'ı güncellendi
+                      selectedGoal = option['value'];
+                      context
+                          .read<LongOnboardingBloc>()
+                          .add(UpdateProfileEvent({'goals': selectedGoal}));
+                    },
+                  );
+                }).toList(),
+              ),
             ),
           );
         }

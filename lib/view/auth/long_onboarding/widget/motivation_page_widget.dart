@@ -17,18 +17,20 @@ class MotivationPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 80),
-          Image.asset(image),
-          SizedBox(height: 36),
-          RichText(
-            text: title,
-          ),
-          RichText(
-            text: subtitle,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 40),
+            Image.asset(image),
+            SizedBox(height: 36),
+            RichText(
+              text: title,
+            ),
+            RichText(
+              text: subtitle,
+            ),
+          ],
+        ),
       ),
     );
   }

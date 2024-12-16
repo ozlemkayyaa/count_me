@@ -115,7 +115,12 @@ class _ProfileGroupState extends State<ProfileGroup> {
             ],
           ),
         ),
-        NextButton(onNext: _goToNextPage),
+        NextButton(
+          onNext: () {
+            print("NextButton tıklandı, sayfa geçiyor...");
+            _goToNextPage();
+          },
+        ),
         SizedBox(height: 40),
       ],
     );

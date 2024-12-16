@@ -37,23 +37,25 @@ class GenderSelect extends StatelessWidget {
           String? selectedGender = state.userOnboardingModel.gender;
           return OnboardingPageTemplate(
             question: AppStrings.question2,
-            body: Column(
-              children: genderOptions.map((option) {
-                return CustomOutlinedButton(
-                  leadingIcon:
-                      option['icon'].toImage(width: 30.0, height: 30.0),
-                  usePaddingForLeadingIcon: true,
-                  title: option['title'],
-                  isSelected: selectedGender == option['value'],
-                  onPressed: () {
-                    selectedGender =
-                        option['value']; // Seçilen cinsiyet güncellendi
-                    context
-                        .read<LongOnboardingBloc>()
-                        .add(UpdateProfileEvent({'gender': selectedGender}));
-                  },
-                );
-              }).toList(),
+            body: SingleChildScrollView(
+              child: Column(
+                children: genderOptions.map((option) {
+                  return CustomOutlinedButton(
+                    leadingIcon:
+                        option['icon'].toImage(width: 30.0, height: 30.0),
+                    usePaddingForLeadingIcon: true,
+                    title: option['title'],
+                    isSelected: selectedGender == option['value'],
+                    onPressed: () {
+                      selectedGender =
+                          option['value']; // Seçilen cinsiyet güncellendi
+                      context
+                          .read<LongOnboardingBloc>()
+                          .add(UpdateProfileEvent({'gender': selectedGender}));
+                    },
+                  );
+                }).toList(),
+              ),
             ),
           );
         }

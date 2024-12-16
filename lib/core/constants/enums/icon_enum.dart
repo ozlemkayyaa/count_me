@@ -6,6 +6,7 @@ enum IconEnum {
   men('men'),
   disclose('disclose'),
   check('check'),
+  arrowLeft('arrow_left'),
   appIcon('appIcon');
 
   final String value;

@@ -29,27 +29,30 @@ class BirthdaySelect extends StatelessWidget {
 
           return OnboardingPageTemplate(
             question: AppStrings.question3,
-            body: Column(
-              children: [
-                Flexible(
-                  child: CupertinoDatePicker(
-                    maximumYear: DateTime.now().year,
-                    minimumYear: 1900,
-                    itemExtent: 65,
-                    backgroundColor: AppColors.whiteBackground,
-                    mode: CupertinoDatePickerMode.date,
-                    initialDateTime: selectedDate ?? DateTime.now(),
-                    onDateTimeChanged: (DateTime pickedDate) {
-                      context.read<LongOnboardingBloc>().add(
-                            UpdateProfileEvent({'birthDate': pickedDate}),
-                          );
-                      print(
-                          "Seçilen Tarih: ${pickedDate.day}/${pickedDate.month}/${pickedDate.year}");
-                    },
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 300,
+                    width: double.infinity,
+                    child: CupertinoDatePicker(
+                      maximumYear: DateTime.now().year,
+                      minimumYear: 1,
+                      itemExtent: 65,
+                      backgroundColor: AppColors.whiteBackground,
+                      mode: CupertinoDatePickerMode.date,
+                      initialDateTime: selectedDate ?? DateTime.now(),
+                      onDateTimeChanged: (DateTime pickedDate) {
+                        context.read<LongOnboardingBloc>().add(
+                              UpdateProfileEvent({'birthDate': pickedDate}),
+                            );
+                        print(
+                            "Seçilen Tarih: ${pickedDate.day}/${pickedDate.month}/${pickedDate.year}");
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(height: 160),
-              ],
+                ],
+              ),
             ),
           );
         }

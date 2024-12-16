@@ -21,18 +21,18 @@ class OnboardingPageTemplate extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // Question
-        SizedBox(height: 60),
+        SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 36),
           child: Center(
             child: Text(question!, style: context.textTheme.headlineMedium),
           ),
         ),
-        (heightSizedBox == null) ? SizedBox(height: 120) : SizedBox(height: 70),
+        (heightSizedBox == null) ? SizedBox(height: 100) : SizedBox(height: 70),
 
         // Options
         Expanded(child: body),
-        SizedBox(height: 60),
+        //SizedBox(height: 60),
       ],
     );
   }
