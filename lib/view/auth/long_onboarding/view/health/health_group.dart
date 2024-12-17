@@ -17,7 +17,7 @@ class _HealthGroupState extends State<HealthGroup> {
   int _currentPage = 0;
 
   void _goToNextPage() {
-    if (_currentPage < 1) {
+    if (_currentPage < 0) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,

@@ -16,13 +16,14 @@ class NameInput extends StatelessWidget {
     return BlocBuilder<LongOnboardingBloc, LongOnboardingState>(
       builder: (context, state) {
         return OnboardingPageTemplate(
-            question: AppStrings.question7,
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 36.0),
-              child: TextFormField(
-                decoration: InputDecoration(labelText: AppStrings.name),
-              ),
-            ));
+          question: AppStrings.question7,
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 36.0),
+            child: TextFormField(
+              decoration: InputDecoration(labelText: AppStrings.name),
+            ),
+          ),
+        );
       },
     );
   }

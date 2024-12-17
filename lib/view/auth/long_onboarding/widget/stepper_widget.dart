@@ -29,8 +29,8 @@ class StepperWidget extends StatelessWidget {
           ),
         ),
         child: Stepper(
-          stepIconHeight: 28,
-          stepIconWidth: 28,
+          stepIconHeight: 24,
+          stepIconWidth: 24,
           elevation: 0,
           physics: NeverScrollableScrollPhysics(),
           type: StepperType.horizontal,

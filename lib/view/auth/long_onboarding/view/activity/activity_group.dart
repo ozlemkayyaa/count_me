@@ -5,14 +5,17 @@ import 'package:count_me/core/constants/app/app_colors.dart';
 import 'package:count_me/core/constants/app/app_strings.dart';
 import 'package:count_me/core/constants/enums/image_enum.dart';
 import 'package:count_me/core/extension/index.dart';
+import 'package:count_me/view/auth/long_onboarding/model/onboarding_page_model.dart';
 import 'package:count_me/view/auth/long_onboarding/view/activity/current_activity_level.dart';
 import 'package:count_me/view/auth/long_onboarding/view/activity/topic_weight_loss.dart';
 import 'package:count_me/view/auth/long_onboarding/widget/motivation_page_widget.dart';
 import 'package:flutter/material.dart';
 
 class ActivityGroup extends StatefulWidget {
-  final VoidCallback onNextGroup; // Activity grubuna geçmek için callback
-  const ActivityGroup({required this.onNextGroup, super.key});
+  final VoidCallback onNextGroup;
+  final ValueChanged<int> onQuestionChange;
+  const ActivityGroup(
+      {required this.onNextGroup, super.key, required this.onQuestionChange});
 
   @override
   State<ActivityGroup> createState() => _ActivityGroupState();
@@ -21,20 +24,68 @@ class ActivityGroup extends StatefulWidget {
 class _ActivityGroupState extends State<ActivityGroup> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  final int totalPages = 2;
+  final List<OnboardingPage> _pages = [];
+  int _currentQuestionIndex = 1;
 
   void _goToNextPage() {
-    if (_currentPage < 3) {
-      // Activity grubundaki toplam sayfa
+    if (_currentPage < _pages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
       setState(() {
         _currentPage++;
+        if (_pages[_currentPage].isQuestion) {
+          // Sadece soru sayfalarında ilerler
+          _currentQuestionIndex++;
+          widget.onQuestionChange(_currentQuestionIndex);
+        }
       });
     } else {
-      widget.onNextGroup(); // Health grubuna geçiş
-      print('Geçiş tetiklendi: HealthGroup');
+      widget.onNextGroup();
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_pages.isEmpty) {
+      // Sayfalar bir kez oluşturulmalı
+      _pages.addAll([
+        // CURRENT ACTIVITY LEVEL
+        OnboardingPage(
+            widget: CurrentActivityLevel(
+                pageController: _pageController, goToNextPage: _goToNextPage),
+            isQuestion: true),
+
+        // TOPIC WEIGHT LOSS
+        OnboardingPage(
+            widget: TopicWeightLoss(
+                pageController: _pageController, goToNextPage: _goToNextPage),
+            isQuestion: true),
+
+        // MOTIVATION PAGE - 3
+        OnboardingPage(
+            widget: MotivationPageWidget(
+              image: ImageEnum.motivation3.toPng,
+              title: TextSpan(
+                text: AppStrings.motivation3,
+                style: context.textTheme.headlineSmall,
+              ),
+              subtitle: TextSpan(
+                  text: AppStrings.motivation4,
+                  style: context.textTheme.headlineMedium!
+                      .copyWith(color: AppColors.mainGreen),
+                  children: [
+                    TextSpan(
+                      text: AppStrings.motivation5,
+                      style: context.textTheme.headlineSmall,
+                    ),
+                  ]),
+            ),
+            isQuestion: false),
+      ]);
     }
   }
 
@@ -43,40 +94,19 @@ class _ActivityGroupState extends State<ActivityGroup> {
     return Column(
       children: [
         Expanded(
-          child: PageView(
+          child: PageView.builder(
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
-            children: [
-              // CURRENT ACTIVITY LEVEL
-              CurrentActivityLevel(
-                  pageController: _pageController, goToNextPage: _goToNextPage),
-
-              // TOPIC WEIGHT LOSS
-              TopicWeightLoss(
-                  pageController: _pageController, goToNextPage: _goToNextPage),
-
-              // MOTIVATION PAGE - 3
-              MotivationPageWidget(
-                image: ImageEnum.motivation3.toPng,
-                title: TextSpan(
-                  text: AppStrings.motivation3,
-                  style: context.textTheme.headlineSmall,
-                ),
-                subtitle: TextSpan(
-                    text: AppStrings.motivation4,
-                    style: context.textTheme.headlineMedium!
-                        .copyWith(color: AppColors.mainGreen),
-                    children: [
-                      TextSpan(
-                        text: AppStrings.motivation5,
-                        style: context.textTheme.headlineSmall,
-                      ),
-                    ]),
-              ),
-            ],
+            itemCount: _pages.length,
+            itemBuilder: (context, index) => _pages[index].widget,
           ),
         ),
-        NextButton(onNext: _goToNextPage),
+        NextButton(
+          onNext: () {
+            print("Activity Bölümü: NextButton tıklandı, sayfa geçiyor...");
+            _goToNextPage();
+          },
+        ),
         SizedBox(height: 40),
       ],
     );
