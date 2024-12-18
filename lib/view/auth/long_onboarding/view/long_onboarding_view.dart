@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/base/view/base_view_bloc.dart';
 import 'package:count_me/core/constants/app/app_strings.dart';
