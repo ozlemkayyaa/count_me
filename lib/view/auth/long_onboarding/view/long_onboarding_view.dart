@@ -175,7 +175,7 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
                   ],
                 ),
 
-                // Stepper Widget
+                // Stepper Widget cpompeted
                 Padding(
                   padding: const EdgeInsets.only(left: 32.0),
                   child: StepperWidget(currentStep: _currentStep),
