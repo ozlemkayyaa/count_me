@@ -9,4 +9,12 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   // Bloc'a erişmek için bir yardımcı işlev (isteğe bağlı)
   TBloc readBloc<TBloc>() => context.read<TBloc>();
+
+  /// Geri gidilebilir mi kontrolü
+  bool canGoBack() => false;
+
+  /// Grup içi önceki sayfaya gitme işlemi
+  void goToPreviousPage() {}
+
+  int get currentPage => 0; // Varsayılan, gruplar kendisi override eder
 }

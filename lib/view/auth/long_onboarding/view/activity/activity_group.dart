@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/components/elevatedButton/next_button.dart';
 import 'package:count_me/core/constants/app/app_colors.dart';
 import 'package:count_me/core/constants/app/app_strings.dart';
@@ -21,22 +22,23 @@ class ActivityGroup extends StatefulWidget {
   State<ActivityGroup> createState() => _ActivityGroupState();
 }
 
-class _ActivityGroupState extends State<ActivityGroup> {
+class _ActivityGroupState extends BaseState<ActivityGroup> {
   final PageController _pageController = PageController();
-  int _currentPage = 0;
+  @override
+  int currentPage = 0;
   final int totalPages = 2;
   final List<OnboardingPage> _pages = [];
   int _currentQuestionIndex = 1;
 
   void _goToNextPage() {
-    if (_currentPage < _pages.length - 1) {
+    if (currentPage < _pages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
       setState(() {
-        _currentPage++;
-        if (_pages[_currentPage].isQuestion) {
+        currentPage++;
+        if (_pages[currentPage].isQuestion) {
           // Sadece soru sayfalarında ilerler
           _currentQuestionIndex++;
           widget.onQuestionChange(_currentQuestionIndex);
@@ -45,6 +47,11 @@ class _ActivityGroupState extends State<ActivityGroup> {
     } else {
       widget.onNextGroup();
     }
+  }
+
+  @override
+  bool canGoBack() {
+    return currentPage > 0; // İlk sayfa değilse geri gidebilir
   }
 
   @override
@@ -86,6 +93,23 @@ class _ActivityGroupState extends State<ActivityGroup> {
             ),
             isQuestion: false),
       ]);
+    }
+  }
+
+  @override
+  void goToPreviousPage() {
+    if (currentPage > 0) {
+      _pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+      setState(() {
+        currentPage--;
+        if (_pages[currentPage].isQuestion) {
+          _currentQuestionIndex--;
+          widget.onQuestionChange(_currentQuestionIndex);
+        }
+      });
     }
   }
 

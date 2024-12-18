@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:count_me/core/base/state/base_state.dart';
 import 'package:count_me/core/components/elevatedButton/next_button.dart';
 import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/core/constants/enums/image_enum.dart';
@@ -18,16 +19,23 @@ import 'package:flutter/material.dart';
 class ProfileGroup extends StatefulWidget {
   final VoidCallback onNextGroup;
   final ValueChanged<int> onQuestionChange;
-  const ProfileGroup(
-      {required this.onNextGroup, super.key, required this.onQuestionChange});
+
+  const ProfileGroup({
+    required this.onNextGroup,
+    super.key,
+    required this.onQuestionChange,
+  });
 
   @override
   State<ProfileGroup> createState() => _ProfileGroupState();
 }
 
-class _ProfileGroupState extends State<ProfileGroup> {
+class _ProfileGroupState extends BaseState<ProfileGroup> {
   final PageController _pageController = PageController();
-  int _currentPage = 0;
+
+  @override
+  int currentPage = 0;
+
   final int totalPages = 7;
   final List<OnboardingPage> _pages = [];
   int _currentQuestionIndex = 1;
@@ -127,14 +135,14 @@ class _ProfileGroupState extends State<ProfileGroup> {
   }
 
   void _goToNextPage() {
-    if (_currentPage < _pages.length - 1) {
+    if (currentPage < _pages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
       setState(() {
-        _currentPage++;
-        if (_pages[_currentPage].isQuestion) {
+        currentPage++;
+        if (_pages[currentPage].isQuestion) {
           // Sadece soru sayfalarında ilerler
           _currentQuestionIndex++;
           widget.onQuestionChange(_currentQuestionIndex);
@@ -145,22 +153,27 @@ class _ProfileGroupState extends State<ProfileGroup> {
     }
   }
 
-  // void _goToNextPage() {
-  //   if (_currentPage < totalPages - 1) {
-  //     // Profile grubundaki toplam sayfa
-  //     _pageController.nextPage(
-  //       duration: const Duration(milliseconds: 300),
-  //       curve: Curves.easeInOut,
-  //     );
-  //     setState(() {
-  //       _currentPage++;
-  //     });
-  //     widget.onQuestionChange(_currentPage + 1); // Yeni soru numarasını iletin
-  //   } else {
-  //     widget.onNextGroup(); // Activity grubuna geçiş
-  //     print('Geçiş tetiklendi: ActivityGroup');
-  //   }
-  // }
+  @override
+  void goToPreviousPage() {
+    if (currentPage > 0) {
+      _pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+      setState(() {
+        currentPage--;
+        if (_pages[currentPage].isQuestion) {
+          _currentQuestionIndex--;
+          widget.onQuestionChange(_currentQuestionIndex);
+        }
+      });
+    }
+  }
+
+  @override
+  bool canGoBack() {
+    return currentPage > 0; // İlk sayfa değilse geri gidebilir
+  }
 
   @override
   Widget build(BuildContext context) {

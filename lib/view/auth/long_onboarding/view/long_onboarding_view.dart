@@ -29,11 +29,20 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
 
   final List<Widget> _groups = [];
 
+  // Her grup için GlobalKey tanımla
+  final List<GlobalKey<BaseState>> _groupKeys = [
+    GlobalKey<BaseState<ProfileGroup>>(),
+    GlobalKey<BaseState<ActivityGroup>>(),
+    GlobalKey<BaseState<HealthGroup>>(),
+    GlobalKey<BaseState<PlanGroup>>(),
+  ];
+
   @override
   void initState() {
     super.initState();
     _groups.addAll([
       ProfileGroup(
+        key: _groupKeys[0],
         onNextGroup: _goToNextGroup,
         onQuestionChange: (int questionNumber) {
           setState(() {
@@ -42,6 +51,7 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
         },
       ),
       ActivityGroup(
+        key: _groupKeys[1],
         onNextGroup: _goToNextGroup,
         onQuestionChange: (int questionNumber) {
           setState(() {
@@ -49,8 +59,24 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
           });
         },
       ),
-      HealthGroup(onNextGroup: _goToNextGroup),
-      PlanGroup(onNextGroup: _goToNextGroup),
+      HealthGroup(
+        key: _groupKeys[2],
+        onNextGroup: _goToNextGroup,
+        onQuestionChange: (int questionNumber) {
+          setState(() {
+            _currentQuestion = questionNumber;
+          });
+        },
+      ),
+      PlanGroup(
+        key: _groupKeys[3],
+        onNextGroup: _goToNextGroup,
+        onQuestionChange: (int questionNumber) {
+          setState(() {
+            _currentQuestion = questionNumber;
+          });
+        },
+      ),
     ]);
   }
 
@@ -93,6 +119,23 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
     }
   }
 
+  void _handlePreviousButton() {
+    // Mevcut grubun State'ine eriş ve `goToPreviousPage` çağır
+    final currentGroupKey = _groupKeys[_currentStep];
+    final currentGroupState = currentGroupKey.currentState;
+
+    if (currentGroupState != null && currentGroupState.canGoBack()) {
+      // Geri gidilebiliyorsa, önce grup içinde geri git
+      if (currentGroupState.canGoBack()) {
+        currentGroupState.goToPreviousPage();
+        return;
+      }
+    }
+
+    // Grup içinden geri gidilemiyorsa bir önceki gruba geç
+    _goToPreviousGroup();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseView<LongOnboardingBloc, LongOnboardingState>(
@@ -109,7 +152,7 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: _goToPreviousGroup,
+                      onTap: _handlePreviousButton,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 30.0, right: 50.0),
                         child:
