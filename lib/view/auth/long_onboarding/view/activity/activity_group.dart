@@ -9,8 +9,11 @@ import 'package:count_me/core/extension/index.dart';
 import 'package:count_me/view/auth/long_onboarding/model/onboarding_page_model.dart';
 import 'package:count_me/view/auth/long_onboarding/view/activity/current_activity_level.dart';
 import 'package:count_me/view/auth/long_onboarding/view/activity/topic_weight_loss.dart';
+import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
+import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_event.dart';
 import 'package:count_me/view/auth/long_onboarding/widget/motivation_page_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ActivityGroup extends StatefulWidget {
   final VoidCallback onNextGroup;
@@ -24,18 +27,16 @@ class ActivityGroup extends StatefulWidget {
 
 class _ActivityGroupState extends BaseState<ActivityGroup> {
   final PageController _pageController = PageController();
+
   @override
   int currentPage = 0;
+
   final int totalPages = 2;
   final List<OnboardingPage> _pages = [];
   int _currentQuestionIndex = 1;
 
   void _goToNextPage() {
     if (currentPage < _pages.length - 1) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
       setState(() {
         currentPage++;
         if (_pages[currentPage].isQuestion) {
@@ -44,6 +45,11 @@ class _ActivityGroupState extends BaseState<ActivityGroup> {
           widget.onQuestionChange(_currentQuestionIndex);
         }
       });
+      _pageController.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
     } else {
       widget.onNextGroup();
     }
@@ -108,6 +114,9 @@ class _ActivityGroupState extends BaseState<ActivityGroup> {
         if (_pages[currentPage].isQuestion) {
           _currentQuestionIndex--;
           widget.onQuestionChange(_currentQuestionIndex);
+        } else {
+          // Eğer grup değişimi gerekiyorsa event gönder
+          context.read<LongOnboardingBloc>().add(PreviousPageEvent());
         }
       });
     }

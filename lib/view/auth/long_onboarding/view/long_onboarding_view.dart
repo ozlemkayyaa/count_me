@@ -104,20 +104,6 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
     }
   }
 
-  // Bir önceki gruba dönme
-  void _goToPreviousGroup() {
-    if (_currentStep > 0) {
-      setState(() {
-        _currentStep--;
-        _currentQuestion = 7; // Geri gidince önceki grubun son sorusuna gider
-      });
-      _mainPageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
-
   void _handlePreviousButton() {
     // Mevcut grubun State'ine eriş ve `goToPreviousPage` çağır
     final currentGroupKey = _groupKeys[_currentStep];
@@ -132,7 +118,16 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
     }
 
     // Grup içinden geri gidilemiyorsa bir önceki gruba geç
-    _goToPreviousGroup();
+    if (_currentStep > 0) {
+      setState(() {
+        _currentStep--;
+        _currentQuestion = 1; // Geri gidince önceki grubun son sorusuna gider
+      });
+      _mainPageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override

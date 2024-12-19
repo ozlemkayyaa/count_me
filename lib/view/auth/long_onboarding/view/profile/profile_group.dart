@@ -13,8 +13,11 @@ import 'package:count_me/view/auth/long_onboarding/view/profile/height_select.da
 import 'package:count_me/view/auth/long_onboarding/view/profile/current_weight_select.dart';
 import 'package:count_me/view/auth/long_onboarding/view/profile/ideal_weight_select.dart';
 import 'package:count_me/view/auth/long_onboarding/view/profile/name_input.dart';
+import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
+import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_event.dart';
 import 'package:count_me/view/auth/long_onboarding/widget/motivation_page_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileGroup extends StatefulWidget {
   final VoidCallback onNextGroup;
@@ -136,10 +139,6 @@ class _ProfileGroupState extends BaseState<ProfileGroup> {
 
   void _goToNextPage() {
     if (currentPage < _pages.length - 1) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
       setState(() {
         currentPage++;
         if (_pages[currentPage].isQuestion) {
@@ -148,6 +147,11 @@ class _ProfileGroupState extends BaseState<ProfileGroup> {
           widget.onQuestionChange(_currentQuestionIndex);
         }
       });
+      _pageController.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
     } else {
       widget.onNextGroup();
     }
@@ -165,6 +169,9 @@ class _ProfileGroupState extends BaseState<ProfileGroup> {
         if (_pages[currentPage].isQuestion) {
           _currentQuestionIndex--;
           widget.onQuestionChange(_currentQuestionIndex);
+        } else {
+          // Eğer grup değişimi gerekiyorsa event gönder
+          context.read<LongOnboardingBloc>().add(PreviousPageEvent());
         }
       });
     }
