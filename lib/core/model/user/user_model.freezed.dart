@@ -20,18 +20,27 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
+// Kişisel bilgiler
+  int? get id => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  Gender? get gender => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError;
   DateTime? get birthday => throw _privateConstructorUsedError;
-  double? get height => throw _privateConstructorUsedError;
+  int? get height => throw _privateConstructorUsedError;
   double? get currentWeight => throw _privateConstructorUsedError;
   double? get idealWeight => throw _privateConstructorUsedError;
-  double? get goal => throw _privateConstructorUsedError;
-  UserStatus? get status => throw _privateConstructorUsedError;
-  ActivityLevel? get activityLevel => throw _privateConstructorUsedError;
-  List<String>? get healthConditions => throw _privateConstructorUsedError;
+  String? get goal =>
+      throw _privateConstructorUsedError; // Kullanıcının hedefleri
+  bool? get isActive =>
+      throw _privateConstructorUsedError; // Kullanıcının aktifliği
+  ActivityLevel? get activityLevel =>
+      throw _privateConstructorUsedError; // Kullanıcının hareket etme durumu
+  List<String>? get healthConditions =>
+      throw _privateConstructorUsedError; // Kullanıcının sağlık problemleri
+  bool? get isPremium =>
+      throw _privateConstructorUsedError; // Kullanıcının premium olup olmadığı
+  String? get profilePhotoUrl => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,18 +58,21 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String? email,
+      {int? id,
+      String? email,
       String? password,
       String? name,
-      Gender? gender,
+      String? gender,
       DateTime? birthday,
-      double? height,
+      int? height,
       double? currentWeight,
       double? idealWeight,
-      double? goal,
-      UserStatus? status,
+      String? goal,
+      bool? isActive,
       ActivityLevel? activityLevel,
-      List<String>? healthConditions});
+      List<String>? healthConditions,
+      bool? isPremium,
+      String? profilePhotoUrl});
 
   $ActivityLevelCopyWith<$Res>? get activityLevel;
 }
@@ -80,6 +92,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? name = freezed,
@@ -89,11 +102,17 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? currentWeight = freezed,
     Object? idealWeight = freezed,
     Object? goal = freezed,
-    Object? status = freezed,
+    Object? isActive = freezed,
     Object? activityLevel = freezed,
     Object? healthConditions = freezed,
+    Object? isPremium = freezed,
+    Object? profilePhotoUrl = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -109,7 +128,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender?,
+              as String?,
       birthday: freezed == birthday
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
@@ -117,7 +136,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       height: freezed == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       currentWeight: freezed == currentWeight
           ? _value.currentWeight
           : currentWeight // ignore: cast_nullable_to_non_nullable
@@ -129,11 +148,11 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       goal: freezed == goal
           ? _value.goal
           : goal // ignore: cast_nullable_to_non_nullable
-              as double?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UserStatus?,
+              as String?,
+      isActive: freezed == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool?,
       activityLevel: freezed == activityLevel
           ? _value.activityLevel
           : activityLevel // ignore: cast_nullable_to_non_nullable
@@ -142,6 +161,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.healthConditions
           : healthConditions // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      isPremium: freezed == isPremium
+          ? _value.isPremium
+          : isPremium // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      profilePhotoUrl: freezed == profilePhotoUrl
+          ? _value.profilePhotoUrl
+          : profilePhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -169,18 +196,21 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? email,
+      {int? id,
+      String? email,
       String? password,
       String? name,
-      Gender? gender,
+      String? gender,
       DateTime? birthday,
-      double? height,
+      int? height,
       double? currentWeight,
       double? idealWeight,
-      double? goal,
-      UserStatus? status,
+      String? goal,
+      bool? isActive,
       ActivityLevel? activityLevel,
-      List<String>? healthConditions});
+      List<String>? healthConditions,
+      bool? isPremium,
+      String? profilePhotoUrl});
 
   @override
   $ActivityLevelCopyWith<$Res>? get activityLevel;
@@ -199,6 +229,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? name = freezed,
@@ -208,11 +239,17 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? currentWeight = freezed,
     Object? idealWeight = freezed,
     Object? goal = freezed,
-    Object? status = freezed,
+    Object? isActive = freezed,
     Object? activityLevel = freezed,
     Object? healthConditions = freezed,
+    Object? isPremium = freezed,
+    Object? profilePhotoUrl = freezed,
   }) {
     return _then(_$UserModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -228,7 +265,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender?,
+              as String?,
       birthday: freezed == birthday
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
@@ -236,7 +273,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
       height: freezed == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       currentWeight: freezed == currentWeight
           ? _value.currentWeight
           : currentWeight // ignore: cast_nullable_to_non_nullable
@@ -248,11 +285,11 @@ class __$$UserModelImplCopyWithImpl<$Res>
       goal: freezed == goal
           ? _value.goal
           : goal // ignore: cast_nullable_to_non_nullable
-              as double?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UserStatus?,
+              as String?,
+      isActive: freezed == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool?,
       activityLevel: freezed == activityLevel
           ? _value.activityLevel
           : activityLevel // ignore: cast_nullable_to_non_nullable
@@ -261,6 +298,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value._healthConditions
           : healthConditions // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      isPremium: freezed == isPremium
+          ? _value.isPremium
+          : isPremium // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      profilePhotoUrl: freezed == profilePhotoUrl
+          ? _value.profilePhotoUrl
+          : profilePhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -269,7 +314,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   _$UserModelImpl(
-      {this.email,
+      {this.id,
+      this.email,
       this.password,
       this.name,
       this.gender,
@@ -278,14 +324,19 @@ class _$UserModelImpl implements _UserModel {
       this.currentWeight,
       this.idealWeight,
       this.goal,
-      this.status,
+      this.isActive,
       this.activityLevel,
-      final List<String>? healthConditions})
+      final List<String>? healthConditions,
+      this.isPremium,
+      this.profilePhotoUrl})
       : _healthConditions = healthConditions;
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
+// Kişisel bilgiler
+  @override
+  final int? id;
   @override
   final String? email;
   @override
@@ -293,22 +344,26 @@ class _$UserModelImpl implements _UserModel {
   @override
   final String? name;
   @override
-  final Gender? gender;
+  final String? gender;
   @override
   final DateTime? birthday;
   @override
-  final double? height;
+  final int? height;
   @override
   final double? currentWeight;
   @override
   final double? idealWeight;
   @override
-  final double? goal;
+  final String? goal;
+// Kullanıcının hedefleri
   @override
-  final UserStatus? status;
+  final bool? isActive;
+// Kullanıcının aktifliği
   @override
   final ActivityLevel? activityLevel;
+// Kullanıcının hareket etme durumu
   final List<String>? _healthConditions;
+// Kullanıcının hareket etme durumu
   @override
   List<String>? get healthConditions {
     final value = _healthConditions;
@@ -319,9 +374,16 @@ class _$UserModelImpl implements _UserModel {
     return EqualUnmodifiableListView(value);
   }
 
+// Kullanıcının sağlık problemleri
+  @override
+  final bool? isPremium;
+// Kullanıcının premium olup olmadığı
+  @override
+  final String? profilePhotoUrl;
+
   @override
   String toString() {
-    return 'UserModel(email: $email, password: $password, name: $name, gender: $gender, birthday: $birthday, height: $height, currentWeight: $currentWeight, idealWeight: $idealWeight, goal: $goal, status: $status, activityLevel: $activityLevel, healthConditions: $healthConditions)';
+    return 'UserModel(id: $id, email: $email, password: $password, name: $name, gender: $gender, birthday: $birthday, height: $height, currentWeight: $currentWeight, idealWeight: $idealWeight, goal: $goal, isActive: $isActive, activityLevel: $activityLevel, healthConditions: $healthConditions, isPremium: $isPremium, profilePhotoUrl: $profilePhotoUrl)';
   }
 
   @override
@@ -329,6 +391,7 @@ class _$UserModelImpl implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -342,17 +405,23 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.idealWeight, idealWeight) ||
                 other.idealWeight == idealWeight) &&
             (identical(other.goal, goal) || other.goal == goal) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
             (identical(other.activityLevel, activityLevel) ||
                 other.activityLevel == activityLevel) &&
             const DeepCollectionEquality()
-                .equals(other._healthConditions, _healthConditions));
+                .equals(other._healthConditions, _healthConditions) &&
+            (identical(other.isPremium, isPremium) ||
+                other.isPremium == isPremium) &&
+            (identical(other.profilePhotoUrl, profilePhotoUrl) ||
+                other.profilePhotoUrl == profilePhotoUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       email,
       password,
       name,
@@ -362,9 +431,11 @@ class _$UserModelImpl implements _UserModel {
       currentWeight,
       idealWeight,
       goal,
-      status,
+      isActive,
       activityLevel,
-      const DeepCollectionEquality().hash(_healthConditions));
+      const DeepCollectionEquality().hash(_healthConditions),
+      isPremium,
+      profilePhotoUrl);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -384,22 +455,28 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   factory _UserModel(
-      {final String? email,
+      {final int? id,
+      final String? email,
       final String? password,
       final String? name,
-      final Gender? gender,
+      final String? gender,
       final DateTime? birthday,
-      final double? height,
+      final int? height,
       final double? currentWeight,
       final double? idealWeight,
-      final double? goal,
-      final UserStatus? status,
+      final String? goal,
+      final bool? isActive,
       final ActivityLevel? activityLevel,
-      final List<String>? healthConditions}) = _$UserModelImpl;
+      final List<String>? healthConditions,
+      final bool? isPremium,
+      final String? profilePhotoUrl}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
+// Kişisel bilgiler
+  @override
+  int? get id;
   @override
   String? get email;
   @override
@@ -407,23 +484,27 @@ abstract class _UserModel implements UserModel {
   @override
   String? get name;
   @override
-  Gender? get gender;
+  String? get gender;
   @override
   DateTime? get birthday;
   @override
-  double? get height;
+  int? get height;
   @override
   double? get currentWeight;
   @override
   double? get idealWeight;
   @override
-  double? get goal;
+  String? get goal; // Kullanıcının hedefleri
   @override
-  UserStatus? get status;
+  bool? get isActive; // Kullanıcının aktifliği
   @override
-  ActivityLevel? get activityLevel;
+  ActivityLevel? get activityLevel; // Kullanıcının hareket etme durumu
   @override
-  List<String>? get healthConditions;
+  List<String>? get healthConditions; // Kullanıcının sağlık problemleri
+  @override
+  bool? get isPremium; // Kullanıcının premium olup olmadığı
+  @override
+  String? get profilePhotoUrl;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

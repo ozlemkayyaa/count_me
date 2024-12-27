@@ -3,25 +3,25 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
-enum Gender { male, female }
-
-enum UserStatus { inactive, active }
-
 @freezed
 class UserModel with _$UserModel {
   factory UserModel({
+    // Kişisel bilgiler
+    int? id,
     String? email,
     String? password,
     String? name,
-    Gender? gender,
+    String? gender,
     DateTime? birthday,
-    double? height,
+    int? height,
     double? currentWeight,
     double? idealWeight,
-    double? goal,
-    UserStatus? status,
-    ActivityLevel? activityLevel,
-    List<String>? healthConditions,
+    String? goal, // Kullanıcının hedefleri
+    bool? isActive, // Kullanıcının aktifliği
+    ActivityLevel? activityLevel, // Kullanıcının hareket etme durumu
+    List<String>? healthConditions, // Kullanıcının sağlık problemleri
+    bool? isPremium, // Kullanıcının premium olup olmadığı
+    String? profilePhotoUrl, // Kullanıcının profil fotoğrafı URL'si
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

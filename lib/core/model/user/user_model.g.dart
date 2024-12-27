@@ -8,18 +8,19 @@ part of 'user_model.dart';
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
+      id: (json['id'] as num?)?.toInt(),
       email: json['email'] as String?,
       password: json['password'] as String?,
       name: json['name'] as String?,
-      gender: $enumDecodeNullable(_$GenderEnumMap, json['gender']),
+      gender: json['gender'] as String?,
       birthday: json['birthday'] == null
           ? null
           : DateTime.parse(json['birthday'] as String),
-      height: (json['height'] as num?)?.toDouble(),
+      height: (json['height'] as num?)?.toInt(),
       currentWeight: (json['currentWeight'] as num?)?.toDouble(),
       idealWeight: (json['idealWeight'] as num?)?.toDouble(),
-      goal: (json['goal'] as num?)?.toDouble(),
-      status: $enumDecodeNullable(_$UserStatusEnumMap, json['status']),
+      goal: json['goal'] as String?,
+      isActive: json['isActive'] as bool?,
       activityLevel: json['activityLevel'] == null
           ? null
           : ActivityLevel.fromJson(
@@ -27,33 +28,28 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       healthConditions: (json['healthConditions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      isPremium: json['isPremium'] as bool?,
+      profilePhotoUrl: json['profilePhotoUrl'] as String?,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'email': instance.email,
       'password': instance.password,
       'name': instance.name,
-      'gender': _$GenderEnumMap[instance.gender],
+      'gender': instance.gender,
       'birthday': instance.birthday?.toIso8601String(),
       'height': instance.height,
       'currentWeight': instance.currentWeight,
       'idealWeight': instance.idealWeight,
       'goal': instance.goal,
-      'status': _$UserStatusEnumMap[instance.status],
+      'isActive': instance.isActive,
       'activityLevel': instance.activityLevel,
       'healthConditions': instance.healthConditions,
+      'isPremium': instance.isPremium,
+      'profilePhotoUrl': instance.profilePhotoUrl,
     };
-
-const _$GenderEnumMap = {
-  Gender.male: 'male',
-  Gender.female: 'female',
-};
-
-const _$UserStatusEnumMap = {
-  UserStatus.inactive: 'inactive',
-  UserStatus.active: 'active',
-};
 
 _$ActivityLevelImpl _$$ActivityLevelImplFromJson(Map<String, dynamic> json) =>
     _$ActivityLevelImpl(

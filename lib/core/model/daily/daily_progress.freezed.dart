@@ -20,17 +20,23 @@ DailyProgress _$DailyProgressFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DailyProgress {
-  DateTime? get date => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError; // Günün tarihi
+  List<MealModel>? get meals =>
+      throw _privateConstructorUsedError; // Günlük öğünler
   List<DailyNutrition>? get nutritionData => throw _privateConstructorUsedError;
-  List<DailyWeight>? get weightData => throw _privateConstructorUsedError;
+  List<WeightModel>? get weightData =>
+      throw _privateConstructorUsedError; // Ağırlık geçmişi
   List<DailyWaterIntake>? get waterIntakeData =>
-      throw _privateConstructorUsedError;
-  Map<String, double>? get mealCalories =>
-      throw _privateConstructorUsedError; // breakfast, lunch, vb.
+      throw _privateConstructorUsedError; // Su tüketim geçmişi
   String? get mood =>
-      throw _privateConstructorUsedError; // optional: happy, sad, etc.
-  bool? get isActive => throw _privateConstructorUsedError;
-  int? get streakDays => throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; // Ruh hali (ör. happy, sad)
+  bool? get isActive =>
+      throw _privateConstructorUsedError; // Kullanıcı o gün aktif mi?
+  int? get streakDays =>
+      throw _privateConstructorUsedError; // Kaç gün üst üste devam etmiş?
+  bool? get caloriesGoalMet =>
+      throw _privateConstructorUsedError; // Günlük kalori hedefi karşılanmış mı?
+  bool? get waterGoalMet => throw _privateConstructorUsedError;
 
   /// Serializes this DailyProgress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,13 +56,15 @@ abstract class $DailyProgressCopyWith<$Res> {
   @useResult
   $Res call(
       {DateTime? date,
+      List<MealModel>? meals,
       List<DailyNutrition>? nutritionData,
-      List<DailyWeight>? weightData,
+      List<WeightModel>? weightData,
       List<DailyWaterIntake>? waterIntakeData,
-      Map<String, double>? mealCalories,
       String? mood,
       bool? isActive,
-      int? streakDays});
+      int? streakDays,
+      bool? caloriesGoalMet,
+      bool? waterGoalMet});
 }
 
 /// @nodoc
@@ -75,19 +83,25 @@ class _$DailyProgressCopyWithImpl<$Res, $Val extends DailyProgress>
   @override
   $Res call({
     Object? date = freezed,
+    Object? meals = freezed,
     Object? nutritionData = freezed,
     Object? weightData = freezed,
     Object? waterIntakeData = freezed,
-    Object? mealCalories = freezed,
     Object? mood = freezed,
     Object? isActive = freezed,
     Object? streakDays = freezed,
+    Object? caloriesGoalMet = freezed,
+    Object? waterGoalMet = freezed,
   }) {
     return _then(_value.copyWith(
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      meals: freezed == meals
+          ? _value.meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<MealModel>?,
       nutritionData: freezed == nutritionData
           ? _value.nutritionData
           : nutritionData // ignore: cast_nullable_to_non_nullable
@@ -95,15 +109,11 @@ class _$DailyProgressCopyWithImpl<$Res, $Val extends DailyProgress>
       weightData: freezed == weightData
           ? _value.weightData
           : weightData // ignore: cast_nullable_to_non_nullable
-              as List<DailyWeight>?,
+              as List<WeightModel>?,
       waterIntakeData: freezed == waterIntakeData
           ? _value.waterIntakeData
           : waterIntakeData // ignore: cast_nullable_to_non_nullable
               as List<DailyWaterIntake>?,
-      mealCalories: freezed == mealCalories
-          ? _value.mealCalories
-          : mealCalories // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>?,
       mood: freezed == mood
           ? _value.mood
           : mood // ignore: cast_nullable_to_non_nullable
@@ -116,6 +126,14 @@ class _$DailyProgressCopyWithImpl<$Res, $Val extends DailyProgress>
           ? _value.streakDays
           : streakDays // ignore: cast_nullable_to_non_nullable
               as int?,
+      caloriesGoalMet: freezed == caloriesGoalMet
+          ? _value.caloriesGoalMet
+          : caloriesGoalMet // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      waterGoalMet: freezed == waterGoalMet
+          ? _value.waterGoalMet
+          : waterGoalMet // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -130,13 +148,15 @@ abstract class _$$DailyProgressImplCopyWith<$Res>
   @useResult
   $Res call(
       {DateTime? date,
+      List<MealModel>? meals,
       List<DailyNutrition>? nutritionData,
-      List<DailyWeight>? weightData,
+      List<WeightModel>? weightData,
       List<DailyWaterIntake>? waterIntakeData,
-      Map<String, double>? mealCalories,
       String? mood,
       bool? isActive,
-      int? streakDays});
+      int? streakDays,
+      bool? caloriesGoalMet,
+      bool? waterGoalMet});
 }
 
 /// @nodoc
@@ -153,19 +173,25 @@ class __$$DailyProgressImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = freezed,
+    Object? meals = freezed,
     Object? nutritionData = freezed,
     Object? weightData = freezed,
     Object? waterIntakeData = freezed,
-    Object? mealCalories = freezed,
     Object? mood = freezed,
     Object? isActive = freezed,
     Object? streakDays = freezed,
+    Object? caloriesGoalMet = freezed,
+    Object? waterGoalMet = freezed,
   }) {
     return _then(_$DailyProgressImpl(
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      meals: freezed == meals
+          ? _value._meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<MealModel>?,
       nutritionData: freezed == nutritionData
           ? _value._nutritionData
           : nutritionData // ignore: cast_nullable_to_non_nullable
@@ -173,15 +199,11 @@ class __$$DailyProgressImplCopyWithImpl<$Res>
       weightData: freezed == weightData
           ? _value._weightData
           : weightData // ignore: cast_nullable_to_non_nullable
-              as List<DailyWeight>?,
+              as List<WeightModel>?,
       waterIntakeData: freezed == waterIntakeData
           ? _value._waterIntakeData
           : waterIntakeData // ignore: cast_nullable_to_non_nullable
               as List<DailyWaterIntake>?,
-      mealCalories: freezed == mealCalories
-          ? _value._mealCalories
-          : mealCalories // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>?,
       mood: freezed == mood
           ? _value.mood
           : mood // ignore: cast_nullable_to_non_nullable
@@ -194,6 +216,14 @@ class __$$DailyProgressImplCopyWithImpl<$Res>
           ? _value.streakDays
           : streakDays // ignore: cast_nullable_to_non_nullable
               as int?,
+      caloriesGoalMet: freezed == caloriesGoalMet
+          ? _value.caloriesGoalMet
+          : caloriesGoalMet // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      waterGoalMet: freezed == waterGoalMet
+          ? _value.waterGoalMet
+          : waterGoalMet // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -203,24 +233,40 @@ class __$$DailyProgressImplCopyWithImpl<$Res>
 class _$DailyProgressImpl implements _DailyProgress {
   _$DailyProgressImpl(
       {this.date,
+      final List<MealModel>? meals,
       final List<DailyNutrition>? nutritionData,
-      final List<DailyWeight>? weightData,
+      final List<WeightModel>? weightData,
       final List<DailyWaterIntake>? waterIntakeData,
-      final Map<String, double>? mealCalories,
       this.mood,
       this.isActive,
-      this.streakDays})
-      : _nutritionData = nutritionData,
+      this.streakDays,
+      this.caloriesGoalMet,
+      this.waterGoalMet})
+      : _meals = meals,
+        _nutritionData = nutritionData,
         _weightData = weightData,
-        _waterIntakeData = waterIntakeData,
-        _mealCalories = mealCalories;
+        _waterIntakeData = waterIntakeData;
 
   factory _$DailyProgressImpl.fromJson(Map<String, dynamic> json) =>
       _$$DailyProgressImplFromJson(json);
 
   @override
   final DateTime? date;
+// Günün tarihi
+  final List<MealModel>? _meals;
+// Günün tarihi
+  @override
+  List<MealModel>? get meals {
+    final value = _meals;
+    if (value == null) return null;
+    if (_meals is EqualUnmodifiableListView) return _meals;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// Günlük öğünler
   final List<DailyNutrition>? _nutritionData;
+// Günlük öğünler
   @override
   List<DailyNutrition>? get nutritionData {
     final value = _nutritionData;
@@ -230,9 +276,9 @@ class _$DailyProgressImpl implements _DailyProgress {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<DailyWeight>? _weightData;
+  final List<WeightModel>? _weightData;
   @override
-  List<DailyWeight>? get weightData {
+  List<WeightModel>? get weightData {
     final value = _weightData;
     if (value == null) return null;
     if (_weightData is EqualUnmodifiableListView) return _weightData;
@@ -240,7 +286,9 @@ class _$DailyProgressImpl implements _DailyProgress {
     return EqualUnmodifiableListView(value);
   }
 
+// Ağırlık geçmişi
   final List<DailyWaterIntake>? _waterIntakeData;
+// Ağırlık geçmişi
   @override
   List<DailyWaterIntake>? get waterIntakeData {
     final value = _waterIntakeData;
@@ -250,28 +298,25 @@ class _$DailyProgressImpl implements _DailyProgress {
     return EqualUnmodifiableListView(value);
   }
 
-  final Map<String, double>? _mealCalories;
-  @override
-  Map<String, double>? get mealCalories {
-    final value = _mealCalories;
-    if (value == null) return null;
-    if (_mealCalories is EqualUnmodifiableMapView) return _mealCalories;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
-
-// breakfast, lunch, vb.
+// Su tüketim geçmişi
   @override
   final String? mood;
-// optional: happy, sad, etc.
+// Ruh hali (ör. happy, sad)
   @override
   final bool? isActive;
+// Kullanıcı o gün aktif mi?
   @override
   final int? streakDays;
+// Kaç gün üst üste devam etmiş?
+  @override
+  final bool? caloriesGoalMet;
+// Günlük kalori hedefi karşılanmış mı?
+  @override
+  final bool? waterGoalMet;
 
   @override
   String toString() {
-    return 'DailyProgress(date: $date, nutritionData: $nutritionData, weightData: $weightData, waterIntakeData: $waterIntakeData, mealCalories: $mealCalories, mood: $mood, isActive: $isActive, streakDays: $streakDays)';
+    return 'DailyProgress(date: $date, meals: $meals, nutritionData: $nutritionData, weightData: $weightData, waterIntakeData: $waterIntakeData, mood: $mood, isActive: $isActive, streakDays: $streakDays, caloriesGoalMet: $caloriesGoalMet, waterGoalMet: $waterGoalMet)';
   }
 
   @override
@@ -280,19 +325,22 @@ class _$DailyProgressImpl implements _DailyProgress {
         (other.runtimeType == runtimeType &&
             other is _$DailyProgressImpl &&
             (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other._meals, _meals) &&
             const DeepCollectionEquality()
                 .equals(other._nutritionData, _nutritionData) &&
             const DeepCollectionEquality()
                 .equals(other._weightData, _weightData) &&
             const DeepCollectionEquality()
                 .equals(other._waterIntakeData, _waterIntakeData) &&
-            const DeepCollectionEquality()
-                .equals(other._mealCalories, _mealCalories) &&
             (identical(other.mood, mood) || other.mood == mood) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.streakDays, streakDays) ||
-                other.streakDays == streakDays));
+                other.streakDays == streakDays) &&
+            (identical(other.caloriesGoalMet, caloriesGoalMet) ||
+                other.caloriesGoalMet == caloriesGoalMet) &&
+            (identical(other.waterGoalMet, waterGoalMet) ||
+                other.waterGoalMet == waterGoalMet));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -300,13 +348,15 @@ class _$DailyProgressImpl implements _DailyProgress {
   int get hashCode => Object.hash(
       runtimeType,
       date,
+      const DeepCollectionEquality().hash(_meals),
       const DeepCollectionEquality().hash(_nutritionData),
       const DeepCollectionEquality().hash(_weightData),
       const DeepCollectionEquality().hash(_waterIntakeData),
-      const DeepCollectionEquality().hash(_mealCalories),
       mood,
       isActive,
-      streakDays);
+      streakDays,
+      caloriesGoalMet,
+      waterGoalMet);
 
   /// Create a copy of DailyProgress
   /// with the given fields replaced by the non-null parameter values.
@@ -327,33 +377,39 @@ class _$DailyProgressImpl implements _DailyProgress {
 abstract class _DailyProgress implements DailyProgress {
   factory _DailyProgress(
       {final DateTime? date,
+      final List<MealModel>? meals,
       final List<DailyNutrition>? nutritionData,
-      final List<DailyWeight>? weightData,
+      final List<WeightModel>? weightData,
       final List<DailyWaterIntake>? waterIntakeData,
-      final Map<String, double>? mealCalories,
       final String? mood,
       final bool? isActive,
-      final int? streakDays}) = _$DailyProgressImpl;
+      final int? streakDays,
+      final bool? caloriesGoalMet,
+      final bool? waterGoalMet}) = _$DailyProgressImpl;
 
   factory _DailyProgress.fromJson(Map<String, dynamic> json) =
       _$DailyProgressImpl.fromJson;
 
   @override
-  DateTime? get date;
+  DateTime? get date; // Günün tarihi
+  @override
+  List<MealModel>? get meals; // Günlük öğünler
   @override
   List<DailyNutrition>? get nutritionData;
   @override
-  List<DailyWeight>? get weightData;
+  List<WeightModel>? get weightData; // Ağırlık geçmişi
   @override
-  List<DailyWaterIntake>? get waterIntakeData;
+  List<DailyWaterIntake>? get waterIntakeData; // Su tüketim geçmişi
   @override
-  Map<String, double>? get mealCalories; // breakfast, lunch, vb.
+  String? get mood; // Ruh hali (ör. happy, sad)
   @override
-  String? get mood; // optional: happy, sad, etc.
+  bool? get isActive; // Kullanıcı o gün aktif mi?
   @override
-  bool? get isActive;
+  int? get streakDays; // Kaç gün üst üste devam etmiş?
   @override
-  int? get streakDays;
+  bool? get caloriesGoalMet; // Günlük kalori hedefi karşılanmış mı?
+  @override
+  bool? get waterGoalMet;
 
   /// Create a copy of DailyProgress
   /// with the given fields replaced by the non-null parameter values.
