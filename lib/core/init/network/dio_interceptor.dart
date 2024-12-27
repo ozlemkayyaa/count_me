@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:count_me/core/extension/dio_extension.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
