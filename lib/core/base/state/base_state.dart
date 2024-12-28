@@ -7,8 +7,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
       MediaQuery.sizeOf(context).height * value;
   double dynamicWidht(double value) => MediaQuery.sizeOf(context).width * value;
 
-  // Bloc'a erişmek için bir yardımcı işlev (isteğe bağlı)
-  TBloc readBloc<TBloc>() => context.read<TBloc>();
+  // State yönetim sistemi (Cubit veya Bloc) fark etmeksizin erişim için:
+  TState readState<TState>() => context.read<TState>();
 
   /// Geri gidilebilir mi kontrolü
   bool canGoBack() => false;

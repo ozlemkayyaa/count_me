@@ -3,45 +3,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BaseView<B extends BlocBase<S>, S> extends StatefulWidget {
+class BaseView<C extends Cubit<S>, S> extends StatefulWidget {
   const BaseView({
     super.key,
-    required this.bloc,
+    required this.cubit,
     required this.onPageBuilder,
     this.onDispose,
   });
 
-  final B bloc; // Bloc veya Cubit instance
-  final Widget Function(BuildContext context, B bloc, S state) onPageBuilder;
+  final C cubit; // Cubit instance
+  final Widget Function(BuildContext context, C cubit, S state) onPageBuilder;
   final VoidCallback? onDispose;
 
   @override
-  _BaseViewState<B, S> createState() => _BaseViewState<B, S>();
+  _BaseViewState<C, S> createState() => _BaseViewState<C, S>();
 }
 
-class _BaseViewState<B extends BlocBase<S>, S> extends State<BaseView<B, S>> {
-  late B bloc;
+class _BaseViewState<C extends Cubit<S>, S> extends State<BaseView<C, S>> {
+  late C cubit;
 
   @override
   void initState() {
-    bloc = widget.bloc;
+    cubit = widget.cubit;
     super.initState();
   }
 
   @override
   void dispose() {
-    bloc.close(); // Bloc'un otomatik olarak kapanmasını sağlar
+    cubit.close(); // Cubit'in otomatik olarak kapanmasını sağlar
     if (widget.onDispose != null) widget.onDispose?.call();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<B>(
-      create: (_) => bloc,
-      child: BlocBuilder<B, S>(
+    return BlocProvider<C>(
+      create: (_) => cubit,
+      child: BlocBuilder<C, S>(
         builder: (context, state) {
-          return widget.onPageBuilder(context, bloc, state);
+          return widget.onPageBuilder(context, cubit, state);
         },
       ),
     );

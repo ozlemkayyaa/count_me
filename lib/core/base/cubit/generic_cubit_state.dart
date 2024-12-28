@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart' show immutable;
 // - loading: Veri yüklenirken.
 // - failure: Bir hata olduğunda.
 // - success: İşlem başarılı olduğunda.
-enum Status { empty, loading, failure, success }
+enum Status { initial, loading, failure, success }
 
 // Generic bir state yapısı. Bu yapı, farklı veri tipleriyle çalışabilir (T).
 // State'in içinde şu özellikler var:
@@ -24,8 +24,8 @@ class GenericCubitState<T> {
 
   // Farklı durumlar için hazır factory constructor'lar:
   // - empty: Başlangıç veya veri olmadığında kullanılabilir.
-  factory GenericCubitState.empty() =>
-      const GenericCubitState(status: Status.empty);
+  factory GenericCubitState.initial() =>
+      const GenericCubitState(status: Status.initial);
 
   // - loading: Yükleme başladığında kullanılabilir.
   factory GenericCubitState.loading() =>

@@ -12,8 +12,9 @@ enum ApiOperation { select, create, update, delete }
 // Generic Cubit sınıfı:
 // Bu sınıf, Cubit tabanlı bir state yönetim sistemi sağlar.
 class GenericCubit<T> extends Cubit<GenericCubitState<List<T>>> {
-  // Başlangıç state'i yükleme durumunda ayarlanır.
-  GenericCubit() : super(GenericCubitState.loading());
+  // Başlangıç state'i initial durumunda ayarlanır.
+  GenericCubit(GenericCubitState genericCubitState)
+      : super(GenericCubitState.initial());
 
   // Hangi API işleminin yapıldığını takip etmek için bir değişken.
   ApiOperation operation = ApiOperation.select;
@@ -73,7 +74,7 @@ class GenericCubit<T> extends Cubit<GenericCubitState<List<T>>> {
       },
       success: (List<T> items) {
         if (items.isEmpty) {
-          emit(GenericCubitState.empty());
+          emit(GenericCubitState.initial());
         } else {
           emit(GenericCubitState.success(items));
         }
