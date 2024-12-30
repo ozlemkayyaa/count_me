@@ -4,6 +4,8 @@ import 'package:count_me/core/init/navigation/navigation_route.dart';
 import 'package:count_me/core/init/navigation/navigation_service.dart';
 import 'package:count_me/view/auth_cubit/login/cubit/login_cubit.dart';
 import 'package:count_me/view/auth_cubit/login/view/login_view.dart';
+import 'package:count_me/view/auth_cubit/register/cubit/register_cubit.dart';
+import 'package:count_me/view/auth_cubit/register/view/register_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/init/theme/app_theme_light.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ void main() {
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
+      BlocProvider<RegisterCubit>(create: (context) => RegisterCubit()),
       // BlocProvider<OnboardingBloc>(create: (context) => OnboardingBloc()),
       // BlocProvider<SplashBloc>(create: (context) => SplashBloc()),
       // BlocProvider<LongOnboardingBloc>(
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: NavigationService.instance.navigatorKey,
       title: AppConstants.APP_NAME,
       theme: AppThemeLight.instance.theme,
-      home: LoginView(),
+      home: RegisterView(),
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: scaffoldMessengerKey,
     );

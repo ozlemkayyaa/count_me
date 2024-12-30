@@ -14,10 +14,9 @@ class LoginBodyWidget extends StatelessWidget {
       padding: PaddingHelper.fixed.getPadding(left: true, right: true),
       child: Column(
         children: [
-          SizedBox(height: SizedBoxHeight.xLarge.value),
           // Logo + Text
           LoginHeaderWidget(),
-          SizedBox(height: SizedBoxHeight.xLarge.value),
+          SizedBox(height: SizedBoxHeight.large.value),
           // Login TForm
           LoginFormWidget(),
         ],

@@ -11,7 +11,7 @@ enum ApiOperation { select, create, update, delete }
 
 // Generic Cubit sınıfı:
 // Bu sınıf, Cubit tabanlı bir state yönetim sistemi sağlar.
-class GenericCubit<T> extends Cubit<GenericCubitState<List<T>>> {
+class GenericCubit<T> extends Cubit<GenericCubitState<T>> {
   // Başlangıç state'i initial durumunda ayarlanır.
   GenericCubit(GenericCubitState genericCubitState)
       : super(GenericCubitState.initial());
@@ -63,21 +63,18 @@ class GenericCubit<T> extends Cubit<GenericCubitState<List<T>>> {
   }
 
   // - getItems: Veri çekme işlemi (Liste döndürür).
-  Future<void> getItems(Future<ApiResult<List<T>>> apiCallback) async {
+  Future<void> getItem(Future<ApiResult<T>> apiCallback) async {
     operation = ApiOperation.select;
     emit(GenericCubitState.loading());
-    ApiResult<List<T>> failureOrSuccess = await apiCallback;
+
+    ApiResult<T> failureOrSuccess = await apiCallback;
 
     failureOrSuccess.when(
       failure: (String failure) {
         emit(GenericCubitState.failure(failure));
       },
-      success: (List<T> items) {
-        if (items.isEmpty) {
-          emit(GenericCubitState.initial());
-        } else {
-          emit(GenericCubitState.success(items));
-        }
+      success: (T data) {
+        emit(GenericCubitState.success(data));
       },
     );
   }

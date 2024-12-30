@@ -1,4 +1,5 @@
 import 'package:count_me/view/auth_cubit/login/view/login_view.dart';
+import 'package:count_me/view/auth_cubit/register/view/register_view.dart';
 import 'package:count_me/view/home/view/home_view.dart';
 import 'package:flutter/material.dart';
 import '../../components/card/not_found_navigation_widget.dart';
@@ -35,8 +36,8 @@ class NavigationRoute {
       //       const BirthdayView(), NavigationConstants.BIRTHDAY);
 
       case NavigationConstants.REGISTER:
-      //   return normalNavigate(
-      //       const RegisterView(), NavigationConstants.REGISTER);
+        return normalNavigate(
+            const RegisterView(), NavigationConstants.REGISTER);
       case NavigationConstants.LOGIN:
         return normalNavigate(const LoginView(), NavigationConstants.LOGIN);
 
