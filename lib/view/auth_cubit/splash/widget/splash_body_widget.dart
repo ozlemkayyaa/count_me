@@ -54,7 +54,7 @@ class SplashBodyWidget extends StatelessWidget {
       ),
       onEnd: () {
         NavigationService.instance.navigateToPageClear(
-          path: NavigationConstants.ONBOARDING,
+          path: NavigationConstants.REGISTER,
         );
       },
     );

@@ -5,7 +5,6 @@ import 'package:count_me/core/constants/navigation/navigation_constants.dart';
 import 'package:count_me/core/extension/context_extension.dart';
 import 'package:count_me/core/init/navigation/navigation_service.dart';
 import 'package:count_me/view/auth_cubit/register/cubit/register_cubit.dart';
-import 'package:count_me/view/auth_cubit/register/view/register_view_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
