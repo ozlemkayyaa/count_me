@@ -19,6 +19,7 @@ class UserModel with _$UserModel {
     String? goal, // Kullanıcının hedefleri
     bool? isActive, // Kullanıcının aktifliği
     ActivityLevel? activityLevel, // Kullanıcının hareket etme durumu
+    ActivityLevel? weightLoss, // Kullanıcı kilo verme durumuna ne kadar alışık
     List<String>? healthConditions, // Kullanıcının sağlık problemleri
     bool? isPremium, // Kullanıcının premium olup olmadığı
     String? profilePhotoUrl, // Kullanıcının profil fotoğrafı URL'si

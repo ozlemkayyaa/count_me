@@ -25,6 +25,9 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : ActivityLevel.fromJson(
               json['activityLevel'] as Map<String, dynamic>),
+      weightLoss: json['weightLoss'] == null
+          ? null
+          : ActivityLevel.fromJson(json['weightLoss'] as Map<String, dynamic>),
       healthConditions: (json['healthConditions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -46,6 +49,7 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'goal': instance.goal,
       'isActive': instance.isActive,
       'activityLevel': instance.activityLevel,
+      'weightLoss': instance.weightLoss,
       'healthConditions': instance.healthConditions,
       'isPremium': instance.isPremium,
       'profilePhotoUrl': instance.profilePhotoUrl,

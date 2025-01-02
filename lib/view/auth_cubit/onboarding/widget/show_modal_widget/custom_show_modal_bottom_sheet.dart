@@ -1,7 +1,7 @@
 import 'package:count_me/core/constants/app/app_strings.dart';
 import 'package:count_me/core/constants/navigation/navigation_constants.dart';
 import 'package:count_me/core/init/navigation/navigation_service.dart';
-import 'package:count_me/view/auth/onboarding/widget/show_modal_widget/custom_modal_button.dart';
+import 'package:count_me/view/auth_cubit/onboarding/widget/show_modal_widget/custom_modal_button.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/constants/enums/index.dart';
 

@@ -25,7 +25,7 @@ class _SplashViewState extends State<SplashView> {
         if (state.status == Status.success) {
           SchedulerBinding.instance.addPostFrameCallback((_) {
             NavigationService.instance.navigateToPageClear(
-              path: NavigationConstants.REGISTER,
+              path: NavigationConstants.ONBOARDING,
             );
           });
         }

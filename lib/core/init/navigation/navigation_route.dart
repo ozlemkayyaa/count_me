@@ -1,7 +1,9 @@
 import 'package:count_me/view/auth_cubit/login/view/login_view.dart';
+import 'package:count_me/view/auth_cubit/long_onboarding/view/long_onboarding_view.dart';
 import 'package:count_me/view/auth_cubit/register/view/register_view.dart';
 import 'package:count_me/view/home/view/home_view.dart';
 import 'package:flutter/material.dart';
+import '../../../view/auth_cubit/onboarding/view/onboarding_view.dart';
 import '../../components/card/not_found_navigation_widget.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -15,12 +17,12 @@ class NavigationRoute {
     switch (args.name) {
       // case NavigationConstants.SPLASH:
       //   return normalNavigate(const SplashView(), NavigationConstants.SPLASH);
-      // case NavigationConstants.ONBOARDING:
-      //   return normalNavigate(
-      //       const OnboardingView(), NavigationConstants.ONBOARDING);
-      // case NavigationConstants.LONG_ONBOARDING:
-      //   return normalNavigate(
-      //       const LongOnboardingView(), NavigationConstants.LONG_ONBOARDING);
+      case NavigationConstants.ONBOARDING:
+        return normalNavigate(
+            const OnboardingView(), NavigationConstants.ONBOARDING);
+      case NavigationConstants.LONG_ONBOARDING:
+        return normalNavigate(
+            const LongOnboardingView(), NavigationConstants.LONG_ONBOARDING);
 
       // case NavigationConstants.PROFILE_GOAL:
       //   return normalNavigate(

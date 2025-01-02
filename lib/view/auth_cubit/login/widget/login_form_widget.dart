@@ -23,7 +23,7 @@ class LoginFormWidget extends StatelessWidget with LoginViewMixin {
         if (state.status == Status.success) {
           // Giriş başarılı olduğunda bir sayfaya yönlendir
           NavigationService.instance
-              .navigateToPage(path: NavigationConstants.HOME);
+              .navigateToPage(path: NavigationConstants.LONG_ONBOARDING);
         }
       },
       builder: (context, state) {

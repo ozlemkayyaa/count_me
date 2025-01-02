@@ -1,9 +1,9 @@
+import 'package:count_me/core/base/cubit/generic_cubit_state.dart';
 import 'package:count_me/core/components/outlinedButton/custom_outlined_button.dart';
 import 'package:count_me/core/constants/app/index.dart';
-import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_bloc.dart';
-import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_event.dart';
-import 'package:count_me/view/auth/long_onboarding/viewModel/bloc/long_onboarding_state.dart';
+import 'package:count_me/core/model/user/user_model.dart';
 import 'package:count_me/view/auth/long_onboarding/widget/onboarding_page_template.dart';
+import 'package:count_me/view/auth_cubit/long_onboarding/cubit/long_onboarding_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,11 +23,15 @@ class CurrentGoals extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LongOnboardingBloc, LongOnboardingState>(
+    return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
-        if (state is LongOnboardingInProgress) {
-          // Seçilen goal'ı bir değişkende tutalım
-          String? selectedGoal = state.userOnboardingModel.goals;
+        if (state.status == Status.initial || state.status == Status.success) {
+          // UserModel'e erişim
+          final userModel = state.data;
+
+          // Seçilen amaç
+          String? selectedGoal = userModel?.goal;
+
           return OnboardingPageTemplate(
             question: AppStrings.question1,
             body: SingleChildScrollView(
@@ -41,16 +45,26 @@ class CurrentGoals extends StatelessWidget {
                       // Seçilen goal'ı güncellendi
                       selectedGoal = option['value'];
                       context
-                          .read<LongOnboardingBloc>()
-                          .add(UpdateProfileEvent({'goals': selectedGoal}));
+                          .read<LongOnboardingCubit>()
+                          .setupInitialUserProfile({'goals': selectedGoal});
                     },
                   );
                 }).toList(),
               ),
             ),
           );
+        } else if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state.status == Status.failure) {
+          return Center(
+            child: Text(
+              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+        } else {
+          return const Center(child: Text("Goals not available"));
         }
-        return Center(child: CircularProgressIndicator());
       },
     );
   }

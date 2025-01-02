@@ -36,6 +36,8 @@ mixin _$UserModel {
       throw _privateConstructorUsedError; // Kullanıcının aktifliği
   ActivityLevel? get activityLevel =>
       throw _privateConstructorUsedError; // Kullanıcının hareket etme durumu
+  ActivityLevel? get weightLoss =>
+      throw _privateConstructorUsedError; // Kullanıcı kilo verme durumuna ne kadar alışık
   List<String>? get healthConditions =>
       throw _privateConstructorUsedError; // Kullanıcının sağlık problemleri
   bool? get isPremium =>
@@ -70,11 +72,13 @@ abstract class $UserModelCopyWith<$Res> {
       String? goal,
       bool? isActive,
       ActivityLevel? activityLevel,
+      ActivityLevel? weightLoss,
       List<String>? healthConditions,
       bool? isPremium,
       String? profilePhotoUrl});
 
   $ActivityLevelCopyWith<$Res>? get activityLevel;
+  $ActivityLevelCopyWith<$Res>? get weightLoss;
 }
 
 /// @nodoc
@@ -104,6 +108,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? goal = freezed,
     Object? isActive = freezed,
     Object? activityLevel = freezed,
+    Object? weightLoss = freezed,
     Object? healthConditions = freezed,
     Object? isPremium = freezed,
     Object? profilePhotoUrl = freezed,
@@ -157,6 +162,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.activityLevel
           : activityLevel // ignore: cast_nullable_to_non_nullable
               as ActivityLevel?,
+      weightLoss: freezed == weightLoss
+          ? _value.weightLoss
+          : weightLoss // ignore: cast_nullable_to_non_nullable
+              as ActivityLevel?,
       healthConditions: freezed == healthConditions
           ? _value.healthConditions
           : healthConditions // ignore: cast_nullable_to_non_nullable
@@ -185,6 +194,20 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       return _then(_value.copyWith(activityLevel: value) as $Val);
     });
   }
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ActivityLevelCopyWith<$Res>? get weightLoss {
+    if (_value.weightLoss == null) {
+      return null;
+    }
+
+    return $ActivityLevelCopyWith<$Res>(_value.weightLoss!, (value) {
+      return _then(_value.copyWith(weightLoss: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -208,12 +231,15 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? goal,
       bool? isActive,
       ActivityLevel? activityLevel,
+      ActivityLevel? weightLoss,
       List<String>? healthConditions,
       bool? isPremium,
       String? profilePhotoUrl});
 
   @override
   $ActivityLevelCopyWith<$Res>? get activityLevel;
+  @override
+  $ActivityLevelCopyWith<$Res>? get weightLoss;
 }
 
 /// @nodoc
@@ -241,6 +267,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? goal = freezed,
     Object? isActive = freezed,
     Object? activityLevel = freezed,
+    Object? weightLoss = freezed,
     Object? healthConditions = freezed,
     Object? isPremium = freezed,
     Object? profilePhotoUrl = freezed,
@@ -294,6 +321,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.activityLevel
           : activityLevel // ignore: cast_nullable_to_non_nullable
               as ActivityLevel?,
+      weightLoss: freezed == weightLoss
+          ? _value.weightLoss
+          : weightLoss // ignore: cast_nullable_to_non_nullable
+              as ActivityLevel?,
       healthConditions: freezed == healthConditions
           ? _value._healthConditions
           : healthConditions // ignore: cast_nullable_to_non_nullable
@@ -326,6 +357,7 @@ class _$UserModelImpl implements _UserModel {
       this.goal,
       this.isActive,
       this.activityLevel,
+      this.weightLoss,
       final List<String>? healthConditions,
       this.isPremium,
       this.profilePhotoUrl})
@@ -362,8 +394,11 @@ class _$UserModelImpl implements _UserModel {
   @override
   final ActivityLevel? activityLevel;
 // Kullanıcının hareket etme durumu
+  @override
+  final ActivityLevel? weightLoss;
+// Kullanıcı kilo verme durumuna ne kadar alışık
   final List<String>? _healthConditions;
-// Kullanıcının hareket etme durumu
+// Kullanıcı kilo verme durumuna ne kadar alışık
   @override
   List<String>? get healthConditions {
     final value = _healthConditions;
@@ -383,7 +418,7 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, password: $password, name: $name, gender: $gender, birthday: $birthday, height: $height, currentWeight: $currentWeight, idealWeight: $idealWeight, goal: $goal, isActive: $isActive, activityLevel: $activityLevel, healthConditions: $healthConditions, isPremium: $isPremium, profilePhotoUrl: $profilePhotoUrl)';
+    return 'UserModel(id: $id, email: $email, password: $password, name: $name, gender: $gender, birthday: $birthday, height: $height, currentWeight: $currentWeight, idealWeight: $idealWeight, goal: $goal, isActive: $isActive, activityLevel: $activityLevel, weightLoss: $weightLoss, healthConditions: $healthConditions, isPremium: $isPremium, profilePhotoUrl: $profilePhotoUrl)';
   }
 
   @override
@@ -409,6 +444,8 @@ class _$UserModelImpl implements _UserModel {
                 other.isActive == isActive) &&
             (identical(other.activityLevel, activityLevel) ||
                 other.activityLevel == activityLevel) &&
+            (identical(other.weightLoss, weightLoss) ||
+                other.weightLoss == weightLoss) &&
             const DeepCollectionEquality()
                 .equals(other._healthConditions, _healthConditions) &&
             (identical(other.isPremium, isPremium) ||
@@ -433,6 +470,7 @@ class _$UserModelImpl implements _UserModel {
       goal,
       isActive,
       activityLevel,
+      weightLoss,
       const DeepCollectionEquality().hash(_healthConditions),
       isPremium,
       profilePhotoUrl);
@@ -467,6 +505,7 @@ abstract class _UserModel implements UserModel {
       final String? goal,
       final bool? isActive,
       final ActivityLevel? activityLevel,
+      final ActivityLevel? weightLoss,
       final List<String>? healthConditions,
       final bool? isPremium,
       final String? profilePhotoUrl}) = _$UserModelImpl;
@@ -499,6 +538,9 @@ abstract class _UserModel implements UserModel {
   bool? get isActive; // Kullanıcının aktifliği
   @override
   ActivityLevel? get activityLevel; // Kullanıcının hareket etme durumu
+  @override
+  ActivityLevel?
+      get weightLoss; // Kullanıcı kilo verme durumuna ne kadar alışık
   @override
   List<String>? get healthConditions; // Kullanıcının sağlık problemleri
   @override
