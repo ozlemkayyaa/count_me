@@ -6,7 +6,7 @@ import 'package:count_me/core/components/elevatedButton/next_button.dart';
 import 'package:count_me/core/constants/app/index.dart';
 import 'package:count_me/core/constants/enums/index.dart';
 import 'package:count_me/core/extension/context_extension.dart';
-import 'package:count_me/view/auth/long_onboarding/model/onboarding_page_model.dart';
+import 'package:count_me/view/auth_cubit/long_onboarding/model/onboarding_page_model.dart';
 import 'package:count_me/view/auth/long_onboarding/widget/motivation_page_widget.dart';
 import 'package:count_me/view/auth_cubit/long_onboarding/view/profile/birthday_select.dart';
 import 'package:count_me/view/auth_cubit/long_onboarding/view/profile/current_goals.dart';
@@ -161,7 +161,7 @@ class _ProfileGroupState extends BaseState<ProfileGroup> {
     }
   }
 
-  void _onPreviousPage() {
+  void onPreviousPage() {
     final cubit = context.read<LongOnboardingCubit>();
     if (currentPage > 0) {
       setState(() {

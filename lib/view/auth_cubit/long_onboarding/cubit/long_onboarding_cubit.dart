@@ -21,8 +21,8 @@ class LongOnboardingCubit extends GenericCubit<UserModel> {
         idealWeight: userData['idealWeight'],
         goal: userData['goal'],
         activityLevel: userData['activityLevel'],
-        healthConditions: userData['healthConditions'],
         weightLoss: userData['weightLoss'],
+        healthConditions: userData['healthConditions'],
       );
       emit(GenericCubitState.success(updatedUserProfile));
       goToNextPage();
