@@ -1,66 +1,60 @@
-// // ignore_for_file: avoid_print
+import 'package:count_me/core/base/cubit/generic_cubit_state.dart';
+import 'package:count_me/core/base/state/base_state.dart';
+import 'package:count_me/core/base/view/base_view_bloc.dart';
+import 'package:count_me/core/components/loading_indicator/loading_indicator.dart';
+import 'package:count_me/core/components/scaffold/custom_scaffold.dart';
+import 'package:count_me/core/components/snackbar/snackbar_manager.dart';
+import 'package:count_me/core/constants/app/index.dart';
+import 'package:count_me/view/auth/register/cubit/register_cubit.dart';
+import 'package:count_me/view/auth/register/widget/register_body_widget.dart';
+import 'package:flutter/material.dart';
 
-// import 'package:count_me/core/base/state/base_state.dart';
-// import 'package:count_me/core/base/view/base_view_bloc.dart';
-// import 'package:count_me/core/components/index.dart';
-// import 'package:count_me/core/constants/app/index.dart';
-// import 'package:count_me/core/extension/index.dart';
-// import 'package:count_me/view/auth/register/viewModel/bloc/register_bloc.dart';
-// import 'package:count_me/view/auth/register/viewModel/bloc/register_event.dart';
-// import 'package:count_me/view/auth/register/viewModel/bloc/register_state.dart';
-// import 'package:count_me/view/auth/register/widget/register_body_widget.dart';
-// import 'package:flutter/material.dart';
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
 
-// class RegisterView extends StatefulWidget {
-//   const RegisterView({super.key});
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
 
-//   @override
-//   State<RegisterView> createState() => _RegisterViewState();
-// }
+class _RegisterViewState extends BaseState<RegisterView> {
+  @override
+  Widget build(BuildContext context) {
+    return BaseView<RegisterCubit, GenericCubitState>(
+      cubit: RegisterCubit(),
+      onPageBuilder: (context, cubit, state) {
+        _handleSnackBar(state);
 
-// class _RegisterViewState extends BaseState<RegisterView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return BaseView<RegisterBloc, RegisterState>(
-//       bloc: RegisterBloc(),
-//       onPageBuilder: (context, bloc, state) {
-//         // INITIAL
-//         if (state is RegisterInitial) {
-//           bloc.add(RegisterStarted());
-//           return CustomScaffold(
-//             backgroundColor: AppColors.whiteBackground,
-//             body: const Center(
-//               child: CircularProgressIndicator(color: AppColors.mainGreen),
-//             ),
-//           );
-//         } else if (state is RegisterCompleted) {
-//           return CustomScaffold(
-//             appBar: AppBar(
-//               backgroundColor: AppColors.whiteBackground,
-//               //automaticallyImplyLeading: false,
-//             ),
-//             body: SingleChildScrollView(
-//               child: RegisterBodyWidget(),
-//             ),
-//           );
-//         } else if (state is RegisterError) {
-//           return Center(
-//             child: Text(
-//               "Error: ${state.message}",
-//               style: context.textTheme.bodyLarge?.copyWith(
-//                 color: Colors.red,
-//               ),
-//             ),
-//           );
-//         } else {
-//           return const Center(
-//             child: Text("Unexpected state"),
-//           );
-//         }
-//       },
-//       onDispose: () {
-//         print("RegisterView disposed");
-//       },
-//     );
-//   }
-// }
+        // State'e göre uygun widget'ı döndür
+        return Stack(
+          children: [
+            // Normal durumdaki ekran
+            CustomScaffold(
+              appBar: AppBar(backgroundColor: AppColors.whiteBackground),
+              body: SingleChildScrollView(
+                child: RegisterBodyWidget(),
+              ),
+            ),
+
+            // Loading durumunda loading indicator'ı ekleyelim
+            if (state.status == Status.loading) const LoadingIndicator(),
+          ],
+        );
+      },
+    );
+  }
+}
+
+// State'e göre Snackbar gösterimi
+void _handleSnackBar(GenericCubitState state) {
+  if (state.status == Status.failure) {
+    SnackbarManager.showSnackBar(
+      message: state.error ?? "An unknown error occurred",
+      backgroundColor: AppColors.reddishOrange,
+    );
+  } else if (state.status == Status.success) {
+    SnackbarManager.showSnackBar(
+      message: "Register successful",
+      backgroundColor: AppColors.mainGreen,
+    );
+  }
+}
