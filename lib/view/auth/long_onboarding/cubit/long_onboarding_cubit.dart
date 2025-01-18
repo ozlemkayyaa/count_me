@@ -1,21 +1,26 @@
-import 'package:count_me/core/base/cubit/generic_cubit.dart';
 import 'package:count_me/core/model/user/user_model.dart';
 import 'package:count_me/core/base/cubit/generic_cubit_state.dart';
-import 'package:flutter/material.dart';
+import 'package:count_me/view/auth/long_onboarding/cubit/long_onboarding_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LongOnboardingCubit extends GenericCubit<UserModel> {
-  int currentGroupIndex = 0;
-  int currentPageIndex = 0;
-
-  LongOnboardingCubit() : super(GenericCubitState<UserModel>.initial());
+class LongOnboardingCubit extends Cubit<LongOnboardingState<UserModel>> {
+  LongOnboardingCubit()
+      : super(
+          LongOnboardingState<UserModel>(
+            currentStep: 0,
+            currentQuestion: 1,
+            questionCounts: [7, 2, 1, 0], // Grupların toplam soru sayıları
+            status: Status.initial,
+          ),
+        );
 
   // Kullanıcının başlangıç profilini oluşturur.
   void setupInitialUserProfile(Map<String, dynamic> userData) {
     if (state.data != null) {
-      final updatedUserProfile = state.data!.copyWith(
+      final updatedUserProfile = state.data?.copyWith(
         name: userData['name'],
         gender: userData['gender'],
-        birthday: userData['birthDate'],
+        birthday: userData['birthday'],
         height: userData['height'],
         currentWeight: userData['currentWeight'],
         idealWeight: userData['idealWeight'],
@@ -24,56 +29,62 @@ class LongOnboardingCubit extends GenericCubit<UserModel> {
         weightLoss: userData['weightLoss'],
         healthConditions: userData['healthConditions'],
       );
-      emit(GenericCubitState.success(updatedUserProfile));
-      goToNextPage();
+
+      if (updatedUserProfile != null) {
+        emit(state.copyWith(data: updatedUserProfile, status: Status.success));
+        goToNextQuestion();
+      }
     }
   }
 
-  // Sayfa geçişlerini yönetir.
-  void goToNextPage() {
-    debugPrint(
-        'Current Page: $currentPageIndex, Current Group: $currentGroupIndex');
-    emit(GenericCubitState.loading());
-    if (isLastGroup) return;
+  void changeQuestion({required bool isNext}) {
+    final currentStep = state.currentStep;
+    final currentQuestion = state.currentQuestion;
+    final totalQuestions = state.questionCounts[currentStep];
 
-    currentPageIndex++;
-    if (currentPageIndex >= groupPageLimit(currentGroupIndex)) {
-      currentPageIndex = 0;
-      currentGroupIndex++;
+    if (isNext) {
+      if (currentQuestion < totalQuestions) {
+        // Aynı grup içinde bir sonraki soruya geç
+        emit(state.copyWith(
+            currentQuestion: currentQuestion + 1, status: Status.success));
+      } else if (currentStep < state.questionCounts.length - 1) {
+        // Sonraki gruba geç
+        emit(state.copyWith(
+            currentStep: currentStep + 1,
+            currentQuestion: 1,
+            status: Status.success));
+      }
+    } else {
+      if (currentQuestion > 1) {
+        // Aynı grup içinde bir önceki soruya geç
+        emit(state.copyWith(
+            currentQuestion: currentQuestion - 1, status: Status.success));
+      } else if (currentStep > 0) {
+        // Bir önceki gruba geç
+        final previousStep = currentStep - 1;
+        final totalQuestions = state.questionCounts[previousStep];
+        emit(state.copyWith(
+            currentStep: previousStep,
+            currentQuestion: totalQuestions,
+            status: Status.success));
+      }
     }
-    debugPrint(
-        'Current Page: $currentPageIndex, Current Group: $currentGroupIndex');
-    emit(GenericCubitState.success(state.data));
   }
 
-  void goToPreviousPage() {
-    debugPrint(
-        'Current Page: $currentPageIndex, Current Group: $currentGroupIndex');
-    if (isFirstPage) return;
+  void updateQuestion(int newQuestion) {
+    emit(state.copyWith(currentQuestion: newQuestion));
+  }
 
-    currentPageIndex--;
-    if (currentPageIndex < 0) {
-      currentGroupIndex--;
-      currentPageIndex = groupPageLimit(currentGroupIndex) - 1;
+  void goToNextGroup() {
+    if (state.currentStep < state.questionCounts.length - 1) {
+      emit(state.copyWith(
+        currentStep: state.currentStep + 1,
+        currentQuestion: 1, // Yeni gruba geçince soru 1'den başlar
+      ));
     }
-    emit(GenericCubitState.success(state.data));
   }
 
-  // Onboarding tamamlama işlemi.
-  void finishOnboarding() {
-    emit(GenericCubitState.success(state.data));
-  }
+  void goToNextQuestion() => changeQuestion(isNext: true);
 
-  // Grup bazlı sayfa limiti.
-  int groupPageLimit(int groupIndex) {
-    const groupLimits = [7, 2, 1, 1]; // Gruplara göre sayfa sayıları
-    return groupLimits[groupIndex];
-  }
-
-  // Yardımcı özellikler.
-  bool get isLastGroup =>
-      currentGroupIndex >= 3 &&
-      currentPageIndex >= groupPageLimit(currentGroupIndex) - 1;
-
-  bool get isFirstPage => currentGroupIndex == 0 && currentPageIndex == 0;
+  void goToPreviousQuestion() => changeQuestion(isNext: false);
 }

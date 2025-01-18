@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PlanGroup extends StatefulWidget {
-  final VoidCallback onNextGroup;
-  final ValueChanged<int> onQuestionChange;
+  // final VoidCallback onNextGroup;
+  // final ValueChanged<int> onQuestionChange;
 
   const PlanGroup({
     super.key,
-    required this.onNextGroup,
-    required this.onQuestionChange,
+    // required this.onNextGroup,
+    // required this.onQuestionChange,
   });
 
   @override
@@ -27,24 +27,24 @@ class _PlanGroupState extends BaseState<PlanGroup> {
   final List<OnboardingPage> _pages = [];
   int _currentQuestionIndex = 1;
 
-  void onPreviousPage() {
-    final cubit = context.read<LongOnboardingCubit>();
-    if (currentPage > 0) {
-      setState(() {
-        currentPage--;
-        if (_pages[currentPage].isQuestion) {
-          _currentQuestionIndex--;
-          widget.onQuestionChange(_currentQuestionIndex);
-        }
-      });
-      _pageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    } else {
-      cubit.goToPreviousPage();
-    }
-  }
+  // void onPreviousPage() {
+  //   final cubit = context.read<LongOnboardingCubit>();
+  //   if (currentPage > 0) {
+  //     setState(() {
+  //       currentPage--;
+  //       if (_pages[currentPage].isQuestion) {
+  //         _currentQuestionIndex--;
+  //         widget.onQuestionChange(_currentQuestionIndex);
+  //       }
+  //     });
+  //     _pageController.previousPage(
+  //       duration: const Duration(milliseconds: 300),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   } else {
+  //     cubit.goToPreviousQuestion();
+  //   }
+  // }
 
   @override
   bool canGoBack() {

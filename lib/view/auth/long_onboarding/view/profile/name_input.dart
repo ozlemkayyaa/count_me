@@ -7,10 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NameInput extends StatelessWidget {
-  final PageController pageController;
-  final VoidCallback goToNextPage;
-  const NameInput(
-      {super.key, required this.pageController, required this.goToNextPage});
+  const NameInput({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +15,10 @@ class NameInput extends StatelessWidget {
 
     return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
+        //* LOADING
         if (state.status == Status.loading) {
           return const Center(child: CircularProgressIndicator());
+          //* FAILURE
         } else if (state.status == Status.failure) {
           return Center(
             child: Text(
@@ -27,6 +26,7 @@ class NameInput extends StatelessWidget {
               style: const TextStyle(color: Colors.red),
             ),
           );
+          //* INITIAL AND SUCCESS
         } else if (state.status == Status.initial ||
             state.status == Status.success) {
           return OnboardingPageTemplate(

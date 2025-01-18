@@ -10,20 +10,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BirthdaySelect extends StatelessWidget {
-  final PageController pageController;
-  final VoidCallback goToNextPage;
-
   const BirthdaySelect({
     super.key,
-    required this.pageController,
-    required this.goToNextPage,
   });
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
-        if (state.status == Status.initial || state.status == Status.success) {
+        //* LOADING
+        if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+          //* FAILURE
+        } else if (state.status == Status.failure) {
+          return Center(
+            child: Text(
+              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+          //* INITAL AND SUCCESS
+        } else if (state.status == Status.initial ||
+            state.status == Status.success) {
           // UserModel'e erişim
           final userModel = state.data;
 
@@ -48,7 +56,7 @@ class BirthdaySelect extends StatelessWidget {
                       onDateTimeChanged: (DateTime pickedDate) {
                         context
                             .read<LongOnboardingCubit>()
-                            .setupInitialUserProfile({'birthDate': pickedDate});
+                            .setupInitialUserProfile({'birthday': pickedDate});
                         print(
                             "Seçilen Tarih: ${pickedDate.day}/${pickedDate.month}/${pickedDate.year}");
                       },
@@ -56,15 +64,6 @@ class BirthdaySelect extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-          );
-        } else if (state.status == Status.loading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state.status == Status.failure) {
-          return Center(
-            child: Text(
-              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
-              style: const TextStyle(color: Colors.red),
             ),
           );
         } else {

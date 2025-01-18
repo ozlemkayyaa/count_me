@@ -9,13 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CurrentWeightSelect extends StatefulWidget {
-  final PageController pageController;
-  final VoidCallback goToNextPage;
-
   const CurrentWeightSelect({
     super.key,
-    required this.pageController,
-    required this.goToNextPage,
   });
 
   @override
@@ -27,8 +22,21 @@ class _CurrentWeightSelectState extends State<CurrentWeightSelect> {
   Widget build(BuildContext context) {
     return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
-        // * SUCCESS
-        if (state.status == Status.initial || state.status == Status.success) {
+        // * LOADING
+        if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+          // * FAILURE
+        } else if (state.status == Status.failure) {
+          return Center(
+            child: Text(
+              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+        }
+        // * INITAL AND SUCCESS
+        else if (state.status == Status.initial ||
+            state.status == Status.success) {
           // UserModel'e erişim
           final userModel = state.data;
 
@@ -47,17 +55,6 @@ class _CurrentWeightSelectState extends State<CurrentWeightSelect> {
                     {'currentWeight': selectedWeight.toDouble()});
                 print("Seçilen Şuanki Kilo: $selectedWeight");
               },
-            ),
-          );
-          // * LOADING
-        } else if (state.status == Status.loading) {
-          return const Center(child: CircularProgressIndicator());
-          // * FAILURE
-        } else if (state.status == Status.failure) {
-          return Center(
-            child: Text(
-              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
-              style: const TextStyle(color: Colors.red),
             ),
           );
         } else {

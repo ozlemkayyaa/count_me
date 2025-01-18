@@ -9,14 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HeightSelect extends StatefulWidget {
-  final PageController pageController;
-  final VoidCallback goToNextPage;
-
-  const HeightSelect({
-    super.key,
-    required this.pageController,
-    required this.goToNextPage,
-  });
+  const HeightSelect({super.key});
 
   @override
   State<HeightSelect> createState() => _HeightSelectState();
@@ -27,7 +20,19 @@ class _HeightSelectState extends State<HeightSelect> {
   Widget build(BuildContext context) {
     return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
-        //* SUCCESS
+        //* LOADING
+        if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+          //* FAILURE
+        } else if (state.status == Status.failure) {
+          return Center(
+            child: Text(
+              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+        }
+        //* INITAL AND SUCCESS
         if (state.status == Status.initial || state.status == Status.success) {
           final userModel = state.data;
           double? selectedHeight = userModel?.currentWeight;
@@ -44,17 +49,6 @@ class _HeightSelectState extends State<HeightSelect> {
                     {'height': selectedHeight.toDouble()});
                 print("Seçilen Boy: $selectedHeight");
               },
-            ),
-          );
-          //* LOADING
-        } else if (state.status == Status.loading) {
-          return const Center(child: CircularProgressIndicator());
-          //* FAILURE
-        } else if (state.status == Status.failure) {
-          return Center(
-            child: Text(
-              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
-              style: const TextStyle(color: Colors.red),
             ),
           );
         } else {

@@ -9,10 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GenderSelect extends StatelessWidget {
-  final PageController pageController;
-  final VoidCallback goToNextPage;
-  const GenderSelect(
-      {super.key, required this.pageController, required this.goToNextPage});
+  const GenderSelect({super.key});
 
   static const List<Map<String, dynamic>> genderOptions = [
     {
@@ -32,7 +29,19 @@ class GenderSelect extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
-        // * SUCCESS
+        // * LOADING
+        if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+          // * FAILURE
+        } else if (state.status == Status.failure) {
+          return Center(
+            child: Text(
+              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+        }
+        // * INITAL AND SUCCESS
         if (state.status == Status.initial || state.status == Status.success) {
           final userModel = state.data;
           // Seçilen cinsiyeti bir değişkende tuttuk
@@ -62,16 +71,6 @@ class GenderSelect extends StatelessWidget {
             ),
           );
           // * LOADING
-        } else if (state.status == Status.loading) {
-          return const Center(child: CircularProgressIndicator());
-          // * FAILURE
-        } else if (state.status == Status.failure) {
-          return Center(
-            child: Text(
-              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
-              style: const TextStyle(color: Colors.red),
-            ),
-          );
         } else {
           return const Center(child: Text("Gender is not available."));
         }

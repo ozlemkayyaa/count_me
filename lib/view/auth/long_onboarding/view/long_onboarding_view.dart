@@ -12,6 +12,7 @@ import 'package:count_me/view/auth/long_onboarding/view/profile/profile_group.da
 import 'package:count_me/view/auth/long_onboarding/widget/stepper_widget.dart';
 import 'package:count_me/view/auth/long_onboarding/cubit/long_onboarding_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LongOnboardingView extends StatefulWidget {
   const LongOnboardingView({super.key});
@@ -23,18 +24,18 @@ class LongOnboardingView extends StatefulWidget {
 class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
   final PageController _mainPageController = PageController();
 
-  int _currentStep = 0;
-  int _currentQuestion = 1;
+  // int _currentStep = 0;
+  // int _currentQuestion = 1;
 
   final List<Widget> _groups = [];
 
-  // Her grup için GlobalKey tanımla
-  final List<GlobalKey<BaseState>> _groupKeys = [
-    GlobalKey<BaseState<ProfileGroup>>(),
-    GlobalKey<BaseState<ActivityGroup>>(),
-    GlobalKey<BaseState<HealthGroup>>(),
-    GlobalKey<BaseState<PlanGroup>>(),
-  ];
+  // // Her grup için GlobalKey tanımla
+  // final List<GlobalKey<BaseState>> _groupKeys = [
+  //   GlobalKey<BaseState<ProfileGroup>>(),
+  //   GlobalKey<BaseState<ActivityGroup>>(),
+  //   GlobalKey<BaseState<HealthGroup>>(),
+  //   GlobalKey<BaseState<PlanGroup>>(),
+  // ];
 
   @override
   void initState() {
@@ -44,42 +45,10 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
 
   List<Widget> get groupList {
     return [
-      ProfileGroup(
-        key: _groupKeys[0],
-        onNextGroup: _goToNextGroup,
-        onQuestionChange: (int questionNumber) {
-          setState(() {
-            _currentQuestion = questionNumber;
-          });
-        },
-      ),
-      ActivityGroup(
-        key: _groupKeys[1],
-        onNextGroup: _goToNextGroup,
-        onQuestionChange: (int questionNumber) {
-          setState(() {
-            _currentQuestion = questionNumber;
-          });
-        },
-      ),
-      HealthGroup(
-        key: _groupKeys[2],
-        onNextGroup: _goToNextGroup,
-        onQuestionChange: (int questionNumber) {
-          setState(() {
-            _currentQuestion = questionNumber;
-          });
-        },
-      ),
-      PlanGroup(
-        key: _groupKeys[3],
-        onNextGroup: _goToNextGroup,
-        onQuestionChange: (int questionNumber) {
-          setState(() {
-            _currentQuestion = questionNumber;
-          });
-        },
-      ),
+      ProfileGroup(),
+      ActivityGroup(),
+      HealthGroup(),
+      PlanGroup(),
     ];
   }
 
@@ -91,48 +60,48 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
     AppStrings.plan
   ];
 
-  // Kategoriye göre soru sayıları
-  final List<int> _questionCounts = [7, 2, 1, 0];
+  // // Kategoriye göre soru sayıları
+  // final List<int> _questionCounts = [7, 2, 1, 0];
 
-  // Bir sonraki gruba geçme
-  void _goToNextGroup() {
-    if (_currentStep < _groups.length - 1) {
-      setState(() {
-        _currentStep++;
-        _currentQuestion = 1; // Yeni gruba geçince soru 1'e döner
-      });
-      _mainPageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
+  // // Bir sonraki gruba geçme
+  // void _goToNextGroup() {
+  //   if (_currentStep < _groups.length - 1) {
+  //     setState(() {
+  //       _currentStep++;
+  //       _currentQuestion = 1; // Yeni gruba geçince soru 1'e döner
+  //     });
+  //     _mainPageController.nextPage(
+  //       duration: const Duration(milliseconds: 300),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   }
+  // }
 
-  void _handlePreviousButton() {
-    // Mevcut grubun State'ine eriş ve `goToPreviousPage` çağır
-    final currentGroupKey = _groupKeys[_currentStep];
-    final currentGroupState = currentGroupKey.currentState;
+  // void _handlePreviousButton() {
+  //   // Mevcut grubun State'ine eriş ve `goToPreviousPage` çağır
+  //   final currentGroupKey = _groupKeys[_currentStep];
+  //   final currentGroupState = currentGroupKey.currentState;
 
-    if (currentGroupState != null && currentGroupState.canGoBack()) {
-      // Geri gidilebiliyorsa, önce grup içinde geri git
-      if (currentGroupState.canGoBack()) {
-        currentGroupState.goToPreviousPage();
-        return;
-      }
-    }
+  //   if (currentGroupState != null && currentGroupState.canGoBack()) {
+  //     // Geri gidilebiliyorsa, önce grup içinde geri git
+  //     if (currentGroupState.canGoBack()) {
+  //       currentGroupState.goToPreviousPage();
+  //       return;
+  //     }
+  //   }
 
-    // Grup içinden geri gidilemiyorsa bir önceki gruba geç
-    if (_currentStep > 0) {
-      setState(() {
-        _currentStep--;
-        _currentQuestion = 1; // Geri gidince önceki grubun son sorusuna gider
-      });
-      _mainPageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
+  //   // Grup içinden geri gidilemiyorsa bir önceki gruba geç
+  //   if (_currentStep > 0) {
+  //     setState(() {
+  //       _currentStep--;
+  //       _currentQuestion = 1; // Geri gidince önceki grubun son sorusuna gider
+  //     });
+  //     _mainPageController.previousPage(
+  //       duration: const Duration(milliseconds: 300),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +118,9 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
   }
 
   Scaffold longOnboardingBody(BuildContext context) {
+    final cubit = context.read<LongOnboardingCubit>();
+    final state = cubit.state;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -160,7 +132,9 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
             Row(
               children: [
                 GestureDetector(
-                  onTap: _handlePreviousButton,
+                  onTap: state.currentStep == 0 && state.currentQuestion == 1
+                      ? null
+                      : cubit.goToPreviousQuestion,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 30.0, right: 50.0),
                     child: IconEnum.arrowLeft.toImage(height: 16, width: 16),
@@ -170,12 +144,12 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
                 // Dinamik Başlık
                 Text.rich(
                   TextSpan(
-                    text: _categories[_currentStep], // Başlık kısmı
+                    text: _categories[state.currentStep], // Başlık kısmı
                     style: context.textTheme.bodyMedium,
                     children: [
                       TextSpan(
                           text:
-                              " $_currentQuestion/${_questionCounts[_currentStep]}", // Soru numarası kısmı
+                              " ${state.currentQuestion}/${state.questionCounts[state.currentStep]}", // Soru numarası kısmı
                           style: context.textTheme.labelSmall),
                     ],
                   ),
@@ -186,7 +160,7 @@ class _LongOnboardingViewState extends BaseState<LongOnboardingView> {
             // Stepper Widget cpompeted
             Padding(
               padding: const EdgeInsets.only(left: 32.0),
-              child: StepperWidget(currentStep: _currentStep),
+              child: StepperWidget(currentStep: state.currentStep),
             ),
 
             // Sayfalar

@@ -10,14 +10,7 @@ import 'package:count_me/view/auth/long_onboarding/widget/onboarding_page_templa
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class IdealWeightSelect extends StatefulWidget {
-  final PageController pageController;
-  final VoidCallback goToNextPage;
-
-  const IdealWeightSelect({
-    super.key,
-    required this.pageController,
-    required this.goToNextPage,
-  });
+  const IdealWeightSelect({super.key});
 
   @override
   State<IdealWeightSelect> createState() => _IdealWeightSelectState();
@@ -28,7 +21,19 @@ class _IdealWeightSelectState extends State<IdealWeightSelect> {
   Widget build(BuildContext context) {
     return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
-        // * SUCCESS
+        // * LOADING
+        if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+          // * FAILURE
+        } else if (state.status == Status.failure) {
+          return Center(
+            child: Text(
+              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+        }
+        // * INITAL AND SUCCESS
         if (state.status == Status.initial || state.status == Status.success) {
           // UserModel'e erişim
           final userModel = state.data;
@@ -46,17 +51,6 @@ class _IdealWeightSelectState extends State<IdealWeightSelect> {
                     {'idealWeight': selectedWeight.toDouble()});
                 print("Seçilen İdeal Kilo: $selectedWeight");
               },
-            ),
-          );
-          // * LOADING
-        } else if (state.status == Status.loading) {
-          return const Center(child: CircularProgressIndicator());
-          // * FAILURE
-        } else if (state.status == Status.failure) {
-          return Center(
-            child: Text(
-              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
-              style: const TextStyle(color: Colors.red),
             ),
           );
         } else {

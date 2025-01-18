@@ -2,6 +2,8 @@
 
 import 'package:count_me/core/base/cubit/generic_cubit_state.dart';
 import 'package:count_me/core/base/state/base_state.dart';
+import 'package:count_me/core/model/user/user_model.dart';
+import 'package:count_me/view/auth/long_onboarding/cubit/long_onboarding_state.dart';
 import 'package:count_me/view/auth/long_onboarding/model/onboarding_page_model.dart';
 import 'package:count_me/view/auth/long_onboarding/view/health/health_concern.dart';
 import 'package:count_me/view/auth/long_onboarding/cubit/long_onboarding_cubit.dart';
@@ -10,13 +12,13 @@ import 'package:count_me/core/components/elevatedButton/next_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HealthGroup extends StatefulWidget {
-  final VoidCallback onNextGroup;
-  final ValueChanged<int> onQuestionChange;
+  // final VoidCallback onNextGroup;
+  // final ValueChanged<int> onQuestionChange;
 
   const HealthGroup({
-    required this.onNextGroup,
+    // required this.onNextGroup,
     super.key,
-    required this.onQuestionChange,
+    // required this.onQuestionChange,
   });
 
   @override
@@ -31,63 +33,63 @@ class _HealthGroupState extends BaseState<HealthGroup> {
   final List<OnboardingPage> _pages = [];
   int _currentQuestionIndex = 1;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
 
-    if (_pages.isEmpty) {
-      _pages.addAll([
-        // HEALTH CONCERN
-        OnboardingPage(
-            widget: HealthConcern(
-                pageController: _pageController, goToNextPage: _onNextPage),
-            isQuestion: true)
-      ]);
-    }
-  }
+  //   if (_pages.isEmpty) {
+  //     _pages.addAll([
+  //       // HEALTH CONCERN
+  //       OnboardingPage(
+  //           widget: HealthConcern(
+  //               pageController: _pageController, goToNextPage: _onNextPage),
+  //           isQuestion: true)
+  //     ]);
+  //   }
+  // }
 
-  void _onNextPage() {
-    final cubit = context.read<LongOnboardingCubit>();
-    if (currentPage < _pages.length - 1) {
-      setState(() {
-        currentPage++;
-        if (_pages[currentPage].isQuestion) {
-          _currentQuestionIndex++;
-          widget.onQuestionChange(_currentQuestionIndex);
-        }
-      });
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    } else {
-      cubit.goToNextPage();
-      if (cubit.state.status == Status.failure) {
-        print(cubit.state.error ?? 'Bir hata oluştu');
-        return;
-      }
-      widget.onNextGroup();
-    }
-  }
+  // void _onNextPage() {
+  //   final cubit = context.read<LongOnboardingCubit>();
+  //   if (currentPage < _pages.length - 1) {
+  //     setState(() {
+  //       currentPage++;
+  //       if (_pages[currentPage].isQuestion) {
+  //         _currentQuestionIndex++;
+  //         widget.onQuestionChange(_currentQuestionIndex);
+  //       }
+  //     });
+  //     _pageController.nextPage(
+  //       duration: const Duration(milliseconds: 300),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   } else {
+  //     cubit.goToNextQuestion();
+  //     if (cubit.state.status == Status.failure) {
+  //       print(cubit.state.error ?? 'Bir hata oluştu');
+  //       return;
+  //     }
+  //     widget.onNextGroup();
+  //   }
+  // }
 
-  void onPreviousPage() {
-    final cubit = context.read<LongOnboardingCubit>();
-    if (currentPage > 0) {
-      setState(() {
-        currentPage--;
-        if (_pages[currentPage].isQuestion) {
-          _currentQuestionIndex--;
-          widget.onQuestionChange(_currentQuestionIndex);
-        }
-      });
-      _pageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    } else {
-      cubit.goToPreviousPage();
-    }
-  }
+  // void onPreviousPage() {
+  //   final cubit = context.read<LongOnboardingCubit>();
+  //   if (currentPage > 0) {
+  //     setState(() {
+  //       currentPage--;
+  //       if (_pages[currentPage].isQuestion) {
+  //         _currentQuestionIndex--;
+  //         widget.onQuestionChange(_currentQuestionIndex);
+  //       }
+  //     });
+  //     _pageController.previousPage(
+  //       duration: const Duration(milliseconds: 300),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   } else {
+  //     cubit.goToPreviousQuestion();
+  //   }
+  // }
 
   @override
   bool canGoBack() {
@@ -96,7 +98,7 @@ class _HealthGroupState extends BaseState<HealthGroup> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LongOnboardingCubit, GenericCubitState>(
+    return BlocBuilder<LongOnboardingCubit, LongOnboardingState<UserModel>>(
       builder: (context, state) {
         if (state.status == Status.loading) {
           return const Center(child: CircularProgressIndicator());
@@ -112,6 +114,8 @@ class _HealthGroupState extends BaseState<HealthGroup> {
   }
 
   Column _buildOnboardingHealthContent() {
+    final cubit = context.read<LongOnboardingCubit>();
+    final state = cubit.state;
     return Column(
       children: [
         Expanded(
@@ -122,7 +126,7 @@ class _HealthGroupState extends BaseState<HealthGroup> {
             itemBuilder: (context, index) => _pages[index].widget,
           ),
         ),
-        NextButton(onNext: _onNextPage),
+        NextButton(onNext: cubit.goToNextQuestion),
         SizedBox(height: 40),
       ],
     );

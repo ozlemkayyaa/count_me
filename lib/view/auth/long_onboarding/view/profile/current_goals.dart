@@ -8,10 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CurrentGoals extends StatelessWidget {
-  final PageController pageController;
-  final VoidCallback goToNextPage;
-  const CurrentGoals(
-      {super.key, required this.pageController, required this.goToNextPage});
+  const CurrentGoals({super.key});
 
   static const List<Map<String, dynamic>> goalsOptions = [
     {'title': AppStrings.loseWeight, 'value': AppStrings.loseWeight},
@@ -25,7 +22,20 @@ class CurrentGoals extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LongOnboardingCubit, GenericCubitState<UserModel>>(
       builder: (context, state) {
-        if (state.status == Status.initial || state.status == Status.success) {
+        //* LOADING
+        if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+          //* FAILURE
+        } else if (state.status == Status.failure) {
+          return Center(
+            child: Text(
+              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+          //* INITAL AND SUCCESS
+        } else if (state.status == Status.initial ||
+            state.status == Status.success) {
           // UserModel'e erişim
           final userModel = state.data;
 
@@ -51,15 +61,6 @@ class CurrentGoals extends StatelessWidget {
                   );
                 }).toList(),
               ),
-            ),
-          );
-        } else if (state.status == Status.loading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state.status == Status.failure) {
-          return Center(
-            child: Text(
-              "Bir hata oluştu: ${state.error ?? "Bilinmeyen hata"}",
-              style: const TextStyle(color: Colors.red),
             ),
           );
         } else {
